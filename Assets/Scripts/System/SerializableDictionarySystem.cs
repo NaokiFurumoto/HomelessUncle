@@ -1,30 +1,30 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒVƒŠƒAƒ‰ƒCƒY‰Â”\‚È Dictionary
+/// ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå¯èƒ½ãª Dictionary
 /// </summary>
-/// <typeparam name="TKey">ƒL[‚ÌŒ^</typeparam>
-/// <typeparam name="TValue">’l‚ÌŒ^</typeparam>
-/// <typeparam name="TPair">ƒVƒŠƒAƒ‰ƒCƒY‰Â”\‚È KeyValuePair</typeparam>
+/// <typeparam name="TKey">ã‚­ãƒ¼ã®å‹</typeparam>
+/// <typeparam name="TValue">å€¤ã®å‹</typeparam>
+/// <typeparam name="TPair">ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå¯èƒ½ãª KeyValuePair</typeparam>
 [Serializable]
 public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnumerable<TPair>
 	where TPair : SerializableKeyValuePair<TKey, TValue>, new()
 {
 	/// <summary>
-	/// ƒf[ƒ^ƒŠƒXƒg
+	/// ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
 	/// </summary>
 	[SerializeField] private List<TPair> m_List = new List<TPair>();
 
 	/// <summary>
-	/// ƒe[ƒuƒ‹
+	/// ãƒ†ãƒ¼ãƒ–ãƒ«
 	/// </summary>
 	private Dictionary<TKey, TValue> m_Table;
 
 	/// <summary>
-	/// IEqualityComparer ì¬
+	/// IEqualityComparer ä½œæˆ
 	/// </summary>
 	private IEqualityComparer<TKey> m_KeyComparer = null;
 
@@ -35,7 +35,7 @@ public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnume
 	public SerializableDictionarySystem(IEqualityComparer<TKey> keyComparer) { m_KeyComparer = keyComparer; }
 
 	/// <summary>
-	/// w’è‚³‚ê‚½ƒL[‚É•R•t‚­’l‚ğ•Ô‚µ‚Ü‚·
+	/// æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«ç´ä»˜ãå€¤ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	public TValue this[TKey key]
 	{
@@ -46,18 +46,18 @@ public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnume
 			{
 				return default(TValue);
 			}
-			//Debug.Assert( pair != null, "w’è‚³‚ê‚½ƒL[‚É•R•t‚­’l‚Í‘¶İ‚µ‚Ü‚¹‚ñBkey = " + key );
+			//Debug.Assert( pair != null, "æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«ç´ä»˜ãå€¤ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚key = " + key );
 			return pair.Value;
 		}
 	}
 
 	/// <summary>
-	/// Dictionary ‚ğ•Ô‚µ‚Ü‚·
+	/// Dictionary ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	public Dictionary<TKey, TValue> Table { get { return m_Table ?? (m_Table = ListToDictionary(m_List, m_KeyComparer)); } }
 
 	/// <summary>
-	/// mList ‚ğ Dictionary ‚É•ÏŠ·‚µ‚Ä•Ô‚µ‚Ü‚·
+	/// mList ã‚’ Dictionary ã«å¤‰æ›ã—ã¦è¿”ã—ã¾ã™
 	/// </summary>
 	private static Dictionary<TKey, TValue> ListToDictionary(IList<TPair> list, IEqualityComparer<TKey> keyComparer)
 	{
@@ -70,7 +70,7 @@ public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnume
 	}
 
 	/// <summary>
-	/// ƒRƒŒƒNƒVƒ‡ƒ“‚ğ”½•œˆ—‚·‚é—ñ‹“q‚ğ•Ô‚µ‚Ü‚·
+	/// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’åå¾©å‡¦ç†ã™ã‚‹åˆ—æŒ™å­ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	IEnumerator<TPair> IEnumerable<TPair>.GetEnumerator()
 	{
@@ -81,7 +81,7 @@ public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnume
 	}
 
 	/// <summary>
-	/// ƒRƒŒƒNƒVƒ‡ƒ“‚ğ”½•œˆ—‚·‚é—ñ‹“q‚ğ•Ô‚µ‚Ü‚·
+	/// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’åå¾©å‡¦ç†ã™ã‚‹åˆ—æŒ™å­ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	IEnumerator IEnumerable.GetEnumerator()
 	{
@@ -93,36 +93,36 @@ public abstract class SerializableDictionarySystem<TKey, TValue, TPair> : IEnume
 }
 
 /// <summary>
-/// ƒVƒŠƒAƒ‰ƒCƒY‰Â”\‚È KeyValuePair
+/// ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå¯èƒ½ãª KeyValuePair
 /// </summary>
-/// <typeparam name="TKey">ƒL[‚ÌŒ^</typeparam>
-/// <typeparam name="TValue">’l‚ÌŒ^</typeparam>
+/// <typeparam name="TKey">ã‚­ãƒ¼ã®å‹</typeparam>
+/// <typeparam name="TValue">å€¤ã®å‹</typeparam>
 [Serializable]
 public abstract class SerializableKeyValuePair<TKey, TValue>
 {
-	[SerializeField] private TKey m_Key;   // ƒL[
-	[SerializeField] private TValue m_Value;   // ’l
+	[SerializeField] private TKey m_Key;   // ã‚­ãƒ¼
+	[SerializeField] private TValue m_Value;   // å€¤
 
 	/// <summary>
-	/// ƒL[‚ğ•Ô‚µ‚Ü‚·
+	/// ã‚­ãƒ¼ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	public TKey Key { get { return m_Key; } }
 
 	/// <summary>
-	/// ’l‚ğ•Ô‚µ‚Ü‚·
+	/// å€¤ã‚’è¿”ã—ã¾ã™
 	/// </summary>
 	public TValue Value { get { return m_Value; } }
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	public SerializableKeyValuePair() { }
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
-	/// <param name="key">ƒL[</param>
-	/// <param name="value">’l</param>
+	/// <param name="key">ã‚­ãƒ¼</param>
+	/// <param name="value">å€¤</param>
 	public SerializableKeyValuePair(TKey key, TValue value)
 	{
 		m_Key = key;

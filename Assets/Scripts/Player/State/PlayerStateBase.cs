@@ -1,23 +1,23 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒXƒe[ƒgŠî’êƒNƒ‰ƒX
+/// ã‚¹ãƒ†ãƒ¼ãƒˆåŸºåº•ã‚¯ãƒ©ã‚¹
 /// </summary>
 public partial class Player 
 {
     public abstract class PlayerStateBase 
     {
-        /// <summary> ƒXƒe[ƒg‚ğŠJn‚µ‚½‚ÉŒÄ‚Î‚ê‚é </summary>
+        /// <summary> ã‚¹ãƒ†ãƒ¼ãƒˆã‚’é–‹å§‹ã—ãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹ </summary>
         public virtual void OnEnter(Player player, PlayerStateBase state) { }
 
-        /// <summary> –ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚é </summary>
+        /// <summary> æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹ </summary>
         public virtual void OnUpdate(Player player) { }
 
-        /// <summary> ƒXƒe[ƒg‚ğI—¹‚µ‚½‚ÉŒÄ‚Î‚ê‚é </summary>
+        /// <summary> ã‚¹ãƒ†ãƒ¼ãƒˆã‚’çµ‚äº†ã—ãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹ </summary>
         public virtual void OnExit(Player player, PlayerStateBase nextState) { }
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“I—¹‚Ìˆ—‚à’è‹`‚·‚é
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†æ™‚ã®å‡¦ç†ã‚‚å®šç¾©ã™ã‚‹
     }
 }

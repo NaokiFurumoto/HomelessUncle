@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,7 @@ using System;
 using static GlobalValue;
 
 /// <summary>
-/// ƒCƒ“ƒQ[ƒ€UI‚Ì§Œä‚ÉŠÖ‚·‚éƒNƒ‰ƒX
+/// ã‚¤ãƒ³ã‚²ãƒ¼ãƒ UIã®åˆ¶å¾¡ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public partial class UIController : SingletonMonoBehaviour<UIController>
 {
@@ -31,12 +31,12 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
         viewCtrl = ViewController.Instance;
 
         SetInitializeUI();
-        //XVƒ^ƒCƒ~ƒ“ƒO‚ÍŒãX
+        //æ›´æ–°ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã¯å¾Œã€…
         UpdateSetParamUI(player);
     }
 
     /// <summary>
-    /// UIƒp[ƒc‚ÉƒAƒNƒVƒ‡ƒ““o˜^
+    /// UIãƒ‘ãƒ¼ãƒ„ã«ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ç™»éŒ²
     /// </summary>
     private void SetInitializeUI()
     {
@@ -51,22 +51,22 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     }
 
     /// <summary>
-    /// UIƒpƒ‰ƒ[ƒ^[‚ÌXV
+    /// UIãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®æ›´æ–°
     /// </summary>
     public void UpdateSetParamUI(Player player)
     {
-        //‘Ì—ÍƒQ[ƒWXV
+        //ä½“åŠ›ã‚²ãƒ¼ã‚¸æ›´æ–°
         SetLifeGaugeParam(player);
 
     }
 
     /// <summary>
-    /// ‘Ì—ÍƒQ[ƒW‚Ìİ’è
+    /// ä½“åŠ›ã‚²ãƒ¼ã‚¸ã®è¨­å®š
     /// </summary>
     /// <param name="player"></param>
     public void SetLifeGaugeParam(Player player)
     {
-        //‰Šú’l:Œã‚Å•ÏX
+        //åˆæœŸå€¤:å¾Œã§å¤‰æ›´
         if (gaugeLife != null)
         {
             gaugeLife.SetMinMaxValue(LIFE_GAUGE_MINVALUE, player.PlayerStatus.MaxHp);
@@ -75,7 +75,7 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     }
 
     /// <summary>
-    /// UI‚ğ•Ô‚·ˆ—
+    /// UIã‚’è¿”ã™å‡¦ç†
     /// </summary>
     /// <param name="uiType"></param>
     /// <param name="btnType"></param>
@@ -93,7 +93,7 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
 }
 
 /// <summary>
-/// UI‚Ìƒp[ƒc‚Å‚ ‚é‚±‚Æ
+/// UIã®ãƒ‘ãƒ¼ãƒ„ã§ã‚ã‚‹ã“ã¨
 /// </summary>
 public abstract class UIParts : MonoBehaviour
 {
@@ -109,7 +109,7 @@ public abstract class UIParts : MonoBehaviour
 }
 
 /// <summary>
-/// UI‚Ìí—Ş
+/// UIã®ç¨®é¡
 /// </summary>
 public enum UIType
 {
@@ -120,7 +120,7 @@ public enum UIType
 }
 
 /// <summary>
-/// í—Ş
+/// ç¨®é¡
 /// </summary>
 public enum NameType
 {

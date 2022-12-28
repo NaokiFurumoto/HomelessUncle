@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 /// <summary>
-/// ŒvƒNƒ‰ƒXB
-/// Œ»İ‚ÌŠÔ‚Æ“¯ŠúB‚±‚±‚©‚çŠÔ‚ğæ“¾
+/// æ™‚è¨ˆã‚¯ãƒ©ã‚¹ã€‚
+/// ç¾åœ¨ã®æ™‚é–“ã¨åŒæœŸã€‚ã“ã“ã‹ã‚‰æ™‚é–“ã‚’å–å¾—
 /// </summary>
 public class ClockController : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class ClockController : MonoBehaviour
 
     private void Start()
     {
-        //ƒCƒxƒ“ƒgƒ`ƒFƒbƒN
+        //ã‚¤ãƒ™ãƒ³ãƒˆãƒã‚§ãƒƒã‚¯
         delay = 0.0f;
     }
 
@@ -38,21 +38,21 @@ public class ClockController : MonoBehaviour
     }
 
     /// <summary>
-    /// 1•ª‚É1“xƒCƒxƒ“ƒg”­sƒ`ƒFƒbƒN
+    /// 1åˆ†ã«1åº¦ã‚¤ãƒ™ãƒ³ãƒˆç™ºè¡Œãƒã‚§ãƒƒã‚¯
     /// </summary>
     private void LateUpdate()
     {
-        //1•ª‚²‚Æ‚ÉƒCƒxƒ“ƒgƒ`ƒFƒbƒN
+        //1åˆ†ã”ã¨ã«ã‚¤ãƒ™ãƒ³ãƒˆãƒã‚§ãƒƒã‚¯
         delay += Time.unscaledDeltaTime;
         if(delay > 60.0f)
         {
-            //ƒCƒxƒ“ƒgƒ`ƒFƒbƒN
+            //ã‚¤ãƒ™ãƒ³ãƒˆãƒã‚§ãƒƒã‚¯
             delay = 0.0f;
         }
     }
 
     /// <summary>
-    /// ŠÔ‚ğæ“¾
+    /// æ™‚é–“ã‚’å–å¾—
     /// </summary>
     /// <returns></returns>
     public (int,int) GetClockTime()

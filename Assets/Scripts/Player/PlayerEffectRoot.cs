@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -26,7 +26,7 @@ public class PlayerEffectRoot : MonoBehaviour
     private List<PLEffectPosType> effectRootPosList = new List<PLEffectPosType>();
 
     /// <summary>
-    /// w’è‚µ‚½ƒGƒtƒFƒNƒg‚Ìe‚ğæ“¾
+    /// æŒ‡å®šã—ãŸã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®è¦ªã‚’å–å¾—
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>

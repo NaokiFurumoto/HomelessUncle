@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GlobalValue;
 
 /// <summary>
-/// ŠeƒXƒe[ƒg‚²‚Æ‚É‹LÚ
+/// å„ã‚¹ãƒ†ãƒ¼ãƒˆã”ã¨ã«è¨˜è¼‰
 /// </summary>
 public partial class Player
 {
     /// <summary>
-    /// Œ@‚é
-    /// Œ@‚é>ƒAƒCƒeƒ€”­Œ@
+    /// æ˜ã‚‹
+    /// æ˜ã‚‹>ã‚¢ã‚¤ãƒ†ãƒ ç™ºæ˜
     /// </summary>
     public class StateDig : PlayerStateBase
     {
@@ -33,16 +33,16 @@ public partial class Player
             }
             else
             {
-                //‚Í‚¸‚ê
+                //ã¯ãšã‚Œ
             }
 
-            //‘Ì—ÍŒ¸­
+            //ä½“åŠ›æ¸›å°‘
             player.PlayerStatus.Hp -= DIG_DAMAGE_INIT;
             UIController.Instance.SetLifeGaugeParam(player);
         }
 
         /// <summary>
-        /// Œ@‚èo‚µƒAƒCƒeƒ€‚ğ•\¦
+        /// æ˜ã‚Šå‡ºã—ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¡¨ç¤º
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -57,8 +57,8 @@ public partial class Player
         }
 
 
-        //‘Ò‹@’†‚ÉQ‚½‚è‚·‚éH
-        //‚«o‚µ‚ğo‚·H
+        //å¾…æ©Ÿä¸­ã«å¯ãŸã‚Šã™ã‚‹ï¼Ÿ
+        //å¹ãå‡ºã—ã‚’å‡ºã™ï¼Ÿ
         public override void OnUpdate(Player player) { }
 
 

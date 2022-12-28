@@ -1,4 +1,4 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +7,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public@abstract class ViewBase : RectTransformBehaviour
+publicã€€abstract class ViewBase : RectTransformBehaviour
 {
     [SerializeField]
     private  VIEWTYPE type;
 
-    //ƒAƒjƒ[ƒ^[‚É‚æ‚éŠJ•Â
+    //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚¿ãƒ¼ã«ã‚ˆã‚‹é–‹é–‰
     protected Animator animator;
 
     public VIEWTYPE ViewType => type;
 
-    //1‰ñ
+    //1å›
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
@@ -25,7 +25,7 @@ public@abstract class ViewBase : RectTransformBehaviour
 
     protected virtual void Start() { }
 
-    //•¡”‰ñ
+    //è¤‡æ•°å›
     protected virtual void OnEnable()
     {
         //animator ??= GetComponent<Animator>();
@@ -40,7 +40,7 @@ public@abstract class ViewBase : RectTransformBehaviour
 }
 
 /// <summary>
-/// ƒŠƒXƒg‚ğXV‚·‚é‹@”\
+/// ãƒªã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹æ©Ÿèƒ½
 /// </summary>
 interface IUpdateList
 {

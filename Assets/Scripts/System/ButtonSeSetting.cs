@@ -1,4 +1,4 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,22 +13,22 @@ public enum ButtonSeKey
 	Select00,
 	Back00,
 
-	// Œˆ’è (Šg’£)
+	// æ±ºå®š (æ‹¡å¼µ)
 	Decide01,
 	Decide02,
 	Decide03,
 
-	// ƒLƒƒƒ“ƒZƒ‹ (Šg’£)
+	// ã‚­ãƒ£ãƒ³ã‚»ãƒ« (æ‹¡å¼µ)
 	Cancel01,
 	Cancel02,
 	Cancel03,
 
-	// ‘I‘ğ (Šg’£)
+	// é¸æŠ (æ‹¡å¼µ)
 	Select01,
 	Select02,
 	Select03,
 
-	// –ß‚é (Šg’£)
+	// æˆ»ã‚‹ (æ‹¡å¼µ)
 	Back01,
 	Back02,
 	Back03,
@@ -61,7 +61,7 @@ public sealed class ButtonSeSetting : ScriptableObject
 	}
 
 	/// <summary>
-	/// ƒf[ƒ^
+	/// ãƒ‡ãƒ¼ã‚¿
 	/// </summary>
 	[SerializeField] private ButtonSeDictionary m_ButtonSeTable = new ButtonSeDictionary(new ButtonSeKeyComparer());
 
@@ -69,12 +69,12 @@ public sealed class ButtonSeSetting : ScriptableObject
 	// Static
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// İ’è instance
+	/// è¨­å®š instance
 	/// </summary>
 	private static ButtonSeSetting ms_Instance;
 
 	/// <summary>
-	/// StaticƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğÀs‚·‚é‚½‚ß‚¾‚¯‚Ì“Ç‚İ‚İŠÖ”
+	/// Staticã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã ã‘ã®èª­ã¿è¾¼ã¿é–¢æ•°
 	/// </summary>
 	public static void Load()
 	{

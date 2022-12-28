@@ -1,36 +1,36 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ƒ^ƒbƒ`“ü—ÍŠÇ—
+/// ã‚¿ãƒƒãƒå…¥åŠ›ç®¡ç†
 /// </summary>
 public class InputManager : MonoBehaviour
 {
-    /// <summary> ƒCƒ“ƒXƒ^ƒ“ƒX <summary>
+    /// <summary> ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ <summary>
     public static InputManager Instance;
 
-    /// <summary> ƒƒCƒ“ƒJƒƒ‰ <summary>
+    /// <summary> ãƒ¡ã‚¤ãƒ³ã‚«ãƒ¡ãƒ© <summary>
     private Camera mainCamera;
 
-    /// <summary> ‰æ–Êƒ^ƒbƒ`‰Â”\‚È‚çtrue <summary>
+    /// <summary> ç”»é¢ã‚¿ãƒƒãƒå¯èƒ½ãªã‚‰true <summary>
     private bool touchFlag;
 
-    /// <summary> ƒ^ƒbƒ`ˆÊ’u <summary>
+    /// <summary> ã‚¿ãƒƒãƒä½ç½® <summary>
     private Vector2 touchBeginPos, touchingPos, touchLastPos;
 
-    /// <summary> ƒ^ƒbƒ`ó‘Ô <summary>
+    /// <summary> ã‚¿ãƒƒãƒçŠ¶æ…‹ <summary>
     private TouchPhase touchPhase;
 
-    //ƒQ[ƒ€ŠÇ—ƒNƒ‰ƒX
+    //ã‚²ãƒ¼ãƒ ç®¡ç†ã‚¯ãƒ©ã‚¹
     private Player player;
 
 
-    /// <summary> ƒ|ƒCƒ“ƒgƒf[ƒ^ </summary>
+    /// <summary> ãƒã‚¤ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ </summary>
     private PointerEventData pointerEventData;
 
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public bool TouchFlag => touchFlag;
     public Vector2 TouchBeginPos => touchBeginPos;
     public Vector2 TouchingPos => touchingPos;
@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
     }
     #endregion
 
-    /// <summary> ‰Šú‰» <summary>
+    /// <summary> åˆæœŸåŒ– <summary>
     private void Awake()
     {
         Instance ??= this;
@@ -60,15 +60,15 @@ public class InputManager : MonoBehaviour
                                    .GetComponent<Player>();
     }
 
-    /// <summary> “ü—ÍXV </summary>
+    /// <summary> å…¥åŠ›æ›´æ–° </summary>
     private void Update()
     {
         //Editor
         //if (Application.isEditor)
         //{ }
-        //else//’[––
+        //else//ç«¯æœ«
         //{
-        //    //TODO:’Ç‰Á‚Å•K—v‚»‚¤
+        //    //TODO:è¿½åŠ ã§å¿…è¦ãã†
         //    if (Input.touchCount > 0)
         //    {
         //        Touch touch = Input.GetTouch(0);
@@ -80,7 +80,7 @@ public class InputManager : MonoBehaviour
 
 
 
-        //‰Ÿ‚µ‚½uŠÔ‚Ìƒ^ƒbƒ`‚Íó‚¯•t‚¯‚é
+        //æŠ¼ã—ãŸç¬é–“ã®ã‚¿ãƒƒãƒã¯å—ã‘ä»˜ã‘ã‚‹
         if (Input.GetMouseButtonDown(0))
         {
             var hitobjects = GetObjectAll();
@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
                 {
                     if (obj.gameObject.layer == LayerMask.NameToLayer("UI"))
                     {
-                        //ƒ^ƒbƒ`‚³‚¹‚È‚¢
+                        //ã‚¿ãƒƒãƒã•ã›ãªã„
                         touchFlag = false;
                         return;
                     }
@@ -109,7 +109,7 @@ public class InputManager : MonoBehaviour
 
         if (touchFlag)
         {
-            //—£‚µ‚½uŠÔ
+            //é›¢ã—ãŸç¬é–“
             if (Input.GetMouseButtonUp(0))
             {
                 touchFlag = false;
@@ -121,7 +121,7 @@ public class InputManager : MonoBehaviour
                 Debug.Log("End");
             }
 
-            //‰Ÿ‚µ‚Á‚Ï‚È‚µ
+            //æŠ¼ã—ã£ã±ãªã—
             if (Input.GetMouseButton(0))
             {
                 var distance = Vector2.Distance(touchBeginPos, touchingPos);
@@ -137,7 +137,7 @@ public class InputManager : MonoBehaviour
 
     }
 
-    /// <summary> ƒqƒbƒg‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğ‘S‚Äæ“¾ <summary>
+    /// <summary> ãƒ’ãƒƒãƒˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¨ã¦å–å¾— <summary>
     private List<RaycastResult> GetObjectAll()
     {
         if (EventSystem.current != null)

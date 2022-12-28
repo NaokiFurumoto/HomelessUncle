@@ -1,4 +1,4 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒ{ƒ^ƒ“ƒCƒxƒ“ƒgƒRƒ“ƒ|[ƒlƒ“ƒg
+/// ãƒœã‚¿ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 /// </summary>
 [RequireComponent(typeof(RectTransform))]
 [DisallowMultipleComponent]
@@ -35,7 +35,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Definition
 	//======================================================================================================
 	/// <summary>
-	/// ƒR[ƒ‹ƒoƒbƒN
+	/// ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	private class Callback
 	{
@@ -49,7 +49,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		// Method
 		//==========================
 		/// <summary>
-		/// ”jŠüˆ—
+		/// ç ´æ£„å‡¦ç†
 		/// </summary>
 		public void Dispose()
 		{
@@ -57,7 +57,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 			Once = null;
 		}
 		/// <summary>
-		/// ŒÄ‚Ño‚µ
+		/// å‘¼ã³å‡ºã—
 		/// </summary>
 		public void Call()
 		{
@@ -65,7 +65,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 			ActionUtils.CallOnce(ref Once);
 		}
 		/// <summary>
-		/// ƒR[ƒ‹ƒoƒbƒN‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©
+		/// ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹
 		/// </summary>
 		public bool Any()
 		{
@@ -74,7 +74,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ’·‰Ÿ‚µ”­¶ŠÔè‡’l(•b)
+	/// é•·æŠ¼ã—ç™ºç”Ÿæ™‚é–“é–¾å€¤(ç§’)
 	/// </summary>
 	private const float LONG_PRESS_TIME_THRESHOLD = 1f;
 
@@ -89,35 +89,35 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Field
 	//======================================================================================================
 	/// <summary>
-	/// ‰Ÿ‰ºƒR[ƒ‹ƒoƒbƒN
+	/// æŠ¼ä¸‹æ™‚ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	private Callback onPressDown = new Callback();
 	/// <summary>
-	/// ClickƒR[ƒ‹ƒoƒbƒN
+	/// Clickã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	private Callback onClick = new Callback();
 	/// <summary>
-	/// ’·‰Ÿ‚µƒR[ƒ‹ƒoƒbƒN
+	/// é•·æŠ¼ã—ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	private Callback onLongPress = new Callback();
 	/// <summary>
-	/// ’·‰Ÿ‚µƒ^ƒCƒ}[
+	/// é•·æŠ¼ã—ã‚¿ã‚¤ãƒãƒ¼
 	/// </summary>
 	private IDisposable longPressTimer = null;
 	/// <summary>
-	/// Click‹–‰Âƒtƒ‰ƒO
+	/// Clickè¨±å¯ãƒ•ãƒ©ã‚°
 	/// </summary>
 	private int? pointerId = null;
 	/// <summary>
-	/// “ü—Íó•tğŒ
+	/// å…¥åŠ›å—ä»˜æ¡ä»¶
 	/// </summary>
 	private Func<bool> condition = () => true;
 	/// <summary>
-	/// ƒ{ƒ^ƒ“ƒAƒjƒ[ƒ^[
+	/// ãƒœã‚¿ãƒ³ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚¿ãƒ¼
 	/// </summary>
 	private Animator buttonAnimator = null;
 	/// <summary>
-	/// ƒ{ƒ^ƒ“ƒAƒjƒ[ƒ^[æ“¾Ï‚İƒtƒ‰ƒO
+	/// ãƒœã‚¿ãƒ³ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚¿ãƒ¼å–å¾—æ¸ˆã¿ãƒ•ãƒ©ã‚°
 	/// </summary>
 	private bool hasFetchedButtonAnimator = false;
 
@@ -125,7 +125,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Property
 	//======================================================================================================
 	/// <summary>
-	/// ‰Ÿ‰ºƒR[ƒ‹ƒoƒbƒN
+	/// æŠ¼ä¸‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	public Action OnPressDown
 	{
@@ -133,7 +133,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		set { onPressDown.Every = value; }
 	}
 	/// <summary>
-	/// ‰Ÿ‰ºƒR[ƒ‹ƒoƒbƒN (ˆê‰ñ‚«‚è)
+	/// æŠ¼ä¸‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ (ä¸€å›ãã‚Š)
 	/// </summary>
 	public Action OnPressDownOnce
 	{
@@ -141,7 +141,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		set { onPressDown.Once = value; }
 	}
 	/// <summary>
-	/// Click ƒR[ƒ‹ƒoƒbƒN
+	/// Click ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	public Action OnClick
 	{
@@ -149,7 +149,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		set { onClick.Every = value; }
 	}
 	/// <summary>
-	/// Click ƒR[ƒ‹ƒoƒbƒN (ˆê‰ñ‚«‚è)
+	/// Click ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ (ä¸€å›ãã‚Š)
 	/// </summary>
 	public Action OnClickOnce
 	{
@@ -157,7 +157,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		set { onClick.Once = value; }
 	}
 	/// <summary>
-	/// ’·‰Ÿ‚µƒR[ƒ‹ƒoƒbƒN
+	/// é•·æŠ¼ã—ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	/// </summary>
 	public Action OnLongPress
 	{
@@ -165,7 +165,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		set { onLongPress.Every = value; }
 	}
 	/// <summary>
-	/// ’·‰Ÿ‚µƒR[ƒ‹ƒoƒbƒN (ˆê‰ñ‚«‚è)
+	/// é•·æŠ¼ã—ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ (ä¸€å›ãã‚Š)
 	/// </summary>
 	public Action OnLongPressOnce
 	{
@@ -211,7 +211,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Public Method for Interface
 	//======================================================================================================
 	/// <summary>
-	/// ƒNƒŠƒbƒN‚³‚ê‚½‚ÌƒCƒxƒ“ƒg
+	/// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public void OnPointerClick(PointerEventData eventData)
 	{
@@ -234,7 +234,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ‰Ÿ‚µ‚½‚ÌƒCƒxƒ“ƒg
+	/// æŠ¼ã—ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public void OnPointerDown(PointerEventData eventData)
 	{
@@ -248,7 +248,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 		{
 			if (masterPointerId.Value == eventData.pointerId)
 			{
-				DebugUtils.Warning("‚ ‚è‚¦‚ñ {0}", eventData.pointerId);
+				DebugUtils.Warning("ã‚ã‚Šãˆã‚“ {0}", eventData.pointerId);
 			}
 			return;
 		}
@@ -295,7 +295,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// •ú‚µ‚½‚ÌƒCƒxƒ“ƒg
+	/// æ”¾ã—ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public void OnPointerUp(PointerEventData eventData)
 	{
@@ -305,8 +305,8 @@ public class ButtonEventSystem : RectTransformBehaviour
 			return;
 		}
 
-		// ˆ—‡ OnPointerDown -> OnPointerUp -> OnPointerClick ‚Ì‚½‚ß,
-		// öİƒNƒŠƒbƒN‚Ìê‡‚Í CancelClick() ‚ÅÁ¸‚µ‚½ Pointer ID ‚ğ–ß‚µ‚Ä, OnPointerClick ‚ÅÆ‡‰Â”\‚É‚·‚é.
+		// å‡¦ç†é † OnPointerDown -> OnPointerUp -> OnPointerClick ã®ãŸã‚,
+		// æ½œåœ¨ã‚¯ãƒªãƒƒã‚¯ã®å ´åˆã¯ CancelClick() ã§æ¶ˆå¤±ã—ãŸ Pointer ID ã‚’æˆ»ã—ã¦, OnPointerClick ã§ç…§åˆå¯èƒ½ã«ã™ã‚‹.
 		if (CancelClick())
 		{
 			pointerId = eventData.pointerId;
@@ -315,7 +315,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒ^ƒbƒv—Ìˆæ‚ª—£‚ê‚½‚Æ‚«‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
+	/// ã‚¿ãƒƒãƒ—é ˜åŸŸãŒé›¢ã‚ŒãŸã¨ãã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public void OnPointerExit(PointerEventData eventData)
 	{
@@ -329,8 +329,8 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒO”­¶‚µ‚½‚Æ‚«‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
-	/// ƒhƒ‰ƒbƒO‚Ìè‡’l‚ÍEventSystem‚ÌDragThresholdiCoreSystemScene‚É‚ ‚éEventSystem‚Åİ’èj
+	/// ãƒ‰ãƒ©ãƒƒã‚°ç™ºç”Ÿã—ãŸã¨ãã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
+	/// ãƒ‰ãƒ©ãƒƒã‚°ã®é–¾å€¤ã¯EventSystemã®DragThresholdï¼ˆCoreSystemSceneã«ã‚ã‚‹EventSystemã§è¨­å®šï¼‰
 	/// </summary>
 	public void OnBeginDrag(PointerEventData eventData)
 	{
@@ -345,7 +345,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒO’†
+	/// ãƒ‰ãƒ©ãƒƒã‚°ä¸­
 	/// </summary>
 	/// <param name="eventData"></param>
 	public void OnDrag(PointerEventData eventData)
@@ -354,7 +354,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒOI—¹
+	/// ãƒ‰ãƒ©ãƒƒã‚°çµ‚äº†
 	/// </summary>
 	/// <param name="eventData"></param>
 	public void OnEndDrag(PointerEventData eventData)
@@ -366,7 +366,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Public Method
 	//======================================================================================================
 	/// <summary>
-	/// ƒNƒŠƒbƒN‹““®‚ğƒVƒ~ƒ…ƒŒ[ƒg‚·‚é
+	/// ã‚¯ãƒªãƒƒã‚¯æŒ™å‹•ã‚’ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹
 	/// </summary>
 	public void SimulateClick()
 	{
@@ -388,7 +388,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒ{ƒ^ƒ““ü—Íó•tğŒ‚ğİ’è
+	/// ãƒœã‚¿ãƒ³å…¥åŠ›å—ä»˜æ¡ä»¶ã‚’è¨­å®š
 	/// </summary>
 	public void SetConditions(params Func<bool>[] conditions)
 	{
@@ -396,7 +396,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒ{ƒ^ƒ“‚Ì—LŒø/–³Œø‚ğİ’è
+	/// ãƒœã‚¿ãƒ³ã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®š
 	/// </summary>
 	public void SetEnable(bool value)
 	{
@@ -410,7 +410,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒOƒŒ[ƒAƒEƒg‚ğİ’è
+	/// ã‚°ãƒ¬ãƒ¼ã‚¢ã‚¦ãƒˆã‚’è¨­å®š
 	/// </summary>
 	public void SetGrayout(bool value)
 	{
@@ -422,7 +422,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒAƒs[ƒ‹ƒAƒjƒ[ƒVƒ‡ƒ“
+	/// ã‚¢ãƒ”ãƒ¼ãƒ«ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 	/// </summary>
 	public void SetEnableAppealAnimation(bool value)
 	{
@@ -441,7 +441,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	// Private Method
 	//======================================================================================================
 	/// <summary>
-	/// ƒNƒŠƒbƒNƒCƒxƒ“ƒgƒLƒƒƒ“ƒZƒ‹
+	/// ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆã‚­ãƒ£ãƒ³ã‚»ãƒ«
 	/// </summary>
 	private bool CancelClick()
 	{
@@ -469,7 +469,7 @@ public class ButtonEventSystem : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ’·‰Ÿ‚µƒCƒxƒ“ƒgƒLƒƒƒ“ƒZƒ‹
+	/// é•·æŠ¼ã—ã‚¤ãƒ™ãƒ³ãƒˆã‚­ãƒ£ãƒ³ã‚»ãƒ«
 	/// </summary>
 	private void CancelLongPress()
 	{

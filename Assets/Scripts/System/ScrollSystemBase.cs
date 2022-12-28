@@ -1,4 +1,4 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using TMPro;
 //using Shock;
 
 /// <summary>
-/// ƒXƒNƒ[ƒ‹‚Ì•ûŒüEnum
+/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æ–¹å‘Enum
 /// </summary>
 public enum ScrollDirection
 {
@@ -19,40 +19,40 @@ public enum ScrollDirection
     NONE = 0
 }
 /// <summary>
-/// ƒXƒNƒ[ƒ‹Šî’ê
+/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŸºåº•
 /// </summary>
 [DisallowMultipleComponent]
 public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : ItemIconBase
 {
-    ///’è”
+    ///å®šæ•°
     private const int Margin = 2;
 
-    //ƒƒ“ƒo•Ï”:SerializeField
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°:SerializeField
     [SerializeField] protected ScrollRectSystem scrollRect = null;
     [SerializeField] protected ScrollContentUI scrollContentUI = null;
-    [SerializeField] private ItemIconBase prefab = null; // •¡»‚µ‚Äg—p‚·‚éƒXƒNƒ[ƒ‹‚³‚¹‚éUI
-    [SerializeField] private float itemSize = 0f; // ƒXƒNƒ[ƒ‹‚³‚¹‚éUI‚ÌƒTƒCƒY(ŠÔŠu‚İ)
-    [SerializeField] private bool isAutoFit = false; // ƒhƒ‰ƒbƒOŒã‚ÉƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚ÌˆÊ’u•â³‚ğ‚·‚é‚©
-    [SerializeField] private int maxScrollSpeed = 0; // ƒXƒNƒ[ƒ‹‚ÌÅ‘å‘¬“x
-    [SerializeField] protected float thresholdVelocity = 0f; // ‰Á‘¬“x‚Ì‚µ‚«‚¢’l(‚±‚Ì’lˆÈ‰º‚É‚È‚é‚ÆƒXƒNƒ[ƒ‹‚Ì’â~ˆ—‚ªŠJn‚µ‚Ü‚·)
-    [SerializeField] protected float fitLength = 0f; // ˆÊ’u•â³‚É•â³‚·‚é‚Ü‚Å‚Ì‹——£
-    [SerializeField] protected float moveScale = 0f; // ƒXƒNƒ[ƒ‹’â~‚Ì‘¬“x‚ÉŠ|‚¯‚éƒXƒP[ƒ‹
-    [SerializeField] protected bool isLoop = false; // UI‚ğƒ‹[ƒv•\¦‚³‚¹‚é‚©
-    [SerializeField] protected bool isAutoContentPivot = true; // scrollContentUI‚ÌPivot‚ğ©“®‚Å•ÏX‚·‚é‚©
-    [SerializeField] private int grid = 0; // ƒOƒŠƒbƒh
-    [SerializeField] [Range(0, 100)] private int fitChangePersent = 50; //ƒtƒBƒbƒg•ûŒü‚ğØ‚è‘Ö‚¦‚éƒp[ƒZƒ“ƒg
+    [SerializeField] private ItemIconBase prefab = null; // è¤‡è£½ã—ã¦ä½¿ç”¨ã™ã‚‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã•ã›ã‚‹UI
+    [SerializeField] private float itemSize = 0f; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã•ã›ã‚‹UIã®ã‚µã‚¤ã‚º(é–“éš”è¾¼ã¿)
+    [SerializeField] private bool isAutoFit = false; // ãƒ‰ãƒ©ãƒƒã‚°å¾Œã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã®ä½ç½®è£œæ­£ã‚’ã™ã‚‹ã‹
+    [SerializeField] private int maxScrollSpeed = 0; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æœ€å¤§é€Ÿåº¦
+    [SerializeField] protected float thresholdVelocity = 0f; // åŠ é€Ÿåº¦ã®ã—ãã„å€¤(ã“ã®å€¤ä»¥ä¸‹ã«ãªã‚‹ã¨ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®åœæ­¢å‡¦ç†ãŒé–‹å§‹ã—ã¾ã™)
+    [SerializeField] protected float fitLength = 0f; // ä½ç½®è£œæ­£æ™‚ã«è£œæ­£ã™ã‚‹ã¾ã§ã®è·é›¢
+    [SerializeField] protected float moveScale = 0f; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åœæ­¢æ™‚ã®é€Ÿåº¦ã«æ›ã‘ã‚‹ã‚¹ã‚±ãƒ¼ãƒ«
+    [SerializeField] protected bool isLoop = false; // UIã‚’ãƒ«ãƒ¼ãƒ—è¡¨ç¤ºã•ã›ã‚‹ã‹
+    [SerializeField] protected bool isAutoContentPivot = true; // scrollContentUIã®Pivotã‚’è‡ªå‹•ã§å¤‰æ›´ã™ã‚‹ã‹
+    [SerializeField] private int grid = 0; // ã‚°ãƒªãƒƒãƒ‰
+    [SerializeField] [Range(0, 100)] private int fitChangePersent = 50; //ãƒ•ã‚£ãƒƒãƒˆæ–¹å‘ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆ
     [SerializeField] private TextMeshProUGUI emptyDataText = null;
-    [SerializeField] private float minVelocity = 0.01f; // velocityÅ¬’l”»’èBfloat E‘Îô
-    [SerializeField] private bool isItemSwitchEnable = true; // ƒXƒNƒ[ƒ‹‚É‚æ‚Á‚Äitem‚ğˆÊ’u‚ğŒğŠ·‚·‚é‚©iƒKƒ`ƒƒƒƒjƒ…[‚Å‚Ífalsej
-    [SerializeField] private float contentOffsetPos = 0f; // Contents‚ÌˆÊ’u‚ğ‚¸‚ç‚·‚½‚ß‚ÌƒIƒtƒZƒbƒg
-    [SerializeField] private bool isScrollCurveX = false; // ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒu‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©
-    [SerializeField] private AnimationCurve scrollCurveX = null; // ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒu
-    [SerializeField] private float scrollCurveValueX = 0f; // ƒXƒNƒ[ƒ‹ƒJ[ƒu‚Ì’l
-    [SerializeField] private bool isScrollCurveY = false; // ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒu‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©
-    [SerializeField] private AnimationCurve scrollCurveY = null; // ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒu
-    [SerializeField] private float scrollCurveValueY = 0f; // ƒXƒNƒ[ƒ‹ƒJ[ƒu‚Ì’l
+    [SerializeField] private float minVelocity = 0.01f; // velocityæœ€å°å€¤åˆ¤å®šã€‚float Eå¯¾ç­–
+    [SerializeField] private bool isItemSwitchEnable = true; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã«ã‚ˆã£ã¦itemã‚’ä½ç½®ã‚’äº¤æ›ã™ã‚‹ã‹ï¼ˆã‚¬ãƒãƒ£ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã§ã¯falseï¼‰
+    [SerializeField] private float contentOffsetPos = 0f; // Contentsã®ä½ç½®ã‚’ãšã‚‰ã™ãŸã‚ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+    [SerializeField] private bool isScrollCurveX = false; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹
+    [SerializeField] private AnimationCurve scrollCurveX = null; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–
+    [SerializeField] private float scrollCurveValueX = 0f; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚«ãƒ¼ãƒ–ã®å€¤
+    [SerializeField] private bool isScrollCurveY = false; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹
+    [SerializeField] private AnimationCurve scrollCurveY = null; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–
+    [SerializeField] private float scrollCurveValueY = 0f; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚«ãƒ¼ãƒ–ã®å€¤
 
-    //ƒƒ“ƒo•Ï”
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
     private int createRequestId = 0;
     private int createImplementId = 0;
     private bool cannotUpdateScrollItem = true;
@@ -70,25 +70,25 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     private float fitPrevAnchorPos = 0f;
 
     private ScrollDirection scrollDirection;
-    private ScrollItemIconParent scrollItemIconParent; // ScrollItemParent‚ÌƒIƒŠƒWƒiƒ‹
+    private ScrollItemIconParent scrollItemIconParent; // ScrollItemParentã®ã‚ªãƒªã‚¸ãƒŠãƒ«
 
     private bool isCentering = false;
 
-    //ƒBƒxƒ“ƒg:ƒfƒŠƒQ[ƒg(–ß‚è’l‚È‚µj
+    //ã‚£ãƒ™ãƒ³ãƒˆ:ãƒ‡ãƒªã‚²ãƒ¼ãƒˆ(æˆ»ã‚Šå€¤ãªã—ï¼‰
     public Action<T> OnInitializeItem { private get; set; }
     public Action OnInitializeItemParent { private get; set; }
     public Action<int> OnFitItem { protected get; set; }
     public Action<int, bool, Action> OnUpdateItemParent { private get; set; } = null;
 
     //==================================================
-    // ƒvƒƒpƒeƒB
+    // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     //==================================================
    
-    private int ItemCount => ScrollItemParents.Count;  // ƒXƒNƒ[ƒ‹“à‚ÌUI‚Ì”
-    public bool IsHorizontal => scrollRect.IsHorizontal; // ‰¡•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Ì‚©
-    public bool IsScrolling => scrollRect.Velocity > minVelocity;// ƒXƒNƒ[ƒ‹’†‚©‚Ì”»’è
-    public bool IsFitDone { get; protected set; } // Fitˆ—‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©
-    protected bool IsScrollActive// ƒXƒNƒ[ƒ‹‚Ì—LŒøİ’è
+    private int ItemCount => ScrollItemParents.Count;  // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å†…ã®UIã®æ•°
+    public bool IsHorizontal => scrollRect.IsHorizontal; // æ¨ªæ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã®ã‹
+    public bool IsScrolling => scrollRect.Velocity > minVelocity;// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä¸­ã‹ã®åˆ¤å®š
+    public bool IsFitDone { get; protected set; } // Fitå‡¦ç†ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹
+    protected bool IsScrollActive// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æœ‰åŠ¹è¨­å®š
     {
         set { scrollRect.enabled = value; }
         get { return scrollRect.enabled; }
@@ -106,7 +106,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     public float VerticalNormalizedPosition => scrollRect.verticalNormalizedPosition; 
     public float HorizontalNormalizedPosition => scrollRect.horizontalNormalizedPosition;
     public TextMeshProUGUI EmptyDataText => emptyDataText; 
-    public int DataCount => dataCount;// ƒf[ƒ^‚Ì”
+    public int DataCount => dataCount;// ãƒ‡ãƒ¼ã‚¿ã®æ•°
     protected bool IsCentering
     {
         get { return isCentering; }
@@ -121,7 +121,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     //Monobehavior
     private void Awake()
     {
-        //AutoFit•âŠÔ—p
+        //AutoFitè£œé–“ç”¨
         scrollDirection = ScrollDirection.NONE;
         IsFitDone = true;
         scrollRect.BeginDrag = () => IsFitDone = false;
@@ -129,25 +129,25 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     // <summary>
-    /// Resetˆ—
+    /// Resetå‡¦ç†
     /// </summary>
     private void Reset()
     {
-        // —Ç‚¢Š´‚¶‚Ìƒpƒ‰ƒ[ƒ^“ü‚ê‚Ä‚¨‚­
+        // è‰¯ã„æ„Ÿã˜ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å…¥ã‚Œã¦ãŠã
         thresholdVelocity = 300f;
         moveScale = 0.8f;
         fitLength = 50f;
 
-        // ƒRƒ“ƒ|[ƒlƒ“ƒgİ’è
+        // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè¨­å®š
         scrollRect = GetComponentInChildren<ScrollRectSystem>();
         scrollContentUI = GetComponentInChildren<ScrollContentUI>();
 
-        // prefabİ’è
+        // prefabè¨­å®š
         prefab = gameObject.GetComponentInChildren<ItemIconBase>();
     }
 
     /// <summary>
-    /// ”jŠüˆ—
+    /// ç ´æ£„å‡¦ç†
     /// </summary>
     protected virtual void OnDestroy()
     {
@@ -158,23 +158,23 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// –ˆƒtƒŒ[ƒ€XVˆ—
+    /// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°å‡¦ç†
     /// </summary>
     protected virtual void Update()
     {
-        // ScrollContentUI‚ÌXVˆ—
+        // ScrollContentUIã®æ›´æ–°å‡¦ç†
         if (isItemSwitchEnable)
         {
             scrollContentUI.DoUpdate();
         }
 
-        //ƒXƒNƒ[ƒ‹‘¬“x‚Ì§ŒÀˆ—
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦ã®åˆ¶é™å‡¦ç†
         ClampScrollSpeed();
 
-        // ƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚ÌˆÊ’u•â³ˆ—
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã®ä½ç½®è£œæ­£å‡¦ç†
         AutoFit();
 
-        // ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒuXV
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–æ›´æ–°
         UpdateScrollCurve();
     }
 
@@ -182,43 +182,43 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     // public
     //--------------------------------------------------
     /// <summary>
-    /// ì¬Ï‚İ‚ÌƒXƒNƒ[ƒ‹UI‚ğíœ‚µ‚Ü‚·
+    /// ä½œæˆæ¸ˆã¿ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«UIã‚’å‰Šé™¤ã—ã¾ã™
     /// </summary>
     public void Clear()
     {
-        // ì¬Ï‚İ‚ÌƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€íœ
+        // ä½œæˆæ¸ˆã¿ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ å‰Šé™¤
         ScrollItemParents.Where(c => c != null).ForEach(c => c.DestroyGameObject());
         ScrollItemParents.Clear();
         ScrollItemTable.Clear();
 
-        // ˆÚ“®—Ê‚ğ0‚É‚µ‚Ü‚·
+        // ç§»å‹•é‡ã‚’0ã«ã—ã¾ã™
         scrollRect.StopMovement();
-        // ƒtƒBƒbƒgŠ®—¹ƒtƒ‰ƒO
+        // ãƒ•ã‚£ãƒƒãƒˆå®Œäº†ãƒ•ãƒ©ã‚°
         IsFitDone = true;
 
         // content
         scrollContentUI.Clear();
 
-        // •¡»‚·‚éUI‚ğ”ñƒAƒNƒeƒBƒu
+        // è¤‡è£½ã™ã‚‹UIã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–
         prefab.TryChangeActive(false);
     }
 
     /// <summary>
-    /// \’z‡A
+    /// æ§‹ç¯‰â‘¡
     /// </summary>
-    /// <param name="dataCount">ƒf[ƒ^”</param>
-    /// <param name="onComplete">\’zŠ®—¹ƒR[ƒ‹ƒoƒbƒN</param>
+    /// <param name="dataCount">ãƒ‡ãƒ¼ã‚¿æ•°</param>
+    /// <param name="onComplete">æ§‹ç¯‰å®Œäº†ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
     public virtual void Create(int dataCount, int startIndex, Action onComplete, bool forceScrollEnable = false)
     {
         createRequestId++;
         cannotUpdateScrollItem = true;
-        // LayoutGroupƒŠƒTƒCƒY‚·‚é‚Ì‚Å1ƒtƒŒ‘Ò‚¿‚Ü‚·
+        // LayoutGroupãƒªã‚µã‚¤ã‚ºã™ã‚‹ã®ã§1ãƒ•ãƒ¬å¾…ã¡ã¾ã™
         CoroutineManager.CallWaitForOneFrame(() =>
         {
             Create(startIndex, dataCount, forceScrollEnable, () =>
             {
-                //«Create‚Ì’†‚ÅUpdate‚ğ‚·‚é‚æ‚¤‚É‚µ‚½‚Ì‚Å1ƒtƒŒ‘Ò‚½‚È‚­‚Ä‚à‚æ‚­‚È‚Á‚½‚Ì‚ÅƒRƒƒ“ƒgƒAƒEƒg
-                //ƒ|ƒWƒVƒ‡ƒ“•ÏX‚ª‚ ‚éê‡‚É‚·‚®‚É”½‰f‚³‚ê‚È‚¢‚Ì‚Å‚±‚±‚Å‚à1ƒtƒŒ‘Ò‚Â
+                //â†“Createã®ä¸­ã§Updateã‚’ã™ã‚‹ã‚ˆã†ã«ã—ãŸã®ã§1ãƒ•ãƒ¬å¾…ãŸãªãã¦ã‚‚ã‚ˆããªã£ãŸã®ã§ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆ
+                //ãƒã‚¸ã‚·ãƒ§ãƒ³å¤‰æ›´ãŒã‚ã‚‹å ´åˆã«ã™ãã«åæ˜ ã•ã‚Œãªã„ã®ã§ã“ã“ã§ã‚‚1ãƒ•ãƒ¬å¾…ã¤
                 //CoroutineManager.CallWaitForOneFrame(onComplete);
                 onComplete.Call();
             });
@@ -226,17 +226,17 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// \’z‡@
+    /// æ§‹ç¯‰â‘ 
     /// </summary>
-    /// <param name="dataCount">ƒf[ƒ^”</param>
-    /// <param name="onComplete">\’zŠ®—¹ƒR[ƒ‹ƒoƒbƒN</param>
+    /// <param name="dataCount">ãƒ‡ãƒ¼ã‚¿æ•°</param>
+    /// <param name="onComplete">æ§‹ç¯‰å®Œäº†ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
     public virtual void Create(int dataCount, Action onComplete)
     {
         Create(dataCount, 0, onComplete);
     }
 
     /// <summary>
-    /// \’z‚¹‚¸ƒAƒCƒeƒ€‰Šú‰»ƒvƒƒZƒX‚¾‚¯‚ğ‘–‚é
+    /// æ§‹ç¯‰ã›ãšã‚¢ã‚¤ãƒ†ãƒ åˆæœŸåŒ–ãƒ—ãƒ­ã‚»ã‚¹ã ã‘ã‚’èµ°ã‚‹
     /// </summary>
     public void InitializeScrollItem()
     {
@@ -255,26 +255,26 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹‚Ì‘¬“x‚ğİ’è‚µ‚Ü‚·
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®é€Ÿåº¦ã‚’è¨­å®šã—ã¾ã™
     /// </summary>
-    /// <param name="velocity">ƒXƒNƒ[ƒ‹‘¬“x</param>
-    /// <param name="direction">ƒXƒNƒ[ƒ‹•â³•ûŒü</param>
+    /// <param name="velocity">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦</param>
+    /// <param name="direction">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«è£œæ­£æ–¹å‘</param>
     public void SetVelocity(float velocity, ScrollDirection direction = ScrollDirection.NONE)
     {
-        // ‰Á‘¬“xİ’è
+        // åŠ é€Ÿåº¦è¨­å®š
         var velocityTmp = scrollRect.velocity;
         if (IsHorizontal) velocityTmp.x = velocity;
         else velocityTmp.y = velocity;
         scrollRect.velocity = velocityTmp;
 
-        //ˆÚ“®•ûŒü‚ªw’è‚³‚ê‚Ä‚¢‚½‚ç“K—p
+        //ç§»å‹•æ–¹å‘ãŒæŒ‡å®šã•ã‚Œã¦ã„ãŸã‚‰é©ç”¨
         if (direction != ScrollDirection.NONE) scrollDirection = direction;
-        // ƒtƒBƒbƒgŠ®—¹ƒtƒ‰ƒO
+        // ãƒ•ã‚£ãƒƒãƒˆå®Œäº†ãƒ•ãƒ©ã‚°
         IsFitDone = false;
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹‚Ìƒhƒ‰ƒbƒO‚ğƒLƒƒƒ“ƒZƒ‹
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ãƒ‰ãƒ©ãƒƒã‚°ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«
     /// </summary>
     public void CancelDrag()
     {
@@ -282,8 +282,8 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒhƒ‰ƒbƒO‹­§I—¹
-    /// CancelDrag‚¾‚Æƒ^ƒbƒv‚ğ—£‚·‚Ü‚ÅEnd‚ªŒÄ‚Î‚ê‚È‚¢
+    /// ãƒ‰ãƒ©ãƒƒã‚°å¼·åˆ¶çµ‚äº†
+    /// CancelDragã ã¨ã‚¿ãƒƒãƒ—ã‚’é›¢ã™ã¾ã§EndãŒå‘¼ã°ã‚Œãªã„
     /// </summary>
     public void ForceDragEnd()
     {
@@ -291,7 +291,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½ƒsƒNƒZƒ‹‚¾‚¯ƒXƒNƒ[ƒ‹‚·‚é
+    /// æŒ‡å®šã•ã‚ŒãŸãƒ”ã‚¯ã‚»ãƒ«ã ã‘ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹
     /// </summary>
     public void ScrollAsPixel(float pixel)
     {
@@ -300,7 +300,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½ƒAƒCƒeƒ€”‚¾‚¯ƒXƒNƒ[ƒ‹‚·‚é
+    /// æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ æ•°ã ã‘ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹
     /// </summary>
     /// <param name="itemNum"></param>
     public void ScrollAsItemNum(int itemNum)
@@ -311,7 +311,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚É‡‚í‚¹‚é
+    /// æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«åˆã‚ã›ã‚‹
     /// </summary>
     public void SetIndexPosition(int index)
     {
@@ -320,7 +320,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// w’èƒAƒCƒeƒ€‚ğæ“ª‚É‡‚í‚¹‚é‚æ‚¤‚ÉƒXƒNƒ[ƒ‹
+    /// æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å…ˆé ­ã«åˆã‚ã›ã‚‹ã‚ˆã†ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
     /// </summary>
     public void ScrollItemToHead(int itemIndex)
     {
@@ -330,43 +330,43 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             return;
         }
 
-        // •\¦”ÍˆÍ
+        // è¡¨ç¤ºç¯„å›²
         var viewSize = GetViewSize();
 
-        // ‘SƒAƒCƒeƒ€—Ìˆæ‚ª•\¦”ÍˆÍ‚æ‚è‹·‚¢ -> Åæ“ª‚ÖƒXƒNƒ[ƒ‹
+        // å…¨ã‚¢ã‚¤ãƒ†ãƒ é ˜åŸŸãŒè¡¨ç¤ºç¯„å›²ã‚ˆã‚Šç‹­ã„ -> æœ€å…ˆé ­ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         if (viewSize >= itemSize * dataCount)
         {
             SetNormalizedPosition(1f);
             return;
         }
 
-        // ‘O”¼(æ“ª–¢–): w’èƒAƒCƒeƒ€‚ğŠÜ‚Ü‚È‚¢
+        // å‰åŠ(å…ˆé ­æœªæº€): æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã¾ãªã„
         var firstHalfCount = itemIndex;
 
-        // ‘O”¼‚ª‚È‚¢ -> Åæ“ª‚Ö
+        // å‰åŠãŒãªã„ -> æœ€å…ˆé ­ã¸
         if (firstHalfCount <= 0)
         {
             SetNormalizedPosition(1f);
             return;
         }
 
-        // Œã”¼(æ“ª‚©‚ç): w’èƒAƒCƒeƒ€‚ğŠÜ‚Ş
+        // å¾ŒåŠ(å…ˆé ­ã‹ã‚‰): æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€
         var secondHalfCount = dataCount - firstHalfCount;
 
-        // Œã”¼—Ìˆæ‚ª•\¦”ÍˆÍ‚æ‚è‹·‚¢ -> ÅŒã”ö‚ÖƒXƒNƒ[ƒ‹
+        // å¾ŒåŠé ˜åŸŸãŒè¡¨ç¤ºç¯„å›²ã‚ˆã‚Šç‹­ã„ -> æœ€å¾Œå°¾ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         if (viewSize >= itemSize * secondHalfCount)
         {
             SetNormalizedPosition(0f);
             return;
         }
 
-        // Åæ“ª‚©‚çŒã‚ë‚ÖƒXƒNƒ[ƒ‹
+        // æœ€å…ˆé ­ã‹ã‚‰å¾Œã‚ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         SetNormalizedPosition(1f);
         ScrollAsItemNum(firstHalfCount);
     }
 
     /// <summary>
-    /// w’èƒAƒCƒeƒ€‚ğK”ö‚É‡‚í‚¹‚é‚æ‚¤‚ÉƒXƒNƒ[ƒ‹
+    /// æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å°»å°¾ã«åˆã‚ã›ã‚‹ã‚ˆã†ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
     /// </summary>
     public void ScrollItemToTail(int itemIndex)
     {
@@ -378,40 +378,40 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
         var viewSize = GetViewSize();
 
-        // ‘SƒAƒCƒeƒ€—Ìˆæ‚ª•\¦”ÍˆÍ‚æ‚è‹·‚¢ -> Åæ“ª‚ÖƒXƒNƒ[ƒ‹
+        // å…¨ã‚¢ã‚¤ãƒ†ãƒ é ˜åŸŸãŒè¡¨ç¤ºç¯„å›²ã‚ˆã‚Šç‹­ã„ -> æœ€å…ˆé ­ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         if (viewSize >= itemSize * dataCount)
         {
             SetNormalizedPosition(1f);
             return;
         }
 
-        // ‘O”¼(K”ö‚Ü‚Å): w’èƒAƒCƒeƒ€‚ğŠÜ‚Ş
+        // å‰åŠ(å°»å°¾ã¾ã§): æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€
         var firstHalfCount = itemIndex + 1;
 
-        // ‘O”¼—Ìˆæ‚ª•\¦”ÍˆÍ‚æ‚è‹·‚¢ -> Åæ“ª‚ÖƒXƒNƒ[ƒ‹
+        // å‰åŠé ˜åŸŸãŒè¡¨ç¤ºç¯„å›²ã‚ˆã‚Šç‹­ã„ -> æœ€å…ˆé ­ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         if (viewSize >= itemSize * firstHalfCount)
         {
             SetNormalizedPosition(1f);
             return;
         }
 
-        // Œã”¼(K”öˆÈŒã): w’èƒAƒCƒeƒ€‚ğŠÜ‚Ü‚È‚¢
+        // å¾ŒåŠ(å°»å°¾ä»¥å¾Œ): æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã¾ãªã„
         var secondHalfCount = dataCount - firstHalfCount;
 
-        // Œã”¼‚ª‚È‚¢ -> ÅŒã”ö‚ÖƒXƒNƒ[ƒ‹
+        // å¾ŒåŠãŒãªã„ -> æœ€å¾Œå°¾ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         if (secondHalfCount <= 0)
         {
             SetNormalizedPosition(0f);
             return;
         }
 
-        // ÅŒã”ö‚©‚ç‘O‚ÖƒXƒNƒ[ƒ‹
+        // æœ€å¾Œå°¾ã‹ã‚‰å‰ã¸ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         SetNormalizedPosition(0f);
         ScrollAsItemNum(-secondHalfCount);
     }
 
     /// <summary>
-    /// w’èƒAƒCƒeƒ€‚ğ•\¦”ÍˆÍ‚É“ü‚é‚æ‚¤‚ÉƒXƒNƒ[ƒ‹
+    /// æŒ‡å®šã‚¢ã‚¤ãƒ†ãƒ ã‚’è¡¨ç¤ºç¯„å›²ã«å…¥ã‚‹ã‚ˆã†ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
     /// </summary>
     public void ScrollItemToView(int itemIndex)
     {
@@ -449,7 +449,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// w’è index ‚ÌƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ä‚İ‚é. ƒXƒNƒ[ƒ‹”ÍˆÍŠO‚ÌƒAƒCƒeƒ€‚Íæ“¾‚Å‚«‚È‚¢.
+    /// æŒ‡å®š index ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¦ã¿ã‚‹. ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²å¤–ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯å–å¾—ã§ããªã„.
     /// </summary>
     public T FetchItem(int itemIndex)
     {
@@ -461,7 +461,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// Œ»İ‚ÌƒXƒNƒ[ƒ‹‚µ‚Ä‚¢‚éƒy[ƒWˆÊ’u‚Ìæ“¾
+    /// ç¾åœ¨ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã¦ã„ã‚‹ãƒšãƒ¼ã‚¸ä½ç½®ã®å–å¾—
     /// </summary>
     public int GetScrollPage()
     {
@@ -472,10 +472,10 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
         if ((pageAbs - (float)pageAbsInt) > fitChangePersentCache)
         {
             var pageAbsCeilToInt = Mathf.CeilToInt(pageAbs);
-            //ƒ‹[ƒv‚Ìê‡
+            //ãƒ«ãƒ¼ãƒ—ã®å ´åˆ
             if (isLoop)
             {
-                //ƒ‹[ƒv‚Ìê‡‚Íã•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Æpage‚ª-1‚É‚È‚é‚Ì‚ÅDataCount‚©‚ç‚Ì·•ª‚ÅIndex‚ğæ“¾
+                //ãƒ«ãƒ¼ãƒ—ã®å ´åˆã¯ä¸Šæ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã¨pageãŒ-1ã«ãªã‚‹ã®ã§DataCountã‹ã‚‰ã®å·®åˆ†ã§Indexã‚’å–å¾—
                 if (page < 0)
                 {
                     if (IsHorizontal)
@@ -499,10 +499,10 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             return pageAbsCeilToInt;
         }
 
-        //ƒ‹[ƒv‚Ìê‡
+        //ãƒ«ãƒ¼ãƒ—ã®å ´åˆ
         if (isLoop)
         {
-            //ƒ‹[ƒv‚Ìê‡‚Íã•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Æpage‚ª-1‚É‚È‚é‚Ì‚ÅDataCount‚©‚ç‚Ì·•ª‚ÅIndex‚ğæ“¾
+            //ãƒ«ãƒ¼ãƒ—ã®å ´åˆã¯ä¸Šæ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã¨pageãŒ-1ã«ãªã‚‹ã®ã§DataCountã‹ã‚‰ã®å·®åˆ†ã§Indexã‚’å–å¾—
             if (page < 0)
             {
                 if (IsHorizontal)
@@ -527,7 +527,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹ƒGƒŠƒA‚É•\¦‚³‚ê‚éÅ‘å”
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¨ãƒªã‚¢ã«è¡¨ç¤ºã•ã‚Œã‚‹æœ€å¤§æ•°
     /// </summary>
     /// <returns></returns>
     public int GetViewItemCount()
@@ -537,7 +537,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// •\¦ƒTƒCƒYæ“¾
+    /// è¡¨ç¤ºã‚µã‚¤ã‚ºå–å¾—
     /// </summary>
     /// <returns></returns>
     public float GetViewSize()
@@ -547,7 +547,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ‚’¼•ûŒü‚ÌƒXƒNƒ[ƒ‹ˆÊ’u‚ğİ’è
+    /// å‚ç›´æ–¹å‘ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚’è¨­å®š
     /// </summary>
     public void SetVerticalNormalizedPosition(float verticalNormalizedPosition)
     {
@@ -555,7 +555,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// …•½•ûŒü‚ÌƒXƒNƒ[ƒ‹ˆÊ’u‚ğİ’è
+    /// æ°´å¹³æ–¹å‘ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚’è¨­å®š
     /// </summary>
     public void SetHorizontalNormalizedPosition(float horizontalNormalizedPosition)
     {
@@ -563,7 +563,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// …•½,‚’¼‚ÌƒXƒNƒ[ƒ‹ˆÊ’u‚ğİ’è
+    /// æ°´å¹³,å‚ç›´ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚’è¨­å®š
     /// </summary>
     public void SetNormalizedPosition(Vector2 normalizedPosition)
     {
@@ -571,7 +571,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// …•½/‚’¼‚ÌƒXƒNƒ[ƒ‹ˆÊ’u‚ğİ’è
+    /// æ°´å¹³/å‚ç›´ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚’è¨­å®š
     /// </summary>
     public void SetNormalizedPosition(float normalizedPosition)
     {
@@ -592,7 +592,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒf[ƒ^‚È‚µ‚Ì•\¦ƒeƒLƒXƒgİ’è
+    /// ãƒ‡ãƒ¼ã‚¿ãªã—æ™‚ã®è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆè¨­å®š
     /// </summary>
     public void SetEmptyDataText(string text)
     {
@@ -603,28 +603,28 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     // protected
     //--------------------------------------------------
     /// <summary>
-    /// UIì¬ˆ—‡B
+    /// UIä½œæˆå‡¦ç†â‘¢
     /// </summary>
     private void Create(int startIndex, int dataCount, bool forceScrollEnable = false, Action onComplete = null)
     {
-        // ì¬Ï‚İ‚ÌƒXƒNƒ[ƒ‹UI‚ğíœ‚µ‚Ü‚·
+        // ä½œæˆæ¸ˆã¿ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«UIã‚’å‰Šé™¤ã—ã¾ã™
         Clear();
 
         // ID count-up
         createImplementId++;
         if (createImplementId != createRequestId)
         {
-            //XV
+            //æ›´æ–°
             Update();
 
             onComplete.Call();
             return;
         }
 
-        // •¡»‚·‚éUI‚ğ”ñƒAƒNƒeƒBƒu
+        // è¤‡è£½ã™ã‚‹UIã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–
         prefab.gameObject.SetActive(false);
 
-        // ScrollItemParent‚ÌƒIƒŠƒWƒiƒ‹ì¬
+        // ScrollItemParentã®ã‚ªãƒªã‚¸ãƒŠãƒ«ä½œæˆ
         if (scrollItemIconParent == null)
         {
             scrollItemIconParent =
@@ -633,9 +633,9 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
         scrollItemIconParent.SetActive(false);
 
-        // ƒpƒ‰ƒ[ƒ^İ’è
+        // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®š
         this.dataCount = dataCount;
-        gridCount = Math.Max(1, grid); // 1–¢–‚Í1‚É’²®
+        gridCount = Math.Max(1, grid); // 1æœªæº€ã¯1ã«èª¿æ•´
         gridDataCount = Mathf.CeilToInt((float)dataCount / gridCount);
         halfItemSize = itemSize / 2;
         forceScroll = forceScrollEnable;
@@ -645,14 +645,14 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             ? new Vector2(itemPivot * itemSize, 0)
             : new Vector2(0, (itemPivot - 1) * itemSize);
 
-        // ƒf[ƒ^‚ª–³‚¯‚ê‚Îˆ—‚µ‚È‚¢
+        // ãƒ‡ãƒ¼ã‚¿ãŒç„¡ã‘ã‚Œã°å‡¦ç†ã—ãªã„
         if (dataCount == 0)
         {
             scrollRect.SetEnabled(false);
             scrollRect.SetActive(false);
             emptyDataText.TrySetActive(true);
 
-            //XV
+            //æ›´æ–°
             Update();
 
             onComplete.Call();
@@ -662,54 +662,54 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
         scrollRect.SetActive(true);
         emptyDataText.TrySetActive(false);
 
-        // Content‚Ì‰Šú‰»ˆ—
+        // Contentã®åˆæœŸåŒ–å‡¦ç†
         scrollContentUI.OnUpdateScrollIndex = OnUpdateIndex;
         scrollContentUI.Init(scrollRect.IsHorizontal, itemSize, contentOffsetPos);
 
         cannotUpdateScrollItem = false;
 
-        // ƒXƒNƒ[ƒ‹“à‚ÌUIì¬
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å†…ã®UIä½œæˆ
         CreateScrollItem();
 
-        // ƒXƒNƒ[ƒ‹‚ÌˆÊ’u‚ğƒŠƒZƒbƒg‚µ‚Ü‚·
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ä½ç½®ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã™
         scrollContentUI.ResetAnchoredPosition();
 
-        // UI‚Æƒf[ƒ^‚Ì”‚ªˆê’v‚µ‚Ä‚ê‚ÎƒXƒNƒ[ƒ‹‚³‚¹‚È‚¢
-        // ‹­§ƒXƒNƒ[ƒ‹ƒtƒ‰ƒO‚Å‰Â”\iƒKƒ`ƒƒƒƒjƒ…[—pj
+        // UIã¨ãƒ‡ãƒ¼ã‚¿ã®æ•°ãŒä¸€è‡´ã—ã¦ã‚Œã°ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã•ã›ãªã„
+        // å¼·åˆ¶ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒ•ãƒ©ã‚°ã§å¯èƒ½ï¼ˆã‚¬ãƒãƒ£ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”¨ï¼‰
         var enabledScroll = isLoop || existsMargin || forceScroll;
         scrollRect.SetEnabled(enabledScroll);
 
         if (!enabledScroll)
         {
-            //XV
+            //æ›´æ–°
             Update();
 
             onComplete.Call();
             return;
         }
 
-        // ŠJnˆÊ’u‚ğ‡‚í‚¹‚Ü‚·
+        // é–‹å§‹ä½ç½®ã‚’åˆã‚ã›ã¾ã™
         SetIndexPosition(startIndex);
 
-        //XV
+        //æ›´æ–°
         Update();
 
         onComplete.Call();
     }
 
     /// <summary>
-    /// ƒf[ƒ^ƒJƒEƒ“ƒg‚ğ•ÏX
+    /// ãƒ‡ãƒ¼ã‚¿ã‚«ã‚¦ãƒ³ãƒˆã‚’å¤‰æ›´
     /// </summary>
     /// <param name="dataCount"></param>
     public void SetDataCount(int dataCount)
     {
         this.dataCount = dataCount;
-        gridCount = Math.Max(1, grid); // 1–¢–‚Í1‚É’²®
+        gridCount = Math.Max(1, grid); // 1æœªæº€ã¯1ã«èª¿æ•´
         gridDataCount = Mathf.CeilToInt((float)dataCount / gridCount);
 
-        // ƒXƒNƒ[ƒ‹‚Ì‹““®A”ÍˆÍAPivotİ’è
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æŒ™å‹•ã€ç¯„å›²ã€Pivotè¨­å®š
         var rectSize = isLoop ? scrollContentUI.DefaultSize : itemSize * (float)gridDataCount;
-        //ƒIƒtƒZƒbƒg‚ª‚ ‚éê‡ƒTƒCƒY‚ğ‚¸‚ç‚·
+        //ã‚ªãƒ•ã‚»ãƒƒãƒˆãŒã‚ã‚‹å ´åˆã‚µã‚¤ã‚ºã‚’ãšã‚‰ã™
         rectSize += contentOffsetPos > 0
             ? contentOffsetPos + (GetViewSize() - contentOffsetPos - itemSize)
             : 0;
@@ -717,16 +717,16 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ˆÚ“®—Ê‚ğ0‚É‚·‚é
+    /// ç§»å‹•é‡ã‚’0ã«ã™ã‚‹
     /// </summary>
     public void StopMovement()
     {
-        // ˆÚ“®—Ê‚ğ0‚É‚µ‚Ü‚·
+        // ç§»å‹•é‡ã‚’0ã«ã—ã¾ã™
         scrollRect.StopMovement();
     }
 
     /// <summary>
-    /// ƒtƒBƒbƒg‚µ‚Ä‚¢‚éƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚ğ•Ô‚·
+    /// ãƒ•ã‚£ãƒƒãƒˆã—ã¦ã„ã‚‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿”ã™
     /// </summary>
     public T GetFitItem()
     {
@@ -735,7 +735,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             return null;
         }
 
-        //ƒtƒBƒbƒg‚µ‚Ä‚¢‚éƒAƒCƒeƒ€‚à•Ô‚·
+        //ãƒ•ã‚£ãƒƒãƒˆã—ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚‚è¿”ã™
         var distance = float.MaxValue;
         T item = default;
         var startPos = scrollContentUI.AnchoredDirPosition - contentOffsetPos;
@@ -754,7 +754,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒIƒtƒZƒbƒg‚ğİ’è
+    /// ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’è¨­å®š
     /// </summary>
     /// <param name="offsetPos"></param>
     protected void SetContentOffsetPos(float offsetPos)
@@ -765,34 +765,34 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     // private
     //--------------------------------------------------
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹“à‚ÌUI‚ğì¬‚µ‚Ü‚·
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å†…ã®UIã‚’ä½œæˆã—ã¾ã™
     /// </summary>
     private void CreateScrollItem()
     {
-        // ƒXƒNƒ[ƒ‹‚Ì‹““®A”ÍˆÍAPivotİ’è
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æŒ™å‹•ã€ç¯„å›²ã€Pivotè¨­å®š
         var rectSize = isLoop ? scrollContentUI.DefaultSize : itemSize * (float)gridDataCount;
-        //ƒIƒtƒZƒbƒg‚ª‚ ‚éê‡ƒTƒCƒY‚ğ‚¸‚ç‚·
+        //ã‚ªãƒ•ã‚»ãƒƒãƒˆãŒã‚ã‚‹å ´åˆã‚µã‚¤ã‚ºã‚’ãšã‚‰ã™
         rectSize += contentOffsetPos > 0
             ? contentOffsetPos + (GetViewSize() - contentOffsetPos - itemSize)
             : 0;
         scrollContentUI.SetSize(rectSize);
 
         if (isAutoContentPivot)
-        {   // ƒRƒ“ƒeƒ“ƒc‚ÌPivot‚ÍƒXƒNƒ[ƒ‹‚Ì•ûŒü‚É‡‚í‚¹‚é
+        {   // ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®Pivotã¯ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æ–¹å‘ã«åˆã‚ã›ã‚‹
             var contentPivot = IsHorizontal ? new Vector2(0f, 0.5f) : new Vector2(0.5f, 1f);
             scrollContentUI.SetPivot(contentPivot);
         }
         else
-        {   // ContentPivot‚É‡‚í‚¹‚Ä’²®
+        {   // ContentPivotã«åˆã‚ã›ã¦èª¿æ•´
             var contentRect = scrollContentUI.GetRectTransform();
-            // ƒAƒCƒeƒ€‚Ìpivot‚Í0.5‚ğ‘z’è‚µ‚Ä‚¢‚é
+            // ã‚¢ã‚¤ãƒ†ãƒ ã®pivotã¯0.5ã‚’æƒ³å®šã—ã¦ã„ã‚‹
             pivotOffsetPos -= IsHorizontal
                 ? new Vector2(contentRect.pivot.x * contentRect.rect.width, 0)
                 : new Vector2(0, (contentRect.pivot.y - 1) * contentRect.rect.height);
         }
 
-        // ƒXƒNƒ[ƒ‹‚ÌˆÚ“®İ’è
-        // ƒ‹[ƒv‚Ì‚Ì‚İUnrestricted‚É‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ç§»å‹•è¨­å®š
+        // ãƒ«ãƒ¼ãƒ—ã®æ™‚ã®ã¿Unrestrictedã«ã—ãªã„ã¨ã„ã‘ãªã„
         if (isLoop)
         {
             scrollRect.movementType = ScrollRect.MovementType.Unrestricted;
@@ -802,7 +802,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             scrollRect.movementType = ScrollRect.MovementType.Clamped;
         }
 
-        // ƒXƒNƒ[ƒ‹‚³‚¹‚éUI‚Ì”æ“¾
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã•ã›ã‚‹UIã®æ•°å–å¾—
         var itemCount = CalcScrollItemUICount(rectSize);
         var offsetPos = IsHorizontal ? new Vector2(itemSize, 0) : new Vector2(0, -itemSize);
         var lcontentOffsetPos =
@@ -810,13 +810,13 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
         for (int index = 0; index < itemCount; index++)
         {
-            // ƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚Ìeì¬
+            // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã®è¦ªä½œæˆ
             var lscrollItemParent = Instantiate(scrollItemIconParent, scrollContentUI.rectTransform, false)
                 .GetComponent<ScrollItemIconParent>();
             lscrollItemParent.name = "ScrollItem" + index;
             ScrollItemParents.Add(lscrollItemParent);
 
-            // ƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚ğì¬‚µ‚Äƒe[ƒuƒ‹‚É“o˜^
+            // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œæˆã—ã¦ãƒ†ãƒ¼ãƒ–ãƒ«ã«ç™»éŒ²
             var scrollItems = CreateScrollItem(lscrollItemParent);
             ScrollItemTable.Add(lscrollItemParent.InstanceId, scrollItems.ToArray());
 
@@ -824,7 +824,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             InitializeScrollItemParent(lscrollItemParent, index, pos);
         }
 
-        // LayoutGroup”½‰f
+        // LayoutGroupåæ˜ 
         var prefabRect = prefab.rectTransform.rect;
         var prefabSize = new Vector2(prefabRect.width, prefabRect.height);
         var totalPrefabSize = (int)(IsHorizontal ? prefabSize.y : prefabSize.x) * gridCount;
@@ -832,11 +832,11 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹“à‚ÌUIì¬
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å†…ã®UIä½œæˆ
     /// </summary>
     private IEnumerable<T> CreateScrollItem(ScrollItemIconParent scrollItemParent)
     {
-        // ƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€ì¬
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ä½œæˆ
         for (int j = 0; j < gridCount; j++)
         {
             var scrollItem = Instantiate(prefab).GetComponent<T>();
@@ -850,29 +850,29 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ì¬‚·‚éƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚Ì”‚ğŒvZ‚µ‚Ü‚·
+    /// ä½œæˆã™ã‚‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°ã‚’è¨ˆç®—ã—ã¾ã™
     /// </summary>
     private int CalcScrollItemUICount(float rectSize)
     {
-        // ƒ‹[ƒv or ƒXƒNƒ[ƒ‹”ÍˆÍ‚ğ’´‚¦‚éê‡‚Íƒ}[ƒWƒ“•t‚«‚Å•Ô‚·
+        // ãƒ«ãƒ¼ãƒ— or ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²ã‚’è¶…ãˆã‚‹å ´åˆã¯ãƒãƒ¼ã‚¸ãƒ³ä»˜ãã§è¿”ã™
         var viewSize = GetViewSize();
 
         existsMargin = isLoop || rectSize >= viewSize;
-        //‹­§ƒXƒNƒ[ƒ‹‚Ìê‡‚Íƒ}[ƒWƒ“•t‚«‚Å•Ô‚·
+        //å¼·åˆ¶ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®å ´åˆã¯ãƒãƒ¼ã‚¸ãƒ³ä»˜ãã§è¿”ã™
         if (existsMargin || forceScroll)
         {
             return (int)(viewSize / itemSize) + Margin;
         }
 
-        // ƒXƒNƒ[ƒ‹”ÍˆÍ“à‚Éû‚Ü‚é‚Ì‚Åƒf[ƒ^”‚ğ•Ô‚·
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²å†…ã«åã¾ã‚‹ã®ã§ãƒ‡ãƒ¼ã‚¿æ•°ã‚’è¿”ã™
         return gridDataCount;
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ªXV‚ÉŒÄ‚Î‚ê‚éˆ—
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ãŒæ›´æ–°æ™‚ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
     /// </summary>
-    /// <param name="isUnder">		true:––”ö‚Ì—v‘f‚ğXVA falseFæ“ª‚Ì—v‘f‚ğXV		</param>
-    /// <param name="scrollIndex">	XV”Ô†											</param>
+    /// <param name="isUnder">		true:æœ«å°¾ã®è¦ç´ ã‚’æ›´æ–°ã€ falseï¼šå…ˆé ­ã®è¦ç´ ã‚’æ›´æ–°		</param>
+    /// <param name="scrollIndex">	æ›´æ–°ç•ªå·											</param>
     private void OnUpdateIndex(bool isUnder, long scrollIndex)
     {
         var count = ItemCount;
@@ -886,19 +886,19 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
         if (isUnder)
         {
-            // ––”ö‚Ì—v‘f‚ğæ“ª‚ÉˆÚ“®
+            // æœ«å°¾ã®è¦ç´ ã‚’å…ˆé ­ã«ç§»å‹•
             ScrollItemParents.Insert(0, parent);
         }
         else
         {
-            // æ“ª‚Ì—v‘f‚ğ––”ö‚ÉˆÚ“®
+            // å…ˆé ­ã®è¦ç´ ã‚’æœ«å°¾ã«ç§»å‹•
             ScrollItemParents.Add(parent);
 
-            // ƒCƒ“ƒfƒbƒNƒX‚ğ––”öŠî€‚É‚µ‚Ü‚·
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æœ«å°¾åŸºæº–ã«ã—ã¾ã™
             scrollIndex += ItemCount;
         }
 
-        // UI‰Šú‰»
+        // UIåˆæœŸåŒ–
         var anchoredPosition = IsHorizontal ? new Vector2(pos, 0) : new Vector2(0, -pos);
         var contentOffsetPos =
             IsHorizontal ? new Vector2(this.contentOffsetPos, 0) : new Vector2(0, - this.contentOffsetPos);
@@ -907,25 +907,25 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ScrollItemParent‚ğ‰Šú‰»‚µ‚Ü‚·
+    /// ScrollItemParentã‚’åˆæœŸåŒ–ã—ã¾ã™
     /// </summary>
     private void InitializeScrollItemParent(ScrollItemIconParent scrollItemParent, long scrollIndex,
         Vector2 anchoredPosition, bool isUpdate = false, bool isUnder = true)
     {
         Action scrollSetAct = () =>
         {
-            // ƒCƒ“ƒfƒbƒNƒX‚ÆˆÊ’uİ’è
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ä½ç½®è¨­å®š
             var index = ToIndex(scrollIndex);
             scrollItemParent.SetIndex(index);
             scrollItemParent.SetAnchoredPosition(anchoredPosition);
 
-            // ƒAƒNƒeƒBƒuİ’è
+            // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–è¨­å®š
             var isActive = isLoop || (gridDataCount > scrollIndex && scrollIndex >= 0);
             scrollItemParent.SetActive(isActive);
 
             //DebugUtils.Log("InitializeScrollItemParent {0},{1},{2}", scrollIndex, gridDataCount, isActive);
 
-            // ”ñƒAƒNƒeƒBƒu‚¾‚Á‚½‚çScrollItem‰Šú‰»‚·‚é•K—v–³‚¢‚Ì‚Åˆ—I‚í‚é
+            // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã ã£ãŸã‚‰ScrollItemåˆæœŸåŒ–ã™ã‚‹å¿…è¦ç„¡ã„ã®ã§å‡¦ç†çµ‚ã‚ã‚‹
             if (!isActive)
             {
                 return;
@@ -934,8 +934,8 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             InitializeScrollItemUI(index, scrollItemParent);
         };
 
-        //Update‚ÅŒÄ‚Î‚ê‚½‚¾‚¯ˆ—‚·‚é
-        //ƒXƒNƒ[ƒ‹UIXV‘O‚Éˆ—‚ğ‚³‚¹‚½‚¢‚à‚Ì
+        //Updateã§å‘¼ã°ã‚ŒãŸæ™‚ã ã‘å‡¦ç†ã™ã‚‹
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«UIæ›´æ–°å‰ã«å‡¦ç†ã‚’ã•ã›ãŸã„ã‚‚ã®
         if (isUpdate && OnUpdateItemParent != null)
         {
             OnUpdateItemParent.Call((int)scrollIndex, isUnder, scrollSetAct);
@@ -946,7 +946,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ScrollItemParent‚Ìq‚ÌScrollItemBase‚ğ‰Šú‰»‚µ‚Ü‚·
+    /// ScrollItemParentã®å­ã®ScrollItemBaseã‚’åˆæœŸåŒ–ã—ã¾ã™
     /// </summary>
     private void InitializeScrollItemUI(int parentIndex, ScrollItemIconParent scrollItemParent)
     {
@@ -977,79 +977,79 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ˆê’èˆÈã‚Ì‘¬“x‚É‚È‚ç‚È‚¢‚æ‚¤‚É§ŒÀ‚·‚éˆ—
+    /// ä¸€å®šä»¥ä¸Šã®é€Ÿåº¦ã«ãªã‚‰ãªã„ã‚ˆã†ã«åˆ¶é™ã™ã‚‹å‡¦ç†
     /// </summary>
     private void ClampScrollSpeed()
     {
-        //‚à‚µ§ŒÀ‘¬“x‚ª‚O‚Ìê‡‚Í‰½‚à‚µ‚È‚¢
+        //ã‚‚ã—åˆ¶é™é€Ÿåº¦ãŒï¼ã®å ´åˆã¯ä½•ã‚‚ã—ãªã„
         if (maxScrollSpeed == 0) return;
 
-        //w’è‘¬“x‚ğ’´‚¦‚Ä‚¢‚È‚¢‚È‚ç‚±‚±‚Ü‚Å
+        //æŒ‡å®šé€Ÿåº¦ã‚’è¶…ãˆã¦ã„ãªã„ãªã‚‰ã“ã“ã¾ã§
         if (scrollRect.Velocity < maxScrollSpeed) return;
 
-        //â‘Î’l‰»‚³‚ê‚Ä‚¢‚È‚¢velocity‚Ìæ“¾
+        //çµ¶å¯¾å€¤åŒ–ã•ã‚Œã¦ã„ãªã„velocityã®å–å¾—
         var velocity = scrollRect.velocity;
-        //Œ»İ‚ÌƒXƒNƒ[ƒ‹‘¬“xæ“¾
+        //ç¾åœ¨ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦å–å¾—
         var speed = IsHorizontal ? velocity.x : velocity.y;
-        //clampˆ—
+        //clampå‡¦ç†
         speed = Mathf.Clamp(speed, -maxScrollSpeed, maxScrollSpeed);
-        //‘¬“x§ŒÀ“K—p
+        //é€Ÿåº¦åˆ¶é™é©ç”¨
         SetVelocity(speed);
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹ƒAƒCƒeƒ€‚ÌˆÊ’u•â³
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ†ãƒ ã®ä½ç½®è£œæ­£
     /// </summary>
     private void AutoFit()
     {
-        // ˆÊ’u•â³‹@”\‚ªƒIƒt‚¾‚Á‚½‚çˆ—‚µ‚È‚¢
+        // ä½ç½®è£œæ­£æ©Ÿèƒ½ãŒã‚ªãƒ•ã ã£ãŸã‚‰å‡¦ç†ã—ãªã„
         if (!isAutoFit)
         {
             return;
         }
 
-        // ƒZƒ“ƒ^ƒŠƒ“ƒO’†‚Íˆ—‚µ‚È‚¢
+        // ã‚»ãƒ³ã‚¿ãƒªãƒ³ã‚°ä¸­ã¯å‡¦ç†ã—ãªã„
         if (IsCentering)
         {
             return;
         }
 
-        //ÅãÅ‰º‚É—ˆ‚½‚É‚ÍˆÊ’u’²®‚Å‚«‚éó‘Ô‚É‚·‚é‚½‚ß~‚ß‚é
+        //æœ€ä¸Šæœ€ä¸‹ã«æ¥ãŸæ™‚ã«ã¯ä½ç½®èª¿æ•´ã§ãã‚‹çŠ¶æ…‹ã«ã™ã‚‹ãŸã‚æ­¢ã‚ã‚‹
         if (
-            !isLoop && //ƒ‹[ƒvˆÈŠO
-            scrollRect.Velocity != 0f && //ˆÚ“®‚ª‚µ‚Ä‚¢‚é
-                                           //ÅãÅ‰º‚É—ˆ‚½
+            !isLoop && //ãƒ«ãƒ¼ãƒ—ä»¥å¤–
+            scrollRect.Velocity != 0f && //ç§»å‹•ãŒã—ã¦ã„ã‚‹æ™‚
+                                           //æœ€ä¸Šæœ€ä¸‹ã«æ¥ãŸæ™‚
             (scrollRect.NormalizedPosition <= 0f || scrollRect.NormalizedPosition >= 1f)
         )
         {
             StopMovement();
         }
 
-        // ˆÊ’u•â³o—ˆ‚éó‘Ô‚È‚Ì‚©Šm”F‚µ‚Ü‚·
+        // ä½ç½®è£œæ­£å‡ºæ¥ã‚‹çŠ¶æ…‹ãªã®ã‹ç¢ºèªã—ã¾ã™
         if (
-            scrollRect.IsElasticMove || // ’e—Í“I‚È“®‚«‚µ‚Ä‚¢‚é‚Íˆ—‚µ‚È‚¢
-            scrollRect.IsDrag || // ƒhƒ‰ƒbƒO’†‚Íˆ—‚µ‚È‚¢
-            scrollRect.Velocity > thresholdVelocity // ‰Á‘¬“x‚ªˆê’è’l‚Ü‚Å—‚¿‚é‚Ü‚Åˆ—‚µ‚È‚¢
+            scrollRect.IsElasticMove || // å¼¾åŠ›çš„ãªå‹•ãã—ã¦ã„ã‚‹æ™‚ã¯å‡¦ç†ã—ãªã„
+            scrollRect.IsDrag || // ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã¯å‡¦ç†ã—ãªã„
+            scrollRect.Velocity > thresholdVelocity // åŠ é€Ÿåº¦ãŒä¸€å®šå€¤ã¾ã§è½ã¡ã‚‹ã¾ã§å‡¦ç†ã—ãªã„
         )
         {
             return;
         }
 
-        // ƒXƒNƒ[ƒ‹‚ªI‚í‚Á‚Ä‚¢‚½‚ç‰½‚à‚µ‚È‚¢
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãŒçµ‚ã‚ã£ã¦ã„ãŸã‚‰ä½•ã‚‚ã—ãªã„
         if (!IsScrolling && IsFitDone)
         {
             return;
         }
 
-        //ƒtƒBƒbƒg•ûŒü‚Ìæ“¾
+        //ãƒ•ã‚£ãƒƒãƒˆæ–¹å‘ã®å–å¾—
         SetScrollDirectionToFit();
-        //æ“¾‚µ‚½î•ñ‚ğŒ³‚ÉEnum->int•ÏŠ·
+        //å–å¾—ã—ãŸæƒ…å ±ã‚’å…ƒã«Enum->intå¤‰æ›
         var dirNum = (int)scrollDirection;
-        //‘¬“x‚Ì•t—^
+        //é€Ÿåº¦ã®ä»˜ä¸
         SetVelocity(thresholdVelocity * dirNum);
 
-        //ƒtƒBƒbƒgˆ—‚ª‚Å‚«‚é‚©Šm”F
-        //Œë·‚ª‚Å‚é‚½‚ßˆ—•ÏX
+        //ãƒ•ã‚£ãƒƒãƒˆå‡¦ç†ãŒã§ãã‚‹ã‹ç¢ºèª
+        //èª¤å·®ãŒã§ã‚‹ãŸã‚å‡¦ç†å¤‰æ›´
         //var offset = scrollContentUI.AnchoredDirPosition % itemSize;
         var fmod = Mathf.Repeat(Mathf.Floor(scrollContentUI.AnchoredDirPosition), Mathf.Floor(itemSize));
         var offset = scrollContentUI.AnchoredDirPosition < 0f ? -fmod : fmod;
@@ -1060,9 +1060,9 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             return;
         }
 
-        // ‰Á‘¬“xc‚Á‚Ä‚é‚Ì‚ÅÁ‚·
+        // åŠ é€Ÿåº¦æ®‹ã£ã¦ã‚‹ã®ã§æ¶ˆã™
         SetVelocity(0);
-        //À•W‚ÌƒYƒŒ•ª•â³
+        //åº§æ¨™ã®ã‚ºãƒ¬åˆ†è£œæ­£
         var addPixel = Mathf.Repeat(scrollContentUI.AnchoredDirPosition, itemSize);
         if (IsHorizontal)
         {
@@ -1090,59 +1090,59 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
         }
 
         ScrollAsPixel(addPixel);
-        // ƒtƒBƒbƒgŠ®—¹ƒtƒ‰ƒO
+        // ãƒ•ã‚£ãƒƒãƒˆå®Œäº†ãƒ•ãƒ©ã‚°
         scrollDirection = ScrollDirection.NONE;
         IsFitDone = true;
-        // ƒtƒBƒbƒgŠ®—¹ƒR[ƒ‹ƒoƒbƒN
+        // ãƒ•ã‚£ãƒƒãƒˆå®Œäº†ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
         var page = GetScrollPage();
         OnFitItem.Call(page);
     }
 
     /// <summary>
-    /// ƒtƒBƒbƒg‚·‚é•ûŒü‚Ìİ’è
+    /// ãƒ•ã‚£ãƒƒãƒˆã™ã‚‹æ–¹å‘ã®è¨­å®š
     /// </summary>
     private void SetScrollDirectionToFit()
     {
-        //‚Ü‚¾ƒXƒNƒ[ƒ‹•ûŒü‚ªŒˆ’è‚µ‚Ä‚¢‚È‚¢‚È‚çƒXƒNƒ[ƒ‹•ûŒü‚ğŠm’è
+        //ã¾ã ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘ãŒæ±ºå®šã—ã¦ã„ãªã„ãªã‚‰ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘ã‚’ç¢ºå®š
         if (scrollDirection != ScrollDirection.NONE)
         {
             return;
         }
 
-        //ƒXƒNƒ[ƒ‹‚Ì’l‚ğæ“¾
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®å€¤ã‚’å–å¾—
         var contentPosition = scrollContentUI.AnchoredDirPosition;
         var scrollNum = Mathf.Abs(contentPosition) / ItemSize;
-        //”»’è‚É‚Í¬”“_‚¾‚¯‚Å—Ç‚¢‚Ì‚Å®”Ø‚èÌ‚Ä
+        //åˆ¤å®šã«ã¯å°æ•°ç‚¹ã ã‘ã§è‰¯ã„ã®ã§æ•´æ•°åˆ‡ã‚Šæ¨ã¦
         var scrollFraction = scrollNum - (int)scrollNum;
-        //ƒXƒNƒ[ƒ‹À•W‚ª•‰‚Ì”‚Ìê‡‚Í”’l‚ğ”½“]
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åº§æ¨™ãŒè² ã®æ•°ã®å ´åˆã¯æ•°å€¤ã‚’åè»¢
         //if (contentPosition < 0) scrollFraction = 1.0f - scrollFraction;
-        //ƒXƒNƒ[ƒ‹•ûŒüæ“¾
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘å–å¾—
         //var isMoveRight = scrollFraction > fitChangePersentCache;
         var isMoveRight = false;
 
-        //ãor‰E•ûŒü‚ÉƒXƒNƒ[ƒ‹‚µ‚Ä‚¢‚é‚©”»’è
+        //ä¸Šorå³æ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã¦ã„ã‚‹ã‹åˆ¤å®š
         var isRight = contentPosition - fitPrevAnchorPos > 0f;
         if (isRight)
         {
-            //ƒXƒNƒ[ƒ‹À•W‚ª•‰‚Ì”‚Ìê‡‚Í”’l‚ğ”½“]
+            //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åº§æ¨™ãŒè² ã®æ•°ã®å ´åˆã¯æ•°å€¤ã‚’åè»¢
             if (contentPosition < 0) scrollFraction = 1.0f - scrollFraction;
         }
         else
         {
-            //ƒXƒNƒ[ƒ‹À•W‚ª³‚Ì”‚Ìê‡‚Í”’l‚ğ”½“]
+            //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åº§æ¨™ãŒæ­£ã®æ•°ã®å ´åˆã¯æ•°å€¤ã‚’åè»¢
             if (contentPosition > 0) scrollFraction = 1.0f - scrollFraction;
         }
 
-        //ƒtƒBƒbƒg‚³‚¹‚é‚©‚Ç‚¤‚©
+        //ãƒ•ã‚£ãƒƒãƒˆã•ã›ã‚‹ã‹ã©ã†ã‹
         var isFit = scrollFraction > fitChangePersentCache;
         if (isFit)
         {
-            //‰¡ƒXƒNƒ[ƒ‹‚ÆcƒXƒNƒ[ƒ‹‚Åˆá‚¤
+            //æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã¨ç¸¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã§é•ã†
             isMoveRight = IsHorizontal ? isRight : !isRight;
         }
         else
         {
-            //‰¡ƒXƒNƒ[ƒ‹‚ÆcƒXƒNƒ[ƒ‹‚Åˆá‚¤
+            //æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã¨ç¸¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã§é•ã†
             isMoveRight = IsHorizontal ? !isRight : isRight;
         }
 
@@ -1150,7 +1150,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒtƒBƒbƒgˆ—‚ª‚Å‚«‚é‚©‚ÌŠm”F
+    /// ãƒ•ã‚£ãƒƒãƒˆå‡¦ç†ãŒã§ãã‚‹ã‹ã®ç¢ºèª
     /// </summary>
     /// <returns></returns>
     private bool IsFittable(float length, float anchoredPos)
@@ -1164,9 +1164,9 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
             length = scrollDirection == ScrollDirection.LEFT ? itemSize - length : length;
         }
 
-        // ƒtƒBƒbƒg‚Ü‚Å‚Ì‹——£‚ª‰“‚¢
+        // ãƒ•ã‚£ãƒƒãƒˆã¾ã§ã®è·é›¢ãŒé ã„
         var isFar = length > fitLength;
-        // ƒXƒNƒ[ƒ‹‚ÌÅ‘å’l‚É‚È‚Á‚Ä‚¢‚é
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æœ€å¤§å€¤ã«ãªã£ã¦ã„ã‚‹
         var isScrollMax = IsScrollMax();
         if (isFar && isScrollMax == false) return false;
 
@@ -1174,25 +1174,25 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹‚ªÅ‘å‚É‚È‚Á‚Ä‚¢‚é‚©
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãŒæœ€å¤§ã«ãªã£ã¦ã„ã‚‹ã‹
     /// </summary>
     protected bool IsScrollMax()
     {
-        //ƒ‹[ƒv‚ª—LŒø‚È‚çÅ‘å‚É‚Í‚È‚ç‚È‚¢
+        //ãƒ«ãƒ¼ãƒ—ãŒæœ‰åŠ¹ãªã‚‰æœ€å¤§ã«ã¯ãªã‚‰ãªã„
         if (isLoop) return false;
 
-        //ƒXƒNƒ[ƒ‹‚Ì”’l
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æ•°å€¤
         var normalizedPosition = IsHorizontal
             ? scrollRect.horizontalNormalizedPosition
             : scrollRect.verticalNormalizedPosition;
-        //ƒXƒNƒ[ƒ‹‚ªÅ‘å’l‚©
-        //0.9999999‘Îô‚Å0.99998‚Å”»’è
+        //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãŒæœ€å¤§å€¤ã‹
+        //0.9999999å¯¾ç­–ã§0.99998ã§åˆ¤å®š
         var isScrollMax = normalizedPosition >= 0.99998f || normalizedPosition <= 0.00002f;
         return isScrollMax;
     }
 
     /// <summary>
-    /// ƒf[ƒ^‚ÌŒ”‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğ•Ô‚µ‚Ü‚·
+    /// ãƒ‡ãƒ¼ã‚¿ã®ä»¶æ•°ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’è¿”ã—ã¾ã™
     /// </summary>
     private int ToIndex(long scrollNumber)
     {
@@ -1201,7 +1201,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
     }
 
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹‚ÌƒJ[ƒuXV
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚«ãƒ¼ãƒ–æ›´æ–°
     /// </summary>
     private void UpdateScrollCurve()
     {
@@ -1236,7 +1236,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
                 t = (worldPos.y - rect.y) / rect.height;
             }
 
-            //ƒJ[ƒu‚ÌŒ»İ’l‚ÆƒJ[ƒu’l‚ÅˆÚ“®‚³‚¹‚é
+            //ã‚«ãƒ¼ãƒ–ã®ç¾åœ¨å€¤ã¨ã‚«ãƒ¼ãƒ–å€¤ã§ç§»å‹•ã•ã›ã‚‹
             if (IsHorizontal)
             {
                 if (isScrollCurveY)
@@ -1247,7 +1247,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
                 if (isScrollCurveX)
                 {
-                    //ScrollItem‚ğˆÚ“®‚³‚¹‚é
+                    //ScrollItemã‚’ç§»å‹•ã•ã›ã‚‹
                     moveValue = scrollCurveX.Evaluate(t) * scrollCurveValueX;
                     items.ForEach(n => n.SetAnchoredPositionX(moveValue));
                 }
@@ -1262,7 +1262,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
 
                 if (isScrollCurveY)
                 {
-                    //ScrollItem‚ğˆÚ“®‚³‚¹‚é
+                    //ScrollItemã‚’ç§»å‹•ã•ã›ã‚‹
                     moveValue = scrollCurveY.Evaluate(t) * scrollCurveValueY;
                     items.ForEach(n => n.SetAnchoredPositionY(moveValue));
                 }

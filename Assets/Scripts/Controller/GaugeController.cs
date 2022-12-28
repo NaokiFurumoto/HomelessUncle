@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒXƒ‰ƒCƒ_[‚Ì‘€ìe
+/// ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®æ“ä½œè¦ª
 /// </summary>
 public class GaugeController : UIParts
 {
@@ -22,7 +22,7 @@ public class GaugeController : UIParts
     protected virtual void Start() { }
 
     /// <summary>
-    /// Å¬’lAÅ‘å’l‚Ìİ’è
+    /// æœ€å°å€¤ã€æœ€å¤§å€¤ã®è¨­å®š
     /// </summary>
     /// <param name="min"></param>
     /// <param name="max"></param>
@@ -40,7 +40,7 @@ public class GaugeController : UIParts
     }
 
     /// <summary>
-    /// Œ¸Z
+    /// æ¸›ç®—
     /// </summary>
     /// <param name="value"></param>
     public void SubValue(float value)
@@ -51,7 +51,7 @@ public class GaugeController : UIParts
     }
 
     /// <summary>
-    /// ‰ÁZ
+    /// åŠ ç®—
     /// </summary>
     /// <param name="value"></param>
     public void AddValue(float value)

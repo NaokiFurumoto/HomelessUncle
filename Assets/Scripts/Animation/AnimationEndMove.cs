@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒAƒjƒ[ƒVƒ‡ƒ“I—¹‚ÉPlayer‚ÌˆÚ“®’â~‚ğ‰ğœ‚·‚é
+/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†æ™‚ã«Playerã®ç§»å‹•åœæ­¢ã‚’è§£é™¤ã™ã‚‹
 /// </summary>
 public class AnimationEndMove : StateMachineBehaviour
 {

@@ -1,19 +1,19 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Carbon;
 using TMPro;
 /// <summary>
-/// ƒAƒCƒRƒ“‚Ìî•ñ‚ğƒZƒbƒg
+/// ã‚¢ã‚¤ã‚³ãƒ³ã®æƒ…å ±ã‚’ã‚»ãƒƒãƒˆ
 /// </summary>
 public class ItemIcon : ItemIconBase
 {
-    /// <summary> ƒCƒ[ƒW </summary>
+    /// <summary> ã‚¤ãƒ¡ãƒ¼ã‚¸ </summary>
     [SerializeField]
     private Image itemImage;
 
-    /// <summary> ƒ{ƒ^ƒ“ </summary>
+    /// <summary> ãƒœã‚¿ãƒ³ </summary>
     [SerializeField]
     private ButtonEventSystem button;
 
@@ -29,23 +29,23 @@ public class ItemIcon : ItemIconBase
     [SerializeField]
     private ItemBGData bgData;
 
-    /// <summary> ƒf[ƒ^ </summary>
+    /// <summary> ãƒ‡ãƒ¼ã‚¿ </summary>
     [SerializeField]
     private ItemData data;
 
-    //ƒƒ“ƒo•Ï”
-    /// <summary> –¼‘O </summary>
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+    /// <summary> åå‰ </summary>
     private string itemName;
 
-    /// <summary> Š” </summary>
+    /// <summary> æ‰€æŒæ•° </summary>
     private int holdIndex;
 
-    /// <summary> ”wŒiƒCƒ[ƒW </summary>
+    /// <summary> èƒŒæ™¯ã‚¤ãƒ¡ãƒ¼ã‚¸ </summary>
     [SerializeField]
     private Image bgImage;
 
 
-    //ƒvƒƒpƒeƒB
+    //ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public string ItemName => itemName;
     public int HoldIndex => holdIndex;
     public Image ItemImage => itemImage;

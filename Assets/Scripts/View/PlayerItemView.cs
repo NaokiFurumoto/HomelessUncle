@@ -1,4 +1,4 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +7,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 /// <summary>
-/// ƒvƒŒƒCƒ„[‚ÌŠƒAƒCƒeƒ€‰æ–Ê
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ‰€æŒã‚¢ã‚¤ãƒ†ãƒ ç”»é¢
 /// </summary>
 public class PlayerItemView : ViewBase, IUpdateList
 {
-    /// <summary> ‰æ–Ê <summary>
+    /// <summary> ç”»é¢ <summary>
     private VIEWTYPE type;
 
     /// <summary> Player <summary>
     [SerializeField] private Player player;
 
-    /// <summary> •\¦” <summary>
+    /// <summary> è¡¨ç¤ºæ•° <summary>
     [SerializeField] private int index;
 
-    //<summary ƒXƒNƒ[ƒ‹‹@”\ <summary
+    //<summary ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ©Ÿèƒ½ <summary
     [SerializeField] private ScrollSystemBase<ItemIconBase> scroll;
 
-    /// <summary> •Â‚¶‚éƒ{ƒ^ƒ“ <summary>
+    /// <summary> é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ <summary>
     [SerializeField] private Button btn_Close;
 
-    //•\¦‚·‚éƒAƒCƒeƒ€ƒAƒCƒRƒ“
+    //è¡¨ç¤ºã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚¢ã‚¤ã‚³ãƒ³
     private static List<ItemIconData> itemIconsData = new List<ItemIconData>();
 
     public VIEWTYPE ViewType => type;
@@ -39,12 +39,12 @@ public class PlayerItemView : ViewBase, IUpdateList
 
     protected override void OnEnable()
     {
-        //ƒŠƒXƒg‚ÌXV
+        //ãƒªã‚¹ãƒˆã®æ›´æ–°
         UpdateList();
     }
 
     /// <summary>
-    /// ŠO•”‰Šú‰»
+    /// å¤–éƒ¨åˆæœŸåŒ–
     /// </summary>
     protected override void Start()
     {
@@ -55,11 +55,11 @@ public class PlayerItemView : ViewBase, IUpdateList
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€‚Ìİ’è
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã®è¨­å®š
     /// </summary>
     private void SetItemDataList(Action callback)
     {
-        //ƒvƒŒƒCƒ„[‚Ìƒf[ƒ^Šƒf[ƒ^‚ğæ“¾
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿æ‰€æŒãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
         var data = player.PlayerHoldItems;
         var itemManager = ItemManager.Instance;
         if (data == null || itemManager == null)
@@ -77,7 +77,7 @@ public class PlayerItemView : ViewBase, IUpdateList
             }
             catch (IndexOutOfRangeException e)
             {
-                DebugUtils.Log("—v‘f‚ªæ“¾‚Å‚«‚Ü‚¹‚ñ");
+                DebugUtils.Log("è¦ç´ ãŒå–å¾—ã§ãã¾ã›ã‚“");
                 return;
             }
         }
@@ -86,7 +86,7 @@ public class PlayerItemView : ViewBase, IUpdateList
     }
 
     /// <summary>
-    /// ƒAƒCƒRƒ“İ’è
+    /// ã‚¢ã‚¤ã‚³ãƒ³è¨­å®š
     /// </summary>
     private void SetScrollItemIcon()
     {
@@ -101,7 +101,7 @@ public class PlayerItemView : ViewBase, IUpdateList
     }
 
     /// <summary>
-    /// ƒŠƒXƒg‚ÌXV‚·‚é•K—v‚ª‚ ‚é‰æ–Ê
+    /// ãƒªã‚¹ãƒˆã®æ›´æ–°ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ç”»é¢
     /// </summary>
     public void UpdateList() 
     {

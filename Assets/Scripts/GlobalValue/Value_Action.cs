@@ -1,11 +1,11 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public partial class GlobalValue 
 {
     //Dig_Action
-    public static int DIG_MISSING_NO = 5;//ÇÕÇ∏ÇÍ
+    public static int DIG_MISSING_NO = 5;//„ÅØ„Åö„Çå
 
     public static int DIG_RARE_N_NO = 0;
     public static int DIG_RARE_R_NO = 1;

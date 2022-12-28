@@ -1,37 +1,37 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Player‚ÌˆÚ“®‚ÉŠÖ‚·‚éƒNƒ‰ƒX
+/// Playerã®ç§»å‹•ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public partial class Player
 {
-    /// <summary> ƒAƒjƒ[ƒVƒ‡ƒ“ </summary>
+    /// <summary> ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ </summary>
     [SerializeField]
     private Animator playerAnim;
 
-    //ƒLƒƒƒbƒVƒ…—p
+    //ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç”¨
     private InputManager inputManager;
 
-    /// <summary> ˆÚ“®ƒXƒs[ƒh </summary>
+    /// <summary> ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰ </summary>
     [SerializeField]
     private float moveSpeed;
 
-    /// <summary> ƒ^ƒbƒv‚µ‚½ˆÊ’u </summary>
+    /// <summary> ã‚¿ãƒƒãƒ—ã—ãŸä½ç½® </summary>
     [SerializeField]
     private Vector2 tapPos;
 
-    /// <summary> Œü‚­‚×‚«•ûŒü </summary>
+    /// <summary> å‘ãã¹ãæ–¹å‘ </summary>
     private Vector2 direction;
 
-    /// <summary> ƒvƒŒ[ƒ„[‚ÌŒü‚«‚Ìˆê“I‚È‘Ş”ğ </summary>
+    /// <summary> ãƒ—ãƒ¬ãƒ¼ãƒ¤ãƒ¼ã®å‘ãã®ä¸€æ™‚çš„ãªé€€é¿ </summary>
     private Vector3 tempScale;
 
-    /// <summary> ƒvƒŒƒCƒ„[‚ªˆÚ“®‰Â”\‚©‚Ç‚¤‚©‚Ì”»’è </summary>
+    /// <summary> ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç§»å‹•å¯èƒ½ã‹ã©ã†ã‹ã®åˆ¤å®š </summary>
     private bool isMove;
 
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public Vector2 Direction => direction;
     public Animator PlayerAnim => playerAnim;
    public bool IsMove { get { return isMove; } set { isMove = value; } }
@@ -41,10 +41,10 @@ public partial class Player
     {
         direction = -Vector2.up;
         moveSpeed = 4.0f;
-        //isMove = true;//‚Æ‚è‚ ‚¦‚¸“®‚¯‚é
+        //isMove = true;//ã¨ã‚Šã‚ãˆãšå‹•ã‘ã‚‹
     }
 
-    /// <summary> ‰Šú‰»FŠO•”ƒNƒ‰ƒX </summary>
+    /// <summary> åˆæœŸåŒ–ï¼šå¤–éƒ¨ã‚¯ãƒ©ã‚¹ </summary>
     private void MoveStart()
     {
         inputManager = InputManager.Instance;
@@ -56,30 +56,30 @@ public partial class Player
     }
 
     /// <summary>
-    /// ˆÚ“®XV
-    /// ‘Ò‹@’†‚©•à‚¢‚Ä‚é‚Æ‚«‚Éo—ˆ‚éH
+    /// ç§»å‹•æ›´æ–°
+    /// å¾…æ©Ÿä¸­ã‹æ­©ã„ã¦ã‚‹ã¨ãã«å‡ºæ¥ã‚‹ï¼Ÿ
     /// </summary>
     private void MoveUpdate()
     {
         if (!isMove)
             return;
 
-        //ƒ^ƒbƒ`ó‘Ô‚ÅˆÚ“®‚ğ§Œä
+        //ã‚¿ãƒƒãƒçŠ¶æ…‹ã§ç§»å‹•ã‚’åˆ¶å¾¡
         switch (inputManager.TouchPhase)
         {
-            case TouchPhase.Began://‰æ–Ê‚Éw‚ªG‚ê‚½
+            case TouchPhase.Began://ç”»é¢ã«æŒ‡ãŒè§¦ã‚ŒãŸ
                 ChangeState(stateWalking);
                 tapPos = inputManager.TouchBeginPos;
                 PlayerTurning();
                 CharacterMovement();
                 break;
 
-            case TouchPhase.Moved://‰æ–Êã‚Åw‚ª“®‚¢‚Ä‚é‚Æ‚«
+            case TouchPhase.Moved://ç”»é¢ä¸Šã§æŒ‡ãŒå‹•ã„ã¦ã‚‹ã¨ã
                 PlayerTurning();
                 CharacterMovement();
                 break;
 
-            case TouchPhase.Ended://w‚ª—£‚ê‚é
+            case TouchPhase.Ended://æŒ‡ãŒé›¢ã‚Œã‚‹
                 tapPos = inputManager.TouchingLastPos;
                 transform.position = new Vector2(tapPos.x, tapPos.y);
                 ChangeState(stateIdle);
@@ -89,7 +89,7 @@ public partial class Player
     }
 
     /// <summary>
-    /// ƒ^ƒbƒv‚µ‚½êŠ‚É•ûŒü“]Š·
+    /// ã‚¿ãƒƒãƒ—ã—ãŸå ´æ‰€ã«æ–¹å‘è»¢æ›
     /// </summary>
     private void PlayerTurning()
     {
@@ -101,13 +101,13 @@ public partial class Player
     }
 
     /// <summary>
-    /// Œü‚«‚É‡‚í‚¹‚½ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌØ‚è‘Ö‚¦
+    /// å‘ãã«åˆã‚ã›ãŸã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®åˆ‡ã‚Šæ›¿ãˆ
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     private void PlayerAnimation(float x, float y)
     {
-        //0.5‚Ì”‚ğ‹ô”‚É‡‚í‚¹‚é
+        //0.5ã®æ•°ã‚’å¶æ•°ã«åˆã‚ã›ã‚‹
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
 
@@ -115,14 +115,14 @@ public partial class Player
         tempScale.x = x > 0 ? Mathf.Abs(tempScale.x) : -Mathf.Abs(tempScale.x);
         transform.localScale = tempScale;
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‚½‚ß‚É‰Šú‰»‚³‚¹‚é
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãŸã‚ã«åˆæœŸåŒ–ã•ã›ã‚‹
         x = Mathf.Abs(x);
         playerAnim.SetFloat("FaceX", x);
         playerAnim.SetFloat("FaceY", y);
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌˆÚ“®
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>

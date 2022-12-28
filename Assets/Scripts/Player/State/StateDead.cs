@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ŠeƒXƒe[ƒg‚²‚Æ‚É‹LÚ
+/// å„ã‚¹ãƒ†ãƒ¼ãƒˆã”ã¨ã«è¨˜è¼‰
 /// </summary>
 public partial class Player
 {
     /// <summary>
-    /// €–S
+    /// æ­»äº¡
     /// </summary>
     public class StateDead : PlayerStateBase
     {

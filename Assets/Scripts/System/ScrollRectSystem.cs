@@ -1,38 +1,38 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using Carbon;
 using UniRx;
 using System;
 
 /// <summary>
-/// ScrollRect‚ÌƒCƒxƒ“ƒgŒp³—pƒRƒ“ƒ|[ƒlƒ“ƒg
+/// ScrollRectã®ã‚¤ãƒ™ãƒ³ãƒˆç¶™æ‰¿ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 /// </summary>
 [DisallowMultipleComponent]
 public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 {
 	//============================================
-	//! ’è”
+	//! å®šæ•°
 	//============================================
 	private const int ElasticMoveTimeFrame = 30;
 
 	//============================================
-	//! ƒƒ“ƒo[•Ï”
+	//! ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 	//============================================
 	private IDisposable elasticTimer;
 	private PointerEventData currentPointerEventData = null;
 
 	//============================================
-	//! ƒvƒƒpƒeƒB
+	//! ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 	//============================================
 	public bool IsDrag { get; private set; }
 	public bool IsElasticMove { get; private set; }
-	public bool IsHorizontal { get { return horizontal; } } // ‰¡•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Ì‚©
-	public bool IsVertical { get { return vertical; } } // c•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Ì‚©
-	public float Velocity { get { return Mathf.Abs(IsHorizontal ? velocity.x : velocity.y); } } // ‰Á‘¬“x
-	private bool IsElastic { get { return movementType == MovementType.Elastic; } } // Elasticƒ^ƒCƒv‚È‚Ì‚©
+	public bool IsHorizontal { get { return horizontal; } } // æ¨ªæ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã®ã‹
+	public bool IsVertical { get { return vertical; } } // ç¸¦æ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã®ã‹
+	public float Velocity { get { return Mathf.Abs(IsHorizontal ? velocity.x : velocity.y); } } // åŠ é€Ÿåº¦
+	private bool IsElastic { get { return movementType == MovementType.Elastic; } } // Elasticã‚¿ã‚¤ãƒ—ãªã®ã‹
 	public float NormalizedPosition { get { return IsVertical ? verticalNormalizedPosition : horizontalNormalizedPosition; } }
 	//============================================
-	//! ƒR[ƒ‹ƒoƒbƒN@:@ƒZƒbƒg‚ÍŠO•”Bæ“¾‚Í“à•”
+	//! ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€€:ã€€ã‚»ãƒƒãƒˆã¯å¤–éƒ¨ã€‚å–å¾—ã¯å†…éƒ¨
 	//============================================
 	public Action BeginDrag { private get; set; }
 
@@ -40,16 +40,16 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	// Monobehaviour
 	//--------------------------------------------
 	/// <summary>
-	/// Resetˆ—FŒ^‚É‚æ‚Á‚ÄŒÄ‚Ño‚³‚ê‚éƒƒ\ƒbƒh‚ğ•Ï‚¦‚éIInew
+	/// Resetå‡¦ç†ï¼šå‹ã«ã‚ˆã£ã¦å‘¼ã³å‡ºã•ã‚Œã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å¤‰ãˆã‚‹ï¼ï¼new
 	/// </summary>
 	new void Reset()
 	{
-		// ‚Æ‚è‚ ‚¦‚¸—Ç‚¢Š´‚¶‚Ìƒpƒ‰ƒ[ƒ^“ü‚ê‚Ä‚¨‚­
+		// ã¨ã‚Šã‚ãˆãšè‰¯ã„æ„Ÿã˜ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å…¥ã‚Œã¦ãŠã
 		movementType = MovementType.Unrestricted;
 		decelerationRate = 0.2f;
 		scrollSensitivity = 7f;
 
-		// ƒRƒ“ƒ|[ƒ“ƒlƒ“ƒgİ’è
+		// ã‚³ãƒ³ãƒãƒ¼ãƒ³ãƒãƒ³ãƒˆè¨­å®š
 		var scrollContent = GetComponentInChildren<ScrollContentUI>();
 		if (scrollContent == null)
 		{
@@ -59,7 +59,7 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒOŠJn‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
+	/// ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹æ™‚ã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public override void OnBeginDrag(PointerEventData eventData)
 	{
@@ -73,7 +73,7 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒO‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
+	/// ãƒ‰ãƒ©ãƒƒã‚°æ™‚ã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public override void OnDrag(PointerEventData eventData)
 	{
@@ -85,7 +85,7 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	}
 
 	/// <summary>
-	/// ƒhƒ‰ƒbƒOI—¹‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
+	/// ãƒ‰ãƒ©ãƒƒã‚°çµ‚äº†æ™‚ã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
 	/// </summary>
 	public override void OnEndDrag(PointerEventData eventData)
 	{
@@ -114,7 +114,7 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 		if (currentPointerEventData != null)
 		{
 			CancelDrag();
-			//‹­§ƒhƒ‰ƒbƒOI—¹
+			//å¼·åˆ¶ãƒ‰ãƒ©ãƒƒã‚°çµ‚äº†
 			ExecuteEvents.Execute(currentPointerEventData.pointerDrag, currentPointerEventData, ExecuteEvents.endDragHandler);
 		}
 	}
@@ -124,7 +124,7 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	// private
 	//--------------------------------------------
 	/// <summary>
-	/// ƒXƒNƒ[ƒ‹ƒo[‚ÌƒAƒNƒeƒBƒuİ’è
+	/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–è¨­å®š
 	/// </summary>
 	private void SetActiveScrollBar(bool isActive)
 	{
@@ -136,14 +136,14 @@ public sealed class ScrollRectSystem : UnityEngine.UI.ScrollRect
 	// public
 	//--------------------------------------------
 	/// <summary>
-	/// ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—LŒø/–³Œøİ’è
+	/// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æœ‰åŠ¹/ç„¡åŠ¹è¨­å®š
 	/// </summary>
 	public void SetEnabled(bool enabled)
 	{
-		// ƒRƒ“ƒ|[ƒlƒ“ƒg—LŒø/–³Œøİ’è
+		// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæœ‰åŠ¹/ç„¡åŠ¹è¨­å®š
 		this.enabled = enabled;
 
-		// ƒXƒNƒ[ƒ‹ƒo[•\¦/”ñ•\¦İ’è
+		// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼è¡¨ç¤º/éè¡¨ç¤ºè¨­å®š
 		SetActiveScrollBar(enabled);
 	}
 }

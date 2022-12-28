@@ -1,16 +1,16 @@
-using Carbon;
+ï»¿using Carbon;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ©g‚ğScrollRect‚Ìƒhƒ‰ƒbƒO—Ìˆæ‚ÉŠÜ‚ß‚éƒNƒ‰ƒX
+/// è‡ªèº«ã‚’ScrollRectã®ãƒ‰ãƒ©ãƒƒã‚°é ˜åŸŸã«å«ã‚ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 [DisallowMultipleComponent]
 public sealed class ScrollDragAreaUI : CarbonBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	//============================================
-	//! ƒƒ“ƒo[•Ï”(SerializeField)
+	//! ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°(SerializeField)
 	//============================================
 	[SerializeField] private ScrollRectSystem scrollRect = null;
 
@@ -19,7 +19,7 @@ public sealed class ScrollDragAreaUI : CarbonBehaviour, IBeginDragHandler, IDrag
 	//	MonoBehaviour
 	//--------------------------------------------
 	/// <summary>
-	/// Resetˆ—
+	/// Resetå‡¦ç†
 	/// </summary>
 	private void Reset()
 	{

@@ -1,35 +1,35 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒAƒCƒeƒ€ƒAƒCƒRƒ“‚Ìƒf[ƒ^
+/// ã‚¢ã‚¤ãƒ†ãƒ ã‚¢ã‚¤ã‚³ãƒ³ã®ãƒ‡ãƒ¼ã‚¿
 /// </summary>
 public struct ItemIconData
 {
-    /// <summary> ƒAƒCƒRƒ“ƒCƒ[ƒW </summary>
+    /// <summary> ã‚¢ã‚¤ã‚³ãƒ³ã‚¤ãƒ¡ãƒ¼ã‚¸ </summary>
     public Sprite ItemImage;
 
-    /// <summary> ƒŒƒAƒŠƒeƒB </summary>
+    /// <summary> ãƒ¬ã‚¢ãƒªãƒ†ã‚£ </summary>
     public ItemData.ITEM_RARITY Rarity;
 
-    /// <summary> ƒAƒCƒRƒ“ƒf[ƒ^ </summary>
+    /// <summary> ã‚¢ã‚¤ã‚³ãƒ³ãƒ‡ãƒ¼ã‚¿ </summary>
     public ItemData Data;
 
-    /// <summary> –¼‘O </summary>
+    /// <summary> åå‰ </summary>
     public string ItemName;
 
-    /// <summary> Š” </summary>
+    /// <summary> æ‰€æŒæ•° </summary>
     public int HoldIndex;
 
     /// <summary>
-    /// ƒf[ƒ^‚Ìİ’è
+    /// ãƒ‡ãƒ¼ã‚¿ã®è¨­å®š
     /// </summary>
     /// <param name="data"></param>
     /// <param name="index"></param>
-    public void SetIconsData(ItemData@data,int index)
+    public void SetIconsData(ItemDataã€€data,int index)
     {
         ItemImage = data.IconImage;
         Rarity = data.Rarity;

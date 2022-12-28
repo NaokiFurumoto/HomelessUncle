@@ -1,32 +1,32 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using MiniJSON;
 using System.IO;
 
 /// <summary>
-/// Dictionaryƒf[ƒ^‚ÆJsonƒf[ƒ^(string)‚Ì•ÏŠ·‚ğs‚¤
-/// ˆÃ†‰»‚Æ•¡‡‰»‚à“¯‚És‚¤
+/// Dictionaryãƒ‡ãƒ¼ã‚¿ã¨Jsonãƒ‡ãƒ¼ã‚¿(string)ã®å¤‰æ›ã‚’è¡Œã†
+/// æš—å·åŒ–ã¨è¤‡åˆåŒ–ã‚‚åŒæ™‚ã«è¡Œã†
 /// </summary>
 public static class JsonSerializer
 {
 
-    //•Û‘¶‚·‚éƒfƒBƒŒƒNƒgƒŠ–¼
+    //ä¿å­˜ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå
     private const string DIRECTORY_NAME = "Data";
 
-    //ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾
+    //ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—
     private static string GetFilePath(string fileName)
     {
 
         string directoryPath = Application.persistentDataPath + "/" + DIRECTORY_NAME;
 
-        //ƒfƒBƒŒƒNƒgƒŠ‚ª–³‚¯‚ê‚Îì¬
+        //ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒç„¡ã‘ã‚Œã°ä½œæˆ
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
 
-        //ƒtƒ@ƒCƒ‹–¼‚ÍˆÃ†‰»‚·‚é
+        //ãƒ•ã‚¡ã‚¤ãƒ«åã¯æš—å·åŒ–ã™ã‚‹
         string encryptedFlieName = Encryption.EncryptString(fileName);
         string filePath = directoryPath + "/" + encryptedFlieName;
 
@@ -34,17 +34,17 @@ public static class JsonSerializer
     }
 
     /// <summary>
-    /// Dictionaryƒf[ƒ^‚ğjsonŒ`®‚É•ÏŠ·‚µ‚Ä•Û‘¶‚·‚é
+    /// Dictionaryãƒ‡ãƒ¼ã‚¿ã‚’jsonå½¢å¼ã«å¤‰æ›ã—ã¦ä¿å­˜ã™ã‚‹
     /// </summary>
-    /// <param name="dic">•Û‘¶‚·‚éDictionary<string, object>ƒf[ƒ^</param>
-    /// <param name="fileName">•Û‘¶ƒtƒ@ƒCƒ‹–¼</param>
+    /// <param name="dic">ä¿å­˜ã™ã‚‹Dictionary<string, object>ãƒ‡ãƒ¼ã‚¿</param>
+    /// <param name="fileName">ä¿å­˜ãƒ•ã‚¡ã‚¤ãƒ«å</param>
     public static void Save(Dictionary<string, object> dic, string fileName)
     {
 
         string jsonStr = Json.Serialize(dic);
         Debug.Log("serialized text = " + jsonStr);
 
-        //json‚ğˆÃ†‰»‚·‚é
+        //jsonã‚’æš—å·åŒ–ã™ã‚‹
         jsonStr = Encryption.EncryptString(jsonStr);
 
         string filePath = GetFilePath(fileName);
@@ -55,22 +55,22 @@ public static class JsonSerializer
     }
 
     /// <summary>
-    /// jsonƒf[ƒ^‚ğ“Ç‚İ‚İDictionaryƒf[ƒ^‚É•ÏŠ·‚µ‚Ä•Ô‚·
+    /// jsonãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿Dictionaryãƒ‡ãƒ¼ã‚¿ã«å¤‰æ›ã—ã¦è¿”ã™
     /// </summary>
-    /// <param name="fileName">æ“¾‚·‚éƒtƒ@ƒCƒ‹‚Ì–¼‘O</param>
+    /// <param name="fileName">å–å¾—ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰</param>
     public static Dictionary<string, object> Load(string fileName)
     {
 
         string filePath = GetFilePath(fileName);
         if (!File.Exists(filePath))
         {
-            Debug.Log(fileName + "‚Í‚ ‚è‚Ü‚¹‚ñI");
+            Debug.Log(fileName + "ã¯ã‚ã‚Šã¾ã›ã‚“ï¼");
             return null;
         }
 
         string jsonStr = File.ReadAllText(filePath);
 
-        //æ“¾‚µ‚½ƒtƒ@ƒCƒ‹‚ğ•¡‡‰»
+        //å–å¾—ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡åˆåŒ–
         jsonStr = Encryption.DecryptString(jsonStr);
 
         Dictionary<string, object> dic = Json.Deserialize(jsonStr) as Dictionary<string, object>;

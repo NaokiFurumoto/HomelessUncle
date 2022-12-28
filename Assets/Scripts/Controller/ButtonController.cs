@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,7 +21,7 @@ public class ButtonController : UIParts
     //}
 
     /// <summary>
-    /// ƒCƒxƒ“ƒg‚Ì“o˜^
+    /// ã‚¤ãƒ™ãƒ³ãƒˆã®ç™»éŒ²
     /// </summary>
     /// <param name="action"></param>
     public void SetBtnEvent(UnityAction action)
@@ -30,7 +30,7 @@ public class ButtonController : UIParts
     }
 
     /// <summary>
-    /// ƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚È‚¢‘Î‰
+    /// ãƒœã‚¿ãƒ³ã‚’æŠ¼ã›ãªã„å¯¾å¿œ
     /// </summary>
     /// <param name="judge"></param>
     public void SetDisable (bool judge)

@@ -1,32 +1,32 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Player
 {
     /// <summary>
-    /// ‘Ò‹@’†
-    /// Player‚ÌPrivate‚È•Ï”‚ÉƒAƒNƒZƒXo—ˆ‚é‚Ì‚ÅqƒNƒ‰ƒX‚É‚µ‚Ä‚¢‚é
+    /// å¾…æ©Ÿä¸­
+    /// Playerã®Privateãªå¤‰æ•°ã«ã‚¢ã‚¯ã‚»ã‚¹å‡ºæ¥ã‚‹ã®ã§å­ã‚¯ãƒ©ã‚¹ã«ã—ã¦ã„ã‚‹
     /// </summary>
     public class StateIdle : PlayerStateBase
     {
-        //‘Ò‹@ŠÔŒv‘ª—p
+        //å¾…æ©Ÿæ™‚é–“è¨ˆæ¸¬ç”¨
         private Time idleTimes;
         public override void OnEnter(Player player, PlayerStateBase state) 
         {
             player.isMove = true;
-            //‘Ò‹@ŠÔ‚ğŒv‘ª
+            //å¾…æ©Ÿæ™‚é–“ã‚’è¨ˆæ¸¬
             player.playerAnim.SetTrigger("Idle");
         }
 
-        //‘Ò‹@’†‚ÉQ‚½‚è‚·‚éH
-        //‚«o‚µ‚ğo‚·H
+        //å¾…æ©Ÿä¸­ã«å¯ãŸã‚Šã™ã‚‹ï¼Ÿ
+        //å¹ãå‡ºã—ã‚’å‡ºã™ï¼Ÿ
         public override void OnUpdate(Player player) { }
 
         //
         public override void OnExit(Player player, PlayerStateBase state)
         {
-            //Œv‘ªI—¹   
+            //è¨ˆæ¸¬çµ‚äº†   
            player.playerAnim.ResetTrigger("Idle");
         }
     }

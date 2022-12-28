@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[–{‘Ì
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æœ¬ä½“
 /// </summary>
 public partial class Player : MonoBehaviour
 {
@@ -14,45 +14,45 @@ public partial class Player : MonoBehaviour
         StateAwake();
         MoveAwake();
 
-        //Œã‚Åíœ
+        //å¾Œã§å‰Šé™¤
         AwakeHoldItemes();
     }
 
     void Start()
     {
-        //ƒQ[ƒ€ƒRƒ“ƒgƒ[ƒ‰[‚ªƒVƒXƒeƒ€ƒ[ƒh‚Ü‚¿
-        //‚»‚Ì‚ ‚ÆƒvƒŒƒCƒ„[
+        //ã‚²ãƒ¼ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ãŒã‚·ã‚¹ãƒ†ãƒ ãƒ­ãƒ¼ãƒ‰ã¾ã¡
+        //ãã®ã‚ã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
-        //Šeíƒ[ƒhŠ®—¹‘Ò‚¿HH
+        //å„ç¨®ãƒ­ãƒ¼ãƒ‰å®Œäº†å¾…ã¡ï¼Ÿï¼Ÿ
 
-        //while‚ÅloadŠ®—¹‘Ò‚¿HH
+        //whileã§loadå®Œäº†å¾…ã¡ï¼Ÿï¼Ÿ
         //yield return null;
 
-        //ƒXƒe[ƒg‚ÉŠÖ‚·‚é‰Šú‰»
+        //ã‚¹ãƒ†ãƒ¼ãƒˆã«é–¢ã™ã‚‹åˆæœŸåŒ–
         StateStart();
-        //ˆÚ“®‚ÉŠÖ‚·‚é‰Šú‰»
+        //ç§»å‹•ã«é–¢ã™ã‚‹åˆæœŸåŒ–
         MoveStart();
-        //ƒXƒe[ƒ^ƒX‰Šú‰»
+        //ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹åˆæœŸåŒ–
         playerStatus.SetInitializeStatus();
-        //UI”½‰f
+        //UIåæ˜ 
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ƒXƒe[ƒgXV
+        //ã‚¹ãƒ†ãƒ¼ãƒˆæ›´æ–°
         StateUpdate();
     }
 
     void LateUpdate()
     {
         
-        //ˆÚ“®XV
+        //ç§»å‹•æ›´æ–°
         MoveUpdate();
     }
 
-    //Õ“Ë
+    //è¡çª
     private void OnCollisionEnter(Collision colliion)
     {
         // ChangeState(stateIdle);

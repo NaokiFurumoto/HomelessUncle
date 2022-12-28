@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// ‘Ì—ÍƒQ[ƒW‚ÌUI§Œä
+/// ä½“åŠ›ã‚²ãƒ¼ã‚¸ã®UIåˆ¶å¾¡
 /// </summary>
 public class UILifeGauge : GaugeController
 {
@@ -17,7 +17,7 @@ public class UILifeGauge : GaugeController
     protected override void Start() { }
 
     /// <summary>
-    /// Å¬’lAÅ‘å’l‚Ìİ’è
+    /// æœ€å°å€¤ã€æœ€å¤§å€¤ã®è¨­å®š
     /// </summary>
     /// <param name="min"></param>
     /// <param name="max"></param>
@@ -29,7 +29,7 @@ public class UILifeGauge : GaugeController
     }
 
     /// <summary>
-    /// ƒXƒ‰ƒCƒ_[‚Ì”’l‚ğ”½‰f
+    /// ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®æ•°å€¤ã‚’åæ˜ 
     /// </summary>
     protected override void SetValueSlider()
     {

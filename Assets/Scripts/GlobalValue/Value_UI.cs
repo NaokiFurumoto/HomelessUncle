@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// UI�֘A�̒l
+/// UI関連の値
 /// </summary>
 public partial class GlobalValue
 {

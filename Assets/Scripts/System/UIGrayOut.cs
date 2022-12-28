@@ -1,11 +1,11 @@
-using System.Linq;
+ï»¿using System.Linq;
 using Carbon;
 using UnityEngine;
 
 public sealed class UIGrayOut : MonoBehaviour
 {
     //============================================
-    // ƒƒ“ƒo[•Ï”(SerializeField)
+    // ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°(SerializeField)
     //============================================
     [SerializeField] private CanvasRenderer[] canvasRenderers = new CanvasRenderer[0];
 
@@ -14,13 +14,13 @@ public sealed class UIGrayOut : MonoBehaviour
     [SerializeField] private TMPro.TextMeshPro[] textMeshProList = new TMPro.TextMeshPro[0];
 
     //============================================
-    //! ƒƒ“ƒo[•Ï”
+    //! ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
     //============================================
     private bool isInitialized = false;
 
     private TMPro.TMP_SubMeshUI[] subMeshUIList = new TMPro.TMP_SubMeshUI[0];
     //============================================
-    //! ƒvƒƒpƒeƒB
+    //! ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     //============================================
     public bool IsGrayout { private set; get; }
 
@@ -62,7 +62,7 @@ public sealed class UIGrayOut : MonoBehaviour
     // public
     //--------------------------------------------
     /// <summary>
-    /// ƒOƒŒ[ƒAƒEƒgİ’è
+    /// ã‚°ãƒ¬ãƒ¼ã‚¢ã‚¦ãƒˆè¨­å®š
     /// </summary>
     public void SetGrayout(bool isGrayout)
     {
@@ -104,7 +104,7 @@ public sealed class UIGrayOut : MonoBehaviour
     // private
     //--------------------------------------------
     /// <summary>
-    /// ‰Šú‰»
+    /// åˆæœŸåŒ–
     /// </summary>
     private void Initialize()
     {

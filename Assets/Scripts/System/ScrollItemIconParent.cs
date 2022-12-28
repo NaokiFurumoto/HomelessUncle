@@ -1,17 +1,17 @@
-using Carbon;
+ï»¿using Carbon;
 using UnityEngine;
 using UnityEngine.UI;
 
 public sealed class ScrollItemIconParent : RectTransformBehaviour
 {
 	//============================================
-	//! ƒƒ“ƒo[•Ï”
+	//! ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 	//============================================
 	[SerializeField] private HorizontalOrVerticalLayoutGroup layoutGroup;
 	[SerializeField] private bool isHorizontal;
 
 	//============================================
-	//! ƒvƒƒpƒeƒB
+	//! ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 	//============================================
 	public int Index { get; private set; }
 	public int InstanceId { get { return gameObject.GetInstanceID(); } }
@@ -21,7 +21,7 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 	// private
 	//--------------------------------------------
 	/// <summary>
-	/// ‰Šú‰»‚µ‚Ü‚·
+	/// åˆæœŸåŒ–ã—ã¾ã™
 	/// </summary>
 	private void Init(bool isHorizontal)
 	{
@@ -53,17 +53,17 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 	// public
 	//--------------------------------------------
 	/// <summary>
-	/// LayoutGroup”½‰f
+	/// LayoutGroupåæ˜ 
 	/// </summary>
 	public void ApplyLayoutGroup(int gridCount, int totalPrefabSize)
 	{
-		// Spacingİ’è
+		// Spacingè¨­å®š
 		var rect = rectTransform.rect;
 		var rectSize = isHorizontal ? rect.height : rect.width;
 		var spacing = (rectSize - totalPrefabSize) / gridCount;
 		layoutGroup.spacing = spacing;
 
-		// ŠJnˆÊ’u‚ğ’²®
+		// é–‹å§‹ä½ç½®ã‚’èª¿æ•´
 		var halfSpacing = spacing * 0.5f;
 		if (isHorizontal)
 		{
@@ -74,7 +74,7 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 			layoutGroup.padding.left = (int)halfSpacing;
 		}
 
-		// q‚ÌLayoutElement‚ÌˆÊ’u’²®
+		// å­ã®LayoutElementã®ä½ç½®èª¿æ•´
 		layoutGroup.CalculateLayoutInputHorizontal();
 		layoutGroup.CalculateLayoutInputVertical();
 		layoutGroup.SetLayoutHorizontal();
@@ -84,7 +84,7 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒCƒ“ƒfƒbƒNƒX’l‚ğİ’è‚µ‚Ü‚·
+	/// ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’è¨­å®šã—ã¾ã™
 	/// </summary>
 	public void SetIndex(int index)
 	{
@@ -95,11 +95,11 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 	// public static
 	//--------------------------------------------
 	/// <summary>
-	/// ScrollItemParent‚ğì¬‚µ‚Ä•Ô‚µ‚Ü‚·
+	/// ScrollItemParentã‚’ä½œæˆã—ã¦è¿”ã—ã¾ã™
 	/// </summary>
-	/// <param name="parent">				e‚Æ‚È‚éRectTransform							</param>
-	/// <param name="cachedRectTransform">	RectTransform‚Ìİ’è’l(AnchorAPivotASizeDelta)	</param>
-	/// <param name="isHorizontal">			ƒXƒNƒ[ƒ‹•ûŒü									</param>
+	/// <param name="parent">				è¦ªã¨ãªã‚‹RectTransform							</param>
+	/// <param name="cachedRectTransform">	RectTransformã®è¨­å®šå€¤(Anchorã€Pivotã€SizeDelta)	</param>
+	/// <param name="isHorizontal">			ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘									</param>
 	public static ScrollItemIconParent Create(
 		RectTransform parent,
 		RectTransformBehaviour content,
@@ -107,14 +107,14 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 		bool isHorizontal
 	)
 	{
-		// ƒQ[ƒ€ƒIƒuƒWƒFƒNƒgì¬
+		// ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆä½œæˆ
 		var gameObject = new GameObject("ScrollItemIconParent");
 		var scrollParent = gameObject.AddComponent<ScrollItemIconParent>();
 		scrollParent.SetParent(parent, false);
 		scrollParent.SetLayer(parent);
 		scrollParent.ResetLocalTransform();
 
-		// AnchorASizeAPivotİ’è
+		// Anchorã€Sizeã€Pivotè¨­å®š
 		scrollParent.AdaptAnchor(content.rectTransform);
 		scrollParent.SetSizeDelta(content.sizeDelta);
 		scrollParent.SetPivot(pivot);
@@ -128,7 +128,7 @@ public sealed class ScrollItemIconParent : RectTransformBehaviour
 			scrollParent.SetSizeDeltaX(0);
 		}
 
-		// ScrollItemParentƒRƒ“ƒ|[ƒlƒ“ƒg‰Šú‰»
+		// ScrollItemParentã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåˆæœŸåŒ–
 		scrollParent.Init(isHorizontal);
 
 		return scrollParent;

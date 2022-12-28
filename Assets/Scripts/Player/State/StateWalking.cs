@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ŠeƒXƒe[ƒg‚²‚Æ‚É‹LÚ
+/// å„ã‚¹ãƒ†ãƒ¼ãƒˆã”ã¨ã«è¨˜è¼‰
 /// </summary>
 public partial class Player
 {
     /// <summary>
-    /// •à‚­
+    /// æ­©ã
     /// </summary>
     public class StateWalking : PlayerStateBase
     {
@@ -21,7 +21,7 @@ public partial class Player
 
         public override void OnExit(Player player, PlayerStateBase state)
         {
-            //Œv‘ªI—¹   
+            //è¨ˆæ¸¬çµ‚äº†   
             player.playerAnim.ResetTrigger("Walk");
         }
     }

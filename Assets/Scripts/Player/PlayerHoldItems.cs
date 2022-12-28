@@ -1,43 +1,43 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 /// <summary>
-/// ŠƒAƒCƒeƒ€ƒNƒ‰ƒX
+/// æ‰€æŒã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
 /// </summary>
 public partial class Player : MonoBehaviour
 {
-    //ƒAƒCƒeƒ€‚ÆŠ”
+    //ã‚¢ã‚¤ãƒ†ãƒ ã¨æ‰€æŒæ•°
     private static Dictionary<string,int> playerHoldItems = new Dictionary<string,int>();
-    //æ“¾
+    //å–å¾—
     public Dictionary<string, int> PlayerHoldItems => playerHoldItems;
     public int HaveItemsCount => playerHoldItems.Count();
 
     /// <summary>
-    /// ƒ_ƒ~[ƒf[ƒ^“o˜^
+    /// ãƒ€ãƒŸãƒ¼ãƒ‡ãƒ¼ã‚¿ç™»éŒ²
     /// </summary>
     void AwakeHoldItemes()
     {
-        //playerHoldItems.Add("“S‚­‚¸", 2);
-        //playerHoldItems.Add("“ºzÎ", 10);
-        //playerHoldItems.Add("‹âzÎ", 999);
-        //playerHoldItems.Add("‹àzÎ", 8000);
-        //playerHoldItems.Add("è¦Î", 10);
+        //playerHoldItems.Add("é‰„ããš", 2);
+        //playerHoldItems.Add("éŠ…é‰±çŸ³", 10);
+        //playerHoldItems.Add("éŠ€é‰±çŸ³", 999);
+        //playerHoldItems.Add("é‡‘é‰±çŸ³", 8000);
+        //playerHoldItems.Add("éš•çŸ³", 10);
     }
     /// <summary>
-    /// ƒAƒCƒeƒ€‚Ì’Ç‰ÁŠ
-    /// Š”’´‚¦‚½‚ç”„‹p
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã®è¿½åŠ æ‰€æŒ
+    /// æ‰€æŒæ•°è¶…ãˆãŸã‚‰å£²å´
     /// </summary>
     /// <param name="data"></param>
     /// <param name="index"></param>
     public void SetHoldPlayerItem(ItemData data, int index)
     {
-        var name = data.ItemName;        //–¼‘O
-        var maxCount = data.MaxHaveIndex;//Å‘åŠ”
-        var price = data.SellPrice;      //”„’l
+        var name = data.ItemName;        //åå‰
+        var maxCount = data.MaxHaveIndex;//æœ€å¤§æ‰€æŒæ•°
+        var price = data.SellPrice;      //å£²å€¤
 
-        //ƒL[‚ª‘¶İ‚µ‚Ä‚¢‚é   
+        //ã‚­ãƒ¼ãŒå­˜åœ¨ã—ã¦ã„ã‚‹   
         if (playerHoldItems.ContainsKey(name))
         {
             int value = 0;
@@ -61,11 +61,11 @@ public partial class Player : MonoBehaviour
         }
 
         playerHoldItems.Add(name, index);
-        //‚±‚±‚ÅƒZ[ƒu‚µ‚½‚¢
+        //ã“ã“ã§ã‚»ãƒ¼ãƒ–ã—ãŸã„
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€”„‹p
+    /// ã‚¢ã‚¤ãƒ†ãƒ å£²å´
     /// </summary>
     /// <param name="sellPrice"></param>
     private void SellOverItem(int sellPrice) { }

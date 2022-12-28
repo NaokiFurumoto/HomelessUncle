@@ -1,6 +1,6 @@
-using Carbon;
+ï»¿using Carbon;
 /// <summary>
-/// ƒAƒCƒeƒ€ƒAƒCƒRƒ“‚ÌŠî’êƒNƒ‰ƒX
+/// ã‚¢ã‚¤ãƒ†ãƒ ã‚¢ã‚¤ã‚³ãƒ³ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 /// </summary>
 public abstract class ItemIconBase : RectTransformBehaviour
 {

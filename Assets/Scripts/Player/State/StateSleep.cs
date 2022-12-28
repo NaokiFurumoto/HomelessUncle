@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ŠeƒXƒe[ƒg‚²‚Æ‚É‹LÚ
+/// å„ã‚¹ãƒ†ãƒ¼ãƒˆã”ã¨ã«è¨˜è¼‰
 /// </summary>
 public partial class Player
 {
     /// <summary>
-    /// Q‚é
+    /// å¯ã‚‹
     /// </summary>
     public class StateSleep : PlayerStateBase
     { 
@@ -17,14 +17,14 @@ public partial class Player
                     
         }
 
-        //‘Ò‹@’†‚ÉQ‚½‚è‚·‚éH
-        //‚«o‚µ‚ğo‚·H
+        //å¾…æ©Ÿä¸­ã«å¯ãŸã‚Šã™ã‚‹ï¼Ÿ
+        //å¹ãå‡ºã—ã‚’å‡ºã™ï¼Ÿ
         public override void OnUpdate(Player player) { }
 
         //
         public override void OnExit(Player player, PlayerStateBase state)
         {
-            //Œv‘ªI—¹   
+            //è¨ˆæ¸¬çµ‚äº†   
         }
     }
 }

@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[‚ÌƒXƒe[ƒ^ƒX‚ÉŠÖ‚·‚éƒNƒ‰ƒX@İ’è/æ“¾
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€€è¨­å®š/å–å¾—
 /// </summary>
 public partial class Player
 {
@@ -16,40 +16,40 @@ public partial class Player
     [Serializable]
     public class Status
     {
-        /// <summary> ‘Ì—Í </summary>
+        /// <summary> ä½“åŠ› </summary>
         [SerializeField]
         private float hp;
 
-        /// <summary> Å‘å‘Ì—Í </summary>
+        /// <summary> æœ€å¤§ä½“åŠ› </summary>
         [SerializeField]
         private float maxHp;
 
-        /// <summary> •a‹C”»’è </summary>
+        /// <summary> ç—…æ°—åˆ¤å®š </summary>
         [SerializeField]
         private bool isSickness;
 
-        /// <summary> L‚İ </summary>
+        /// <summary> è‡­ã¿ </summary>
         [SerializeField]
         private int smell;
 
-        /// <summary> •ÖˆÓ </summary>
+        /// <summary> ä¾¿æ„ </summary>
         [SerializeField]
         private int bowel;
 
-        /// <summary> Ä‹N‚µ‚½‚Æ‚«‚Ì“à•”•ÖˆÓ </summary>
+        /// <summary> å†èµ·ã—ãŸã¨ãã®å†…éƒ¨ä¾¿æ„ </summary>
         [SerializeField]
         private int loadingBowel;
 
-        /// <summary> Š‹à </summary>
+        /// <summary> æ‰€æŒé‡‘ </summary>
         [SerializeField]
         private int haveMoney;
 
-        /// <summary> Ø‹à </summary>
+        /// <summary> å€Ÿé‡‘ </summary>
         [SerializeField]
         private long loan;
 
 
-        #region ƒvƒƒpƒeƒB
+        #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         public float Hp { get { return hp; } set { hp = value; } }
         public float MaxHp { get { return maxHp; } private set { maxHp = value; } }
         public bool IsSickness { get { return isSickness; } private set { isSickness = value; } }
@@ -61,8 +61,8 @@ public partial class Player
         #endregion
 
         /// <summary>
-        /// ŠJn‚Ì‰ŠúƒXƒe[ƒ^ƒXİ’è:‚Ü‚Æ‚ß‚éB
-        /// ƒ[ƒhƒf[ƒ^‚Å‰Šú‰»
+        /// é–‹å§‹æ™‚ã®åˆæœŸã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¨­å®š:ã¾ã¨ã‚ã‚‹ã€‚
+        /// ãƒ­ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ã§åˆæœŸåŒ–
         /// </summary>
         public void SetInitializeStatus()
         {
@@ -77,8 +77,8 @@ public partial class Player
         }
 
         /// <summary>
-        ///@ƒ[ƒhŒã‚ÌƒXƒe[ƒ^ƒXİ’èF‚Ü‚Æ‚ß‚é
-        ///@ƒ[ƒhƒf[ƒ^‚ğó‚¯æ‚é
+        ///ã€€ãƒ­ãƒ¼ãƒ‰å¾Œã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¨­å®šï¼šã¾ã¨ã‚ã‚‹
+        ///ã€€ãƒ­ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ã‚’å—ã‘å–ã‚‹
         /// </summary>
         public void SetLoadedStatus()
         {

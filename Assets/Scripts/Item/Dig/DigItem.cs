@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Œ@‚èo‚³‚ê‚½ƒAƒCƒeƒ€‚ÉŠÖ‚·‚éƒNƒ‰ƒX
+/// æ˜ã‚Šå‡ºã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class DigItem : MonoBehaviour
 {

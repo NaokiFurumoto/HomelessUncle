@@ -1,101 +1,101 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public static class Encryption
 {
 
     //=================================================================================
-    //KeyˆÃ†‰»
+    //Keyæš—å·åŒ–
     //=================================================================================
 
     private const string PASS = "kokonirandamunapass1";
 
     /// <summary>
-    /// •¶š—ñ‚ğˆÃ†‰»‚·‚é
+    /// æ–‡å­—åˆ—ã‚’æš—å·åŒ–ã™ã‚‹
     /// </summary>
-    /// <param name="sourceString">ˆÃ†‰»‚·‚é•¶š—ñ</param>
-    /// <returns>ˆÃ†‰»‚³‚ê‚½•¶š—ñ</returns>
+    /// <param name="sourceString">æš—å·åŒ–ã™ã‚‹æ–‡å­—åˆ—</param>
+    /// <returns>æš—å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—</returns>
     public static string EncryptString(string sourceString)
     {
-        //RijndaelManagedƒIƒuƒWƒFƒNƒg‚ğì¬
+        //RijndaelManagedã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
         System.Security.Cryptography.RijndaelManaged rijndael =
           new System.Security.Cryptography.RijndaelManaged();
 
-        //ƒpƒXƒ[ƒh‚©‚ç‹¤—LƒL[‚Æ‰Šú‰»ƒxƒNƒ^‚ğì¬
+        //ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰å…±æœ‰ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ã‚¿ã‚’ä½œæˆ
         byte[] key, iv;
         GenerateKeyFromPassword(
         rijndael.KeySize, out key, rijndael.BlockSize, out iv);
         rijndael.Key = key;
         rijndael.IV = iv;
 
-        //•¶š—ñ‚ğƒoƒCƒgŒ^”z—ñ‚É•ÏŠ·‚·‚é
+        //æ–‡å­—åˆ—ã‚’ãƒã‚¤ãƒˆå‹é…åˆ—ã«å¤‰æ›ã™ã‚‹
         byte[] strBytes = System.Text.Encoding.UTF8.GetBytes(sourceString);
 
-        //‘ÎÌˆÃ†‰»ƒIƒuƒWƒFƒNƒg‚Ìì¬
+        //å¯¾ç§°æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
         System.Security.Cryptography.ICryptoTransform encryptor =
           rijndael.CreateEncryptor();
 
-        //ƒoƒCƒgŒ^”z—ñ‚ğˆÃ†‰»‚·‚é
+        //ãƒã‚¤ãƒˆå‹é…åˆ—ã‚’æš—å·åŒ–ã™ã‚‹
         byte[] encBytes = encryptor.TransformFinalBlock(strBytes, 0, strBytes.Length);
 
-        //•Â‚¶‚é
+        //é–‰ã˜ã‚‹
         encryptor.Dispose();
 
-        //ƒoƒCƒgŒ^”z—ñ‚ğ•¶š—ñ‚É•ÏŠ·‚µ‚Ä•Ô‚·
+        //ãƒã‚¤ãƒˆå‹é…åˆ—ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦è¿”ã™
         return System.Convert.ToBase64String(encBytes);
     }
 
     /// <summary>
-    /// ˆÃ†‰»‚³‚ê‚½•¶š—ñ‚ğ•œ†‰»‚·‚é
+    /// æš—å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’å¾©å·åŒ–ã™ã‚‹
     /// </summary>
-    /// <param name="sourceString">ˆÃ†‰»‚³‚ê‚½•¶š—ñ</param>
-    /// <returns>•œ†‰»‚³‚ê‚½•¶š—ñ</returns>
+    /// <param name="sourceString">æš—å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—</param>
+    /// <returns>å¾©å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—</returns>
     public static string DecryptString(string sourceString)
     {
-        //RijndaelManagedƒIƒuƒWƒFƒNƒg‚ğì¬
+        //RijndaelManagedã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
         System.Security.Cryptography.RijndaelManaged rijndael =
           new System.Security.Cryptography.RijndaelManaged();
 
-        //ƒpƒXƒ[ƒh‚©‚ç‹¤—LƒL[‚Æ‰Šú‰»ƒxƒNƒ^‚ğì¬
+        //ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰å…±æœ‰ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ã‚¿ã‚’ä½œæˆ
         byte[] key, iv;
         GenerateKeyFromPassword(
           rijndael.KeySize, out key, rijndael.BlockSize, out iv);
         rijndael.Key = key;
         rijndael.IV = iv;
 
-        //•¶š—ñ‚ğƒoƒCƒgŒ^”z—ñ‚É–ß‚·
+        //æ–‡å­—åˆ—ã‚’ãƒã‚¤ãƒˆå‹é…åˆ—ã«æˆ»ã™
         byte[] strBytes = System.Convert.FromBase64String(sourceString);
 
-        //‘ÎÌˆÃ†‰»ƒIƒuƒWƒFƒNƒg‚Ìì¬
+        //å¯¾ç§°æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
         System.Security.Cryptography.ICryptoTransform decryptor =
           rijndael.CreateDecryptor();
 
-        //ƒoƒCƒgŒ^”z—ñ‚ğ•œ†‰»‚·‚é
-        //•œ†‰»‚É¸”s‚·‚é‚Æ—áŠOCryptographicException‚ª”­¶
+        //ãƒã‚¤ãƒˆå‹é…åˆ—ã‚’å¾©å·åŒ–ã™ã‚‹
+        //å¾©å·åŒ–ã«å¤±æ•—ã™ã‚‹ã¨ä¾‹å¤–CryptographicExceptionãŒç™ºç”Ÿ
         byte[] decBytes = decryptor.TransformFinalBlock(strBytes, 0, strBytes.Length);
 
-        //•Â‚¶‚é
+        //é–‰ã˜ã‚‹
         decryptor.Dispose();
 
-        //ƒoƒCƒgŒ^”z—ñ‚ğ•¶š—ñ‚É–ß‚µ‚Ä•Ô‚·
+        //ãƒã‚¤ãƒˆå‹é…åˆ—ã‚’æ–‡å­—åˆ—ã«æˆ»ã—ã¦è¿”ã™
         return System.Text.Encoding.UTF8.GetString(decBytes);
     }
 
-    /// ƒpƒXƒ[ƒh‚©‚ç‹¤—LƒL[‚Æ‰Šú‰»ƒxƒNƒ^‚ğ¶¬‚·‚é
+    /// ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰å…±æœ‰ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ã‚¿ã‚’ç”Ÿæˆã™ã‚‹
     private static void GenerateKeyFromPassword(int keySize, out byte[] key, int blockSize, out byte[] iv)
     {
-        //ƒpƒXƒ[ƒh‚©‚ç‹¤—LƒL[‚Æ‰Šú‰»ƒxƒNƒ^‚ğì¬‚·‚é
-        //salt‚ğŒˆ‚ß‚é
-        byte[] salt = System.Text.Encoding.UTF8.GetBytes("salt‚Í•K‚¸8ƒoƒCƒgˆÈã");
+        //ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰å…±æœ‰ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ã‚¿ã‚’ä½œæˆã™ã‚‹
+        //saltã‚’æ±ºã‚ã‚‹
+        byte[] salt = System.Text.Encoding.UTF8.GetBytes("saltã¯å¿…ãš8ãƒã‚¤ãƒˆä»¥ä¸Š");
 
-        //Rfc2898DeriveBytesƒIƒuƒWƒFƒNƒg‚ğì¬‚·‚é
+        //Rfc2898DeriveBytesã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
         System.Security.Cryptography.Rfc2898DeriveBytes deriveBytes =
           new System.Security.Cryptography.Rfc2898DeriveBytes(PASS, salt);
 
-        //”½•œˆ—‰ñ”‚ğw’è‚·‚é ƒfƒtƒHƒ‹ƒg‚Å1000‰ñ
+        //åå¾©å‡¦ç†å›æ•°ã‚’æŒ‡å®šã™ã‚‹ ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§1000å›
         deriveBytes.IterationCount = 1000;
 
-        //‹¤—LƒL[‚Æ‰Šú‰»ƒxƒNƒ^‚ğ¶¬‚·‚é
+        //å…±æœ‰ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ã‚¿ã‚’ç”Ÿæˆã™ã‚‹
         key = deriveBytes.GetBytes(keySize / 8);
         iv = deriveBytes.GetBytes(blockSize / 8);
     }

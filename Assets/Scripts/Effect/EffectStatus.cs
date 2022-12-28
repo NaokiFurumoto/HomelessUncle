@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ƒGƒtƒFƒNƒgó‘Ô
+/// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆçŠ¶æ…‹
 /// </summary>
 public class EffectStatus : MonoBehaviour
 {
     [SerializeField]
     private EffectManager.EFFECT_TYPE effType;
 
-    /// <summary> •\¦·•ªˆÊ’u•â³ <summary>
+    /// <summary> è¡¨ç¤ºå·®åˆ†ä½ç½®è£œæ­£ <summary>
     [SerializeField]
     private Vector2 diffPos;
 

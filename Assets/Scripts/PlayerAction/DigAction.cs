@@ -1,28 +1,28 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using static GlobalValue;
 
 /// <summary>
-/// Œ@‚éƒAƒNƒVƒ‡ƒ“FŠî–{‹¤’ÊƒNƒ‰ƒX‚ª—~‚µ‚¢
+/// æ˜ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ï¼šåŸºæœ¬å…±é€šã‚¯ãƒ©ã‚¹ãŒæ¬²ã—ã„
 /// </summary>
 public class DigAction : MonoBehaviour
 {
-    // N=0/R=1/SR=2/SSR=3/UR=4/‚Í‚¸‚ê=5‚Æ‚·‚é
+    // N=0/R=1/SR=2/SSR=3/UR=4/ã¯ãšã‚Œ=5ã¨ã™ã‚‹
     [SerializeField]
     private List<int> digRatioList = new List<int>();
 
-    //Œ@‚èo‚µƒAƒCƒeƒ€ƒŠƒXƒg
+    //æ˜ã‚Šå‡ºã—ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆ
     private List<ItemData> digItemDataList = new List<ItemData>();
 
-    /// <summary> Œ@‚èo‚³‚ê‚½ƒAƒCƒeƒ€ </summary>
+    /// <summary> æ˜ã‚Šå‡ºã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ  </summary>
     //private ItemData diggingItem;
 
-    //ƒAƒNƒVƒ‡ƒ“‰Â”\”»’è
+    //ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å¯èƒ½åˆ¤å®š
     //private bool isAction;
 
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     //public bool IsAction { get { return isAction; } set { isAction = value; } }
     //public ItemData DiggingItem => diggingItem;
     #endregion
@@ -33,14 +33,14 @@ public class DigAction : MonoBehaviour
         digItemDataList = ItemManager.Instance.DigItemDataLists;
     }
 
-    #region ƒAƒCƒeƒ€İ’èˆ—
-    /// <summary> Œ@‚èo‚µƒAƒCƒeƒ€‚Ìæ“¾ </summary>
+    #region ã‚¢ã‚¤ãƒ†ãƒ è¨­å®šå‡¦ç†
+    /// <summary> æ˜ã‚Šå‡ºã—ã‚¢ã‚¤ãƒ†ãƒ ã®å–å¾— </summary>
     public ItemData GetDigItem()
     {
         var rareNo = GetRearityNo();
         if (rareNo == DIG_MISSING_NO)
         {
-            //‚Í‚¸‚ê
+            //ã¯ãšã‚Œ
             return null;
         }
         else
@@ -50,7 +50,7 @@ public class DigAction : MonoBehaviour
         }
     }
 
-    /// <summary> Œ@‚èo‚·ƒŒƒA“xæ“¾ </summary>
+    /// <summary> æ˜ã‚Šå‡ºã™ãƒ¬ã‚¢åº¦å–å¾— </summary>
     private int GetRearityNo()
     {
         var totalRatio = TotalRareRatio();
@@ -69,14 +69,14 @@ public class DigAction : MonoBehaviour
         return DIG_MISSING_NO;
     }
 
-    /// <summary> ƒŒƒA“xŠm—¦‡Œv </summary> ƒoƒtFƒZƒ“ƒT[/PlayerItem/ŠÂ‹«/w“üƒAƒCƒeƒ€
+    /// <summary> ãƒ¬ã‚¢åº¦ç¢ºç‡åˆè¨ˆ </summary> ãƒãƒ•ï¼šã‚»ãƒ³ã‚µãƒ¼/PlayerItem/ç’°å¢ƒ/è³¼å…¥ã‚¢ã‚¤ãƒ†ãƒ 
     private int TotalRareRatio()
     {
-        //‚»‚Ì‘O‚Éƒoƒt‚ğ’Ç‰Áİ’è
+        //ãã®å‰ã«ãƒãƒ•ã‚’è¿½åŠ è¨­å®š
         return digRatioList.Sum();
     }
 
-    /// <summary> Œ@‚èo‚µƒAƒCƒeƒ€æ“¾ </summary>
+    /// <summary> æ˜ã‚Šå‡ºã—ã‚¢ã‚¤ãƒ†ãƒ å–å¾— </summary>
     private ItemData SelectDigItem(List<ItemData> items = null)
     {
         if (!(items?.Count > 0))

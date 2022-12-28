@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +29,8 @@ public class ItemManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€ƒf[ƒ^‚ğó‚¯æ‚Á‚ÄƒAƒCƒeƒ€‚ğì¬
-    /// ƒAƒCƒeƒ€—p‚Ì‹ó‚ÌƒvƒŒƒtƒ@ƒu‚ğ—pˆÓ
+    /// ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ãƒ¼ã‚¿ã‚’å—ã‘å–ã£ã¦ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œæˆ
+    /// ã‚¢ã‚¤ãƒ†ãƒ ç”¨ã®ç©ºã®ãƒ—ãƒ¬ãƒ•ã‚¡ãƒ–ã‚’ç”¨æ„
     /// </summary>
     public void CreateItem()
     {

@@ -1,36 +1,36 @@
-using Carbon;
+ï»¿using Carbon;
 using System;
 using UnityEngine;
 
 /// <summary>
-/// ScrollRect‚ÌContent“o˜^‚·‚éƒNƒ‰ƒX
+/// ScrollRectã®Contentç™»éŒ²ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 [DisallowMultipleComponent]
 public sealed class ScrollContentUI : RectTransformBehaviour
 {
     //==================================================
-    // ƒƒ“ƒo[•Ï”
+    // ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
     //==================================================
     private bool isInit = false;
-    private float interval = 0;        // UI”z’u‚ÌŠÔŠu
-    private float topInterval = 0;        // ã‚Æ‰º‚ÅŠî€ˆÊ’uˆá‚¤‚Ì‚Å‡‚í‚¹‚é—p
-    private float offsetPos = 0;        // ‰Šú”z’u‚³‚ê‚½‚©‚ç‚ÌƒXƒNƒ[ƒ‹ˆÚ“®—Ê
-    private long scrollIndex = 0;        // ƒXƒNƒ[ƒ‹‚ÌƒCƒ“ƒfƒbƒNƒX’l
-    private float contentOffsetPos = 0;    // ƒRƒ“ƒeƒ“ƒc‚ÌƒIƒtƒZƒbƒg
+    private float interval = 0;        // UIé…ç½®ã®é–“éš”
+    private float topInterval = 0;        // ä¸Šã¨ä¸‹ã§åŸºæº–ä½ç½®é•ã†ã®ã§åˆã‚ã›ã‚‹ç”¨
+    private float offsetPos = 0;        // åˆæœŸé…ç½®ã•ã‚ŒãŸæ™‚ã‹ã‚‰ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç§»å‹•é‡
+    private long scrollIndex = 0;        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤
+    private float contentOffsetPos = 0;    // ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 
     //==================================================
-    // ƒCƒxƒ“ƒg
+    // ã‚¤ãƒ™ãƒ³ãƒˆ
     //==================================================
-    // ƒXƒNƒ[ƒ‹‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ªXV‚³‚ê‚½‚ÉŒÄ‚Î‚ê‚éƒCƒxƒ“ƒg
+    // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ãŒæ›´æ–°ã•ã‚ŒãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ
     public Action<bool,long> OnUpdateScrollIndex { private get; set; }
 
     //==================================================
-    // ƒvƒƒpƒeƒB
+    // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     //==================================================
     public float AnchoredDirPosition => IsHorizontal ? anchoredPosition.x : -anchoredPosition.y;
     public float DefaultSize => IsHorizontal ? savedSizeDelta.x : savedSizeDelta.y;
-    private bool IsHorizontal { get; set; } = false;    // ‰¡•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Ì‚©
-    private bool IsVertical => !IsHorizontal;       // c•ûŒü‚ÉƒXƒNƒ[ƒ‹‚·‚é‚Ì‚©
+    private bool IsHorizontal { get; set; } = false;    // æ¨ªæ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã®ã‹
+    private bool IsVertical => !IsHorizontal;       // ç¸¦æ–¹å‘ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹ã®ã‹
 
     //--------------------------------------------------
     // Monobehaviour
@@ -44,14 +44,14 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 	// public
 	//--------------------------------------------
 	/// <summary>
-	/// ‰Šú‰»ˆ—
+	/// åˆæœŸåŒ–å‡¦ç†
 	/// </summary>
 	public void Init(bool isHorizontal, float interval, float contentOffset)
 	{
-		// RectTransform‚Ì‰Šú’l‚ğ•Û‚µ‚Ü‚·(‰‰ñ‚Ì‚İ)
+		// RectTransformã®åˆæœŸå€¤ã‚’ä¿æŒã—ã¾ã™(åˆå›ã®ã¿)
 		SaveValue();
 
-		// Šeí‰Šú‰»
+		// å„ç¨®åˆæœŸåŒ–
 		isInit = true;
 		this.interval = interval;
 
@@ -65,7 +65,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒNƒŠƒA
+	/// ã‚¯ãƒªã‚¢
 	/// </summary>
 	public void Clear()
 	{
@@ -80,7 +80,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// –ˆƒtƒŒ[ƒ€XVˆ—
+	/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°å‡¦ç†
 	/// </summary>
 	public void DoUpdate()
 	{
@@ -89,7 +89,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 			return;
 		}
 
-		// æ“ª‚Ì—v‘f‚ğ––”ö‚ÖˆÚ“®
+		// å…ˆé ­ã®è¦ç´ ã‚’æœ«å°¾ã¸ç§»å‹•
 		while (AnchoredDirPosition - offsetPos < -(topInterval + contentOffsetPos))
 		{
 			offsetPos -= interval;
@@ -97,7 +97,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 			scrollIndex++;
 		}
 
-		// ––”ö‚Ì—v‘f‚ğæ“ª‚ÉˆÚ“®
+		// æœ«å°¾ã®è¦ç´ ã‚’å…ˆé ­ã«ç§»å‹•
 		while (AnchoredDirPosition - offsetPos > 0 - contentOffsetPos)
 		{
 			offsetPos += interval;
@@ -107,7 +107,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ƒXƒNƒ[ƒ‹‚·‚é•ûŒü(XorY)‚ÌAnchoredPosition‚É’l‚ğ‰ÁZ‚µ‚Ü‚·
+	/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹æ–¹å‘(XorY)ã®AnchoredPositionã«å€¤ã‚’åŠ ç®—ã—ã¾ã™
 	/// </summary>
 	public void AddAnchoredPosition(float pos)
 	{
@@ -116,7 +116,7 @@ public sealed class ScrollContentUI : RectTransformBehaviour
 	}
 
 	/// <summary>
-	/// ‹éŒ`‚ÌƒTƒCƒYİ’è
+	/// çŸ©å½¢ã®ã‚µã‚¤ã‚ºè¨­å®š
 	/// </summary>
 	public void SetSize(float size)
 	{

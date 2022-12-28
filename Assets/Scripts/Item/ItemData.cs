@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,73 +8,73 @@ using System;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Create_ItemData")]
 public class ItemData : ScriptableObject
 {
-    /// <summary> ƒAƒCƒeƒ€‚Ìí—Ş </summary>
+    /// <summary> ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡ </summary>
     public enum ITEM_TYPE
     {
-        SHOPITEM,   //ƒVƒ‡ƒbƒv
-        FISH,       //‹›
-        DIG         //Œ@‚é
+        SHOPITEM,   //ã‚·ãƒ§ãƒƒãƒ—
+        FISH,       //é­š
+        DIG         //æ˜ã‚‹
     }
 
-    /// <summary> ƒŒƒAƒŠƒeƒB </summary>
+    /// <summary> ãƒ¬ã‚¢ãƒªãƒ†ã‚£ </summary>
     public enum ITEM_RARITY
     {
         N = 0, R = 1, SR = 2, SSR = 3, UR = 4
     }
 
-    /// <summary> ƒAƒCƒeƒ€‚Ìí—Ş </summary>
-    [SerializeField] [Header("ƒAƒCƒeƒ€‚Ìí—Ş")]
+    /// <summary> ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡ </summary>
+    [SerializeField] [Header("ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡")]
     private ITEM_TYPE itemType;
 
-    /// <summary> ƒAƒCƒRƒ“‰æ‘œ </summary>
+    /// <summary> ã‚¢ã‚¤ã‚³ãƒ³ç”»åƒ </summary>
     [SerializeField]
-    [Header("ƒAƒCƒRƒ“‰æ‘œ")]
+    [Header("ã‚¢ã‚¤ã‚³ãƒ³ç”»åƒ")]
     private Sprite iconImage;
 
-    /// <summary> ƒAƒCƒeƒ€‰æ‘œ </summary>
-    [SerializeField][Header("ƒAƒCƒeƒ€‰æ‘œ")]
+    /// <summary> ã‚¢ã‚¤ãƒ†ãƒ ç”»åƒ </summary>
+    [SerializeField][Header("ã‚¢ã‚¤ãƒ†ãƒ ç”»åƒ")]
     private Sprite itemSprite;
 
-    /// <summary> –¼‘O </summary>
-    [SerializeField][Header("ƒAƒCƒeƒ€–¼")]
+    /// <summary> åå‰ </summary>
+    [SerializeField][Header("ã‚¢ã‚¤ãƒ†ãƒ å")]
     private string itemName;
 
-    /// <summary> –¼‘O </summary>
+    /// <summary> åå‰ </summary>
     [SerializeField]
-    [Header("ƒŒƒA“x")]
+    [Header("ãƒ¬ã‚¢åº¦")]
     private ITEM_RARITY rarity;
 
-    /// <summary> î•ñ </summary>
-    [SerializeField][Header("ƒAƒCƒeƒ€‚Ìà–¾")]
+    /// <summary> æƒ…å ± </summary>
+    [SerializeField][Header("ã‚¢ã‚¤ãƒ†ãƒ ã®èª¬æ˜")]
     [TextArea(1, 6)]
     private string itemInfo;
 
-    /// <summary> Å‘åŠ” </summary>
-    [SerializeField][Header("Å‘åŠ”")]
+    /// <summary> æœ€å¤§æ‰€æŒæ•° </summary>
+    [SerializeField][Header("æœ€å¤§æ‰€æŒæ•°")]
     private int maxHaveIndex;
 
-    /// <summary> ”ƒ‚¤‚±‚Æ‚ªo—ˆ‚é </summary>
-    [SerializeField][Header("”ƒ‚¤‚±‚Æ‚ªo—ˆ‚é")]
+    /// <summary> è²·ã†ã“ã¨ãŒå‡ºæ¥ã‚‹ </summary>
+    [SerializeField][Header("è²·ã†ã“ã¨ãŒå‡ºæ¥ã‚‹")]
     private bool isBuy;
 
-    /// <summary> ”„‚é‚±‚Æ‚ªo—ˆ‚é </summary>
-    [SerializeField][Header("”„‚é‚±‚Æ‚ªo—ˆ‚é")]
+    /// <summary> å£²ã‚‹ã“ã¨ãŒå‡ºæ¥ã‚‹ </summary>
+    [SerializeField][Header("å£²ã‚‹ã“ã¨ãŒå‡ºæ¥ã‚‹")]
     private bool isSell;
 
-    /// <summary> ”ƒ’l </summary>
-    [SerializeField][Header("”ƒ’l")]
+    /// <summary> è²·å€¤ </summary>
+    [SerializeField][Header("è²·å€¤")]
     private int price;
 
-    /// <summary> ”„’l </summary>
-    [SerializeField][Header("”„’l")]
+    /// <summary> å£²å€¤ </summary>
+    [SerializeField][Header("å£²å€¤")]
     private int sellPrice;
 
-    /// <summary> ƒRƒŒƒNƒVƒ‡ƒ“ƒAƒCƒeƒ€‚©‚Ç‚¤‚© </summary>
-    [SerializeField][Header("ƒRƒŒƒNƒVƒ‡ƒ“ƒAƒCƒeƒ€‚©‚Ç‚¤‚©")]
+    /// <summary> ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚¢ã‚¤ãƒ†ãƒ ã‹ã©ã†ã‹ </summary>
+    [SerializeField][Header("ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚¢ã‚¤ãƒ†ãƒ ã‹ã©ã†ã‹")]
     private bool isCollection;
 
-    /// <summary> Œø‰Ê </summary>
-    [SerializeField][Header("Œø‰Ê")]
+    /// <summary> åŠ¹æœ </summary>
+    [SerializeField][Header("åŠ¹æœ")]
     private ItemAbility itemAbility;
 
     public ITEM_TYPE ItemType => itemType;
@@ -92,7 +92,7 @@ public class ItemData : ScriptableObject
     public bool IsAbility => itemAbility.IsHaveAbility;
 
 
-    /// <summary> ‰Šú‰» </summary>
+    /// <summary> åˆæœŸåŒ– </summary>
     private void Awake()
     {
         if (!isBuy) price = 0;
@@ -101,30 +101,30 @@ public class ItemData : ScriptableObject
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€‚ÌŒø‰Ê
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã®åŠ¹æœ
     /// </summary>
     [Serializable]
     sealed class ItemAbility
     {
-        /// <summary> Œø‰Ê‚ğ‚à‚Á‚Ä‚¢‚é‚© </summary>
+        /// <summary> åŠ¹æœã‚’ã‚‚ã£ã¦ã„ã‚‹ã‹ </summary>
         [SerializeField]
         private bool isHaveAbility;
 
         /*
-         ‘Ì—ÍŒ¸Z’l
-        L‚İŒ¸Z’l
-        Œø‰ÊŠÔ
+         ä½“åŠ›æ¸›ç®—å€¤
+        è‡­ã¿æ¸›ç®—å€¤
+        åŠ¹æœæ™‚é–“
          
          */
         [SerializeField]
-        [Header("”­Œ@_ƒŒƒA—¦ƒAƒbƒv")]
+        [Header("ç™ºæ˜_ãƒ¬ã‚¢ç‡ã‚¢ãƒƒãƒ—")]
         private int digRareRateUp;
 
         public bool IsHaveAbility => isHaveAbility;
 
         public int DigRareRateUp => digRareRateUp;
         /// <summary>
-        /// ƒXƒe[ƒ^ƒX‚ÌƒNƒŠƒA
+        /// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ã‚¯ãƒªã‚¢
         /// </summary>
         public void StatusClear()
         {

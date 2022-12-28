@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///ƒvƒŒƒCƒ„[‚Ìó‘ÔŠÇ—‚·‚éƒNƒ‰ƒX
+///ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®çŠ¶æ…‹ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public partial class Player
 {
-    // <summary> ó‘ÔƒXƒe[ƒg</summary>
+    // <summary> çŠ¶æ…‹ã‚¹ãƒ†ãƒ¼ãƒˆ</summary>
     private static readonly StateIdle stateIdle = new StateIdle();
     private static readonly StateWalking stateWalking = new StateWalking();
     private static readonly StateEat stateEat = new StateEat();
@@ -16,12 +16,12 @@ public partial class Player
     private static readonly StateDig stateDig = new StateDig();
     private static readonly StateFishing stateFishing = new StateFishing();
     private static readonly StateDead stateDead = new StateDead();
-    //‹CâF‹Câ‚ğ‰ß‚¬‚½‚ç€–S
+    //æ°—çµ¶ï¼šæ°—çµ¶ã‚’éããŸã‚‰æ­»äº¡
 
-    /// <summary> Œ»İ‚ÌƒXƒe[ƒg </summary>
+    /// <summary> ç¾åœ¨ã®ã‚¹ãƒ†ãƒ¼ãƒˆ </summary>
     private PlayerStateBase currentState;
 
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public PlayerStateBase CurrentState
     {
         get { return currentState; }
@@ -42,26 +42,26 @@ public partial class Player
 
     private void StateAwake()
     {
-        //‚Æ‚è‚ ‚¦‚¸‘Ò‹@
+        //ã¨ã‚Šã‚ãˆãšå¾…æ©Ÿ
         currentState = stateIdle;
     }
 
 
-    //Start()‚©‚ç‚æ‚Î‚ê‚é
+    //Start()ã‹ã‚‰ã‚ˆã°ã‚Œã‚‹
     private void StateStart()
     {
-        //ŠJn‚ÌƒXƒe[ƒg‚Í‘¶İ‚µ‚È‚¢‚Ì‚Ånull
+        //é–‹å§‹æ™‚ã®ã‚¹ãƒ†ãƒ¼ãƒˆã¯å­˜åœ¨ã—ãªã„ã®ã§null
         currentState.OnEnter(this, null);
     }
 
-    //Update()‚©‚ç‚æ‚Î‚ê‚é
+    //Update()ã‹ã‚‰ã‚ˆã°ã‚Œã‚‹
     private void StateUpdate()
     {
         currentState.OnUpdate(this);
     }
 
-    //ƒXƒe[ƒg‚Ì•ÏX:new‚·‚é‚Æƒƒ‚ƒŠ‚ªŠm•Û‚³‚ê‚é‚Ì‚Å‚ ‚©‚ñ
-    //private‚¾‚ªAqƒNƒ‰ƒX‚©‚ç‚ÍQÆ‚í‚½‚¹‚ÎƒAƒNƒZƒX‰Â”\
+    //ã‚¹ãƒ†ãƒ¼ãƒˆã®å¤‰æ›´:newã™ã‚‹ã¨ãƒ¡ãƒ¢ãƒªãŒç¢ºä¿ã•ã‚Œã‚‹ã®ã§ã‚ã‹ã‚“
+    //privateã ãŒã€å­ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã¯å‚ç…§ã‚ãŸã›ã°ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½
     public void ChangeState(PlayerStateBase nextState)
     {
         currentState.OnExit(this, nextState);
@@ -69,7 +69,7 @@ public partial class Player
         currentState = nextState;
     }
 
-    //€–S
+    //æ­»äº¡
     private void Death()
     {
         ChangeState(stateDead);

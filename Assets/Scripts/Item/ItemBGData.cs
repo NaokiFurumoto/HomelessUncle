@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,9 +7,9 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "ItemBGData", menuName = "CreateItemBGData")]
 public class ItemBGData : ScriptableObject
 {
-    /// <summary> ƒAƒCƒRƒ“‰æ‘œ </summary>
+    /// <summary> ã‚¢ã‚¤ã‚³ãƒ³ç”»åƒ </summary>
     [SerializeField]
-    [Header("”wŒi‰æ‘œ")]
+    [Header("èƒŒæ™¯ç”»åƒ")]
     private List<Sprite> bgImages;
 
     public List<Sprite> BGImagesList => bgImages;

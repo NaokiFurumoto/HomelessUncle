@@ -1,9 +1,9 @@
-using Shock;
+ï»¿using Shock;
 
 public static class TextmeshExtension 
 {
   /// <summary>
-		/// ƒeƒLƒXƒg‚ğİ’è‚µ‚Ü‚·.
+		/// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®šã—ã¾ã™.
 		/// </summary>
 		public static void TrySetText(this TextMeshUI self, string text)
 		{
@@ -13,7 +13,7 @@ public static class TextmeshExtension
 		}
 
 		/// <summary>
-		/// ƒeƒLƒXƒg‚ğİ’è‚µ‚Ü‚·.
+		/// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®šã—ã¾ã™.
 		/// </summary>
 		public static void TrySetText(this TextMeshUI self, long longText)
 		{
@@ -23,7 +23,7 @@ public static class TextmeshExtension
 		}
 
 		/// <summary>
-		/// ƒeƒLƒXƒg‚ğİ’è‚µ‚Ü‚·.
+		/// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®šã—ã¾ã™.
 		/// </summary>
 		public static void TrySetText(this TextMeshUI self, float floatText)
 		{

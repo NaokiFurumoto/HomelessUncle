@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 /// <summary>
-/// View‚ÉŠÖ‚·‚é‘€ì
+/// Viewã«é–¢ã™ã‚‹æ“ä½œ
 /// </summary>
 
-//’Ç‰Á
+//éšæ™‚è¿½åŠ 
 public enum VIEWTYPE
 {
     ITEMVIEW,
@@ -18,7 +18,7 @@ public class ViewController : SingletonMonoBehaviour<ViewController>
     [SerializeField]
     private List<ViewBase> viewList = new List<ViewBase>();
     
-    //‘I‘ğ’†‚Ì‰æ–Ê
+    //é¸æŠä¸­ã®ç”»é¢
     private ViewBase currentView;
 
     public List<ViewBase> ViewList => viewList;
@@ -33,7 +33,7 @@ public class ViewController : SingletonMonoBehaviour<ViewController>
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½‰æ–Ê‚Ìæ“¾
+    /// æŒ‡å®šã•ã‚ŒãŸç”»é¢ã®å–å¾—
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
@@ -43,7 +43,7 @@ public class ViewController : SingletonMonoBehaviour<ViewController>
     }
 
     /// <summary>
-    /// ‘I‘ğ‚³‚ê‚½View‚ÌŠJ•Â
+    /// é¸æŠã•ã‚ŒãŸViewã®é–‹é–‰
     /// </summary>
     /// <param name="isOpen"></param>
     public void ActiveView(VIEWTYPE type, bool isOpen)

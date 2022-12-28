@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 /// <summary>
-/// ƒGƒtƒFƒNƒg‚ÌŠÇ—
+/// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ç®¡ç†
 /// </summary>
 public class EffectManager : MonoBehaviour
 {
-    /// <summary> ƒGƒtƒFƒNƒg‚Ìí—Ş:ì¬Œã’Ç‰Á <summary>
+    /// <summary> ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ç¨®é¡:ä½œæˆå¾Œè¿½åŠ  <summary>
     public enum EFFECT_TYPE
     {
         NONE,
@@ -32,7 +32,7 @@ public class EffectManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÉŠÖ‚·‚éƒGƒtƒFƒNƒg•\¦
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«é–¢ã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆè¡¨ç¤º
     /// </summary>
     /// <param name="effType"></param>
     /// <param name="rootType"></param>

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -6,7 +6,7 @@ using System;
 [CreateAssetMenu(fileName = "ItemDataBase", menuName = "CreateItemDataBase")]
 public class ItemDataBase : ScriptableObject
 {
-    /// <summary> ƒAƒCƒeƒ€ƒe[ƒuƒ‹ƒŠƒXƒg <summary>
+    /// <summary> ã‚¢ã‚¤ãƒ†ãƒ ãƒ†ãƒ¼ãƒ–ãƒ«ãƒªã‚¹ãƒˆ <summary>
     [SerializeField]
     private List<ItemData> allItemDataLists = new List<ItemData>();
     public List<ItemData> AllItemTableLists => allItemDataLists;

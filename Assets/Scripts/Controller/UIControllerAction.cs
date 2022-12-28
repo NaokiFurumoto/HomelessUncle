@@ -1,30 +1,30 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒCƒ“ƒQ[ƒ€UI‚ÉŠÖ‚·‚éƒƒ\ƒbƒh‚Ì“o˜^
+/// ã‚¤ãƒ³ã‚²ãƒ¼ãƒ UIã«é–¢ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®ç™»éŒ²
 /// </summary>
 public partial class UIController
 {
     private ViewController viewCtrl;
 
     /// <summary>
-    /// Œ@‚éƒAƒNƒVƒ‡ƒ“
+    /// æ˜ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
     /// </summary>
     private void DigBtnCallback()
     {
-        //ƒvƒŒƒCƒ„[‚ÌƒXƒe[ƒg‚ªDigó‘Ô‚È‚ç‚Î˜A‘Å‚Å‚«‚È‚¢
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ†ãƒ¼ãƒˆãŒDigçŠ¶æ…‹ãªã‚‰ã°é€£æ‰“ã§ããªã„
         if (player.CurrentState == player.Idle)
         {
             player.transform.localScale = Vector3.one;
             player.ChangeState(player.Dig);
-            //ƒvƒŒƒCƒ„[‚Ì‘Ì—Í‚ğŒ¸Z
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½“åŠ›ã‚’æ¸›ç®—
         }
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€ƒ{ƒ^ƒ“
+    /// ã‚¢ã‚¤ãƒ†ãƒ ãƒœã‚¿ãƒ³
     /// </summary>
     private void ItemBtnCallback()
     {
