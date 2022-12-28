@@ -42,7 +42,7 @@ public partial class Player
 
         /// <summary> 所持金 </summary>
         [SerializeField]
-        private int haveMoney;
+        private long haveMoney;
 
         /// <summary> 借金 </summary>
         [SerializeField]
@@ -56,7 +56,7 @@ public partial class Player
         public int Smell { get { return smell; } private set { smell = value; } }
         public int Bowel { get { return bowel; } private set { bowel = value; } }
         public int LoadingBowel { get { return loadingBowel; } private set { loadingBowel = value; } }
-        public int HaveMoney { get { return haveMoney; } private set { haveMoney = value; } }
+        public long HaveMoney { get { return haveMoney; } private set { haveMoney = value; } }
         public long Loan { get { return loan; } private set { loan = value; } }
         #endregion
 
@@ -72,16 +72,17 @@ public partial class Player
             smell = 0;
             bowel = 0;
             loadingBowel = 0;
-            haveMoney = 0;
-            loan = 50000000;
+            haveMoney = 5000000;
+            loan = 100000000;
         }
 
         /// <summary>
         ///　ロード後のステータス設定：まとめる
         ///　ロードデータを受け取る
         /// </summary>
-        public void SetLoadedStatus()
+        public IEnumerator SetLoadedStatus()
         {
+            yield return null;
         }
     }
 }

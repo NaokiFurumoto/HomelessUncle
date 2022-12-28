@@ -29,7 +29,6 @@ public class PlayerItemView : ViewBase, IUpdateList
     //表示するアイテムアイコン
     private static List<ItemIconData> itemIconsData = new List<ItemIconData>();
 
-    public VIEWTYPE ViewType => type;
 
     protected override void Awake()
     {

@@ -7,10 +7,14 @@ using UnityEngine;
 /// </summary>
 public partial class Player : MonoBehaviour
 {
-    
+    /// <summary> プレイヤーの初期化完了フラグ <summary>
+    private bool isInitialized;
+
+    public bool IsInitialized => isInitialized;
 
     void Awake()
     {
+        isInitialized = false;
         StateAwake();
         MoveAwake();
 
@@ -18,7 +22,10 @@ public partial class Player : MonoBehaviour
         AwakeHoldItemes();
     }
 
-    void Start()
+    /// <summary>
+    /// コルーチン化する
+    /// </summary>
+    private IEnumerator Start()
     {
         //ゲームコントローラーがシステムロードまち
         //そのあとプレイヤー
@@ -34,8 +41,9 @@ public partial class Player : MonoBehaviour
         MoveStart();
         //ステータス初期化
         playerStatus.SetInitializeStatus();
-        //UI反映
-
+        //ステータス反映
+        yield return playerStatus.SetLoadedStatus();
+        isInitialized = true;
     }
 
     // Update is called once per frame

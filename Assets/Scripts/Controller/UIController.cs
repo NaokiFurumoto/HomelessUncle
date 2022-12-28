@@ -117,6 +117,7 @@ public enum UIType
     BTN,
     GAUGE,
     CLOCK,
+    MONEY,
 }
 
 /// <summary>

@@ -32,7 +32,6 @@ public class ClockController : MonoBehaviour
         longTrans.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * minute);
 
         hour = DateTime.Now.Hour;
-        Debug.Log(hour);
         float HHA = -((360 / 12.0f * hour) + (30 / 60.0f * minute));
         shortTrans.localEulerAngles = new Vector3(0, 0, HHA);
     }
