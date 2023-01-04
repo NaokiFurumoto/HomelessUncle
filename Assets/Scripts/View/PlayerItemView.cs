@@ -11,9 +11,6 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerItemView : ViewBase, IUpdateList
 {
-    /// <summary> 画面 <summary>
-    private VIEWTYPE type;
-
     /// <summary> Player <summary>
     [SerializeField] private Player player;
 
@@ -22,9 +19,6 @@ public class PlayerItemView : ViewBase, IUpdateList
 
     //<summary スクロール機能 <summary
     [SerializeField] private ScrollSystemBase<ItemIconBase> scroll;
-
-    /// <summary> 閉じるボタン <summary>
-    [SerializeField] private Button btn_Close;
 
     //表示するアイテムアイコン
     private static List<ItemIconData> itemIconsData = new List<ItemIconData>();
@@ -47,10 +41,9 @@ public class PlayerItemView : ViewBase, IUpdateList
     /// </summary>
     protected override void Start()
     {
+        base.Start();
         player ??= GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         index = player.HaveItemsCount;
-
-        btn_Close.onClick.AddListener(() => animator?.SetTrigger("close"));
     }
 
     /// <summary>

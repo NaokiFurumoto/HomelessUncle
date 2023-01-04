@@ -6,13 +6,14 @@ using System.Linq;
 /// <summary>
 /// Viewに関する操作
 /// </summary>
-
 //随時追加
 public enum VIEWTYPE
 {
     ITEMVIEW,
     SHOPVIEW,
+    MONEYCHANGEVIEW,
 }
+
 public class ViewController : SingletonMonoBehaviour<ViewController>
 {
     [SerializeField]
@@ -52,6 +53,16 @@ public class ViewController : SingletonMonoBehaviour<ViewController>
         if (currentView == null) return;
 
         currentView.gameObject.SetActive(isOpen);
+    }
+
+
+    /// <summary>
+    /// 現在開いてる画面を全て閉じる
+    /// </summary>
+    public void CloseView()
+    {
+
+
     }
 
 }

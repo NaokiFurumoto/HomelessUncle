@@ -10,7 +10,10 @@ using UnityEngine.UI;
 public　abstract class ViewBase : RectTransformBehaviour
 {
     [SerializeField]
-    private  VIEWTYPE type;
+    protected VIEWTYPE type;
+
+    [SerializeField]
+    private Button btn_Close;
 
     //アニメーターによる開閉
     protected Animator animator;
@@ -23,7 +26,10 @@ public　abstract class ViewBase : RectTransformBehaviour
         animator = GetComponent<Animator>();
     }
 
-    protected virtual void Start() { }
+    protected virtual void Start()
+    {
+        btn_Close.onClick.AddListener(() => animator?.SetTrigger("close"));
+    }
 
     //複数回
     protected virtual void OnEnable()
