@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140827175bc9f9b4f8522e5be81169d8, type: 3}
+  m_Name: Buri
+  m_EditorClassIdentifier: 
+  itemType: 1
+  iconImage: {fileID: -1322742491, guid: fc9c54aece9913249b2b681a7d17a8b1, type: 3}
+  itemSprite: {fileID: -1322742491, guid: fc9c54aece9913249b2b681a7d17a8b1, type: 3}
+  itemName: "\u30D6\u30EA"
+  rarity: 3
+  itemInfo: "\u5BD2\u30D6\u30EA\u306F\u6700\u9AD8\u306B\u7F8E\u5473\uFF01\u30D6\u30EA\u30D6\u30EA\u306B\u6CB9\u306E\u3063\u3066\u307E\u3059"
+  maxHaveIndex: 9999
+  isBuy: 0
+  isSell: 1
+  price: 0
+  sellPrice: 30000
+  isCollection: 0
+  itemAbility:
+    isHaveAbility: 0
+    digRareRateUp: 0

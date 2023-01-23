@@ -25,10 +25,10 @@ public partial class Player
             player.playerAnim.SetTrigger("Dig");
             EffectManager.Instance.PlayEffectPlayer(EffectManager.EFFECT_TYPE.DIG_SCOP, PlayerEffectRoot.ROOT_TYPE.UNDER);
 
-            digItem = digAction?.GetDigItem();
+            digItem = digAction?.GetItem();
             if(digItem!= null)
             {
-                DigItemGenerate(digItem);
+                digAction.DigItemGenerate(digItem);
                 player.SetHoldPlayerItem(digItem, 1);
             }
             else
@@ -38,24 +38,9 @@ public partial class Player
 
             //体力減少
             player.PlayerStatus.Hp -= DIG_DAMAGE_INIT;
-            UIController.Instance.SetLifeGaugeParam(player);
+            UIController.Instance.SetLifeGaugeParam(player.PlayerStatus);
         }
-
-        /// <summary>
-        /// 掘り出しアイテムを表示
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-         private void DigItemGenerate(ItemData data)
-        {
-            GameObject itemObj = (GameObject)Resources.Load("Prefabs/DigItem");
-            var parent = PlayerEffectRoot.Instance.GetEffectRoot(PlayerEffectRoot.ROOT_TYPE.RIGHT);
-            GameObject instace = Instantiate(itemObj, Vector2.zero, Quaternion.identity, parent);
-
-            var status = instace?.GetComponent<DigItem>();
-            status?.SetImage(data);
-        }
-
+       
 
         //待機中に寝たりする？
         //吹き出しを出す？

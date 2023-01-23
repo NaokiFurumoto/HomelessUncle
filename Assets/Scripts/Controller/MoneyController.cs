@@ -23,8 +23,15 @@ public class MoneyController : UIParts
     /// <summary> マイナスオブジェクト </summary>
     [SerializeField] private GameObject minusObj;
 
+    /// <summary> マイナスオブジェクト </summary>
+    [SerializeField] private Button btn_Change;
+
     /// <summary> プレイヤー </summary>
     private Player player;
+
+    private ViewController viewCtrl;
+
+    private long minusValue;
 
     /// <summary> お金交換ボタンコールバック </summary>
     private UnityAction changeMoneyCallBack;
@@ -34,7 +41,11 @@ public class MoneyController : UIParts
     {
         player = GameObject.FindGameObjectWithTag("Player")
                                    .GetComponent<Player>();
+
+        viewCtrl = ViewController.Instance;
+
         changeMoneyCallBack = OnClickChangeMoney;
+        btn_Change.onClick.AddListener(OnClickChangeMoney);
 
         //プレイヤーの初期化完了待ち
         while (!player.IsInitialized) { yield return null; }
@@ -48,14 +59,33 @@ public class MoneyController : UIParts
     /// <param name="status"></param>
     private void InitializeMoney(Player.Status status)
     {
+        minusValue = 0;
+        UpdateMoney(status);
+    }
+
+    /// <summary>
+    /// 金額更新処理
+    /// </summary>
+    /// <param name="status"></param>
+    public void UpdateMoney(Player.Status status)
+    {
         SetHaveMoney(status.HaveMoney);
         SetLoanMoney(status.Loan);
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 借金返済時の更新処理
+    /// </summary>
+    public void UpdateMoneyChangeView()
     {
+        //借金が更新されるとアニメーション実行
+        SetHaveMoney(player.PlayerStatus.HaveMoney);
+        SetLoanMoney(player.PlayerStatus.Loan);
 
+        if(minusValue > 0)
+        {
+            minusObj.SetActive(true);
+        }
     }
 
     /// <summary>
@@ -80,14 +110,16 @@ public class MoneyController : UIParts
     /// 減算値設定
     /// </summary>
     /// <param name="value"></param>
-    public void SetMinusMoney(int value)
+    public void SetMinusMoney(long value)
     {
-        txt_MinusMoney.text = value.ToString();
+        minusValue = value;
+        txt_MinusMoney.text = "-" + value.ToString();
     }
 
     //ボタンコールバック
     private void OnClickChangeMoney()
     {
-
+        if (viewCtrl == null) return;
+        viewCtrl.ActiveView(VIEWTYPE.MONEYCHANGEVIEW, true);
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140827175bc9f9b4f8522e5be81169d8, type: 3}
+  m_Name: Kinmedai
+  m_EditorClassIdentifier: 
+  itemType: 1
+  iconImage: {fileID: 675284810, guid: fc9c54aece9913249b2b681a7d17a8b1, type: 3}
+  itemSprite: {fileID: 675284810, guid: fc9c54aece9913249b2b681a7d17a8b1, type: 3}
+  itemName: "\u30AD\u30F3\u30E1\u30C0\u30A4"
+  rarity: 2
+  itemInfo: "\u716E\u3064\u3051\u306E\u6700\u9AD8\u5CF0\uFF01\u9AD8\u7D1A\u6599\u4EAD\u3067\u3057\u304B\u98DF\u3079\u3089\u308C\u306A\u3044\u4E00\u54C1"
+  maxHaveIndex: 9999
+  isBuy: 0
+  isSell: 1
+  price: 0
+  sellPrice: 5000
+  isCollection: 0
+  itemAbility:
+    isHaveAbility: 0
+    digRareRateUp: 0

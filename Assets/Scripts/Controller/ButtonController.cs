@@ -11,9 +11,12 @@ public class ButtonController : UIParts
 
     private Button button;
 
+    private Image image;
+
     private void Awake()
     {
         button = this.gameObject.GetComponent<Button>();
+        image = this.gameObject.GetComponent<Image>();
     }
     //private void Start()
     //{
@@ -37,6 +40,30 @@ public class ButtonController : UIParts
     {
         if (disableImage == null) return;
         disableImage.SetActive(judge);
+    }
+
+    /// <summary>
+    /// ボタンの有効無効対応
+    /// </summary>
+    /// <param name="judge"></param>
+    public void SetInteractable(bool judge)
+    {
+        if (button == null)
+            return;
+
+        button.interactable = judge;
+    }
+
+    /// <summary>
+    /// ボタンのレイキャスト制御
+    /// </summary>
+    /// <param name="judge"></param>
+    public void SetRaycastTarget(bool judge)
+    {
+        if (image == null)
+            return;
+
+        image.raycastTarget = judge;
     }
 }
 

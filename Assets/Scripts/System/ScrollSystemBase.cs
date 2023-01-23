@@ -774,6 +774,7 @@ public abstract class ScrollSystemBase<T> : RectTransformBehaviour where T : Ite
         //オフセットがある場合サイズをずらす
         rectSize += contentOffsetPos > 0
             ? contentOffsetPos + (GetViewSize() - contentOffsetPos - itemSize)
+            //? contentOffsetPos //+ (GetViewSize() - contentOffsetPos - itemSize)
             : 0;
         scrollContentUI.SetSize(rectSize);
 

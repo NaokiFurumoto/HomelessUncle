@@ -56,8 +56,8 @@ public partial class Player
         public int Smell { get { return smell; } private set { smell = value; } }
         public int Bowel { get { return bowel; } private set { bowel = value; } }
         public int LoadingBowel { get { return loadingBowel; } private set { loadingBowel = value; } }
-        public long HaveMoney { get { return haveMoney; } private set { haveMoney = value; } }
-        public long Loan { get { return loan; } private set { loan = value; } }
+        public long HaveMoney { get { return haveMoney; } set { haveMoney = value; } }
+        public long Loan { get { return loan; } set { loan = value; } }
         #endregion
 
         /// <summary>

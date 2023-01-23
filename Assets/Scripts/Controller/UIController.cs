@@ -8,10 +8,10 @@ using static GlobalValue;
 
 /// <summary>
 /// インゲームUIの制御に関するクラス
+/// UIに関する更新はここで行う
 /// </summary>
 public partial class UIController : SingletonMonoBehaviour<UIController>
 {
-
     /// <summary> Player </summary>
     private Player player;
 
@@ -19,7 +19,8 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     private ButtonController btn_Dig;
     private ButtonController btn_Fish;
     private ButtonController btn_Item;
-    private GaugeController  gaugeLife;
+    private GaugeController gaugeLife;
+    private MoneyController moneyCtrl;
 
     [SerializeField]
     private List<UIParts> uiPartsList = new List<UIParts>();
@@ -32,7 +33,7 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
 
         SetInitializeUI();
         //更新タイミングは後々
-        UpdateSetParamUI(player);
+        UpdateUI(player);
     }
 
     /// <summary>
@@ -41,36 +42,43 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     private void SetInitializeUI()
     {
         btn_Dig = GetUIParts(UIType.BTN, NameType.DIG) as ButtonController;
-        btn_Dig?.SetBtnEvent(DigBtnCallback);
+        btn_Dig?.SetBtnEvent(OnClickDigBtn);
+
+        btn_Fish = GetUIParts(UIType.BTN, NameType.FISH) as ButtonController;
+        btn_Fish?.SetBtnEvent(OnClickFishBtn);
 
         btn_Item = GetUIParts(UIType.BTN, NameType.ITEM) as ButtonController;
-        btn_Item?.SetBtnEvent(ItemBtnCallback);
+        btn_Item?.SetBtnEvent(OnClickItemBtn);
 
         gaugeLife = GetUIParts(UIType.GAUGE, NameType.LIFE) as GaugeController;
 
+        moneyCtrl = GetUIParts(UIType.OTHER, NameType.MONEY) as MoneyController;
     }
 
     /// <summary>
-    /// UIパラメーターの更新
+    /// UIパラメーターの一括更新
     /// </summary>
-    public void UpdateSetParamUI(Player player)
+    public void UpdateUI(Player player)
     {
+        var status = player?.PlayerStatus;
+        if (status == null) return;
         //体力ゲージ更新
-        SetLifeGaugeParam(player);
-
+        SetLifeGaugeParam(status);
+        //お金更新
+        moneyCtrl.UpdateMoney(status);
     }
 
     /// <summary>
     /// 体力ゲージの設定
     /// </summary>
     /// <param name="player"></param>
-    public void SetLifeGaugeParam(Player player)
+    public void SetLifeGaugeParam(Player.Status status)
     {
-        //初期値:後で変更
+        //体力ゲージ更新
         if (gaugeLife != null)
         {
-            gaugeLife.SetMinMaxValue(LIFE_GAUGE_MINVALUE, player.PlayerStatus.MaxHp);
-            gaugeLife.CurrentValue = player.PlayerStatus.Hp;
+            gaugeLife.SetMinMaxValue(LIFE_GAUGE_MINVALUE, status.MaxHp);
+            gaugeLife.CurrentValue = status.Hp;
         }
     }
 
@@ -80,9 +88,9 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     /// <param name="uiType"></param>
     /// <param name="btnType"></param>
     /// <returns></returns>
-    private UIParts GetUIParts(UIType uiType = UIType.NONE, NameType nameType = NameType.NONE)
+    public UIParts GetUIParts(UIType uiType = UIType.NONE, NameType nameType = NameType.NONE)
     {
-        if (uiPartsList == null || uiType == UIType.NONE || nameType == NameType.NONE) 
+        if (uiPartsList == null || uiType == UIType.NONE || nameType == NameType.NONE)
             return null;
 
         UIParts ui = uiPartsList.Where(ui => ui.TypeUI == uiType)
@@ -117,7 +125,7 @@ public enum UIType
     BTN,
     GAUGE,
     CLOCK,
-    MONEY,
+    OTHER,
 }
 
 /// <summary>
@@ -130,4 +138,5 @@ public enum NameType
     FISH,
     LIFE,
     ITEM,
+    MONEY,
 }

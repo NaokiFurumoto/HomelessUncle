@@ -104,7 +104,7 @@ public class InputManager : MonoBehaviour
             mainCamera.ScreenToWorldPoint(Input.mousePosition);
             //player.IsMove = true;
             //player.ChangeState(player.Walking);
-            Debug.Log("Begin");
+            //Debug.Log("Begin");
         }
 
         if (touchFlag)
@@ -118,7 +118,7 @@ public class InputManager : MonoBehaviour
                 touchBeginPos = touchingPos
                                 = Vector2.zero;
                 //player.ChangeState(player.Idle);
-                Debug.Log("End");
+                //Debug.Log("End");
             }
 
             //押しっぱなし

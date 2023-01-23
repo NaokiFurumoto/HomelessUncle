@@ -32,16 +32,9 @@ public　abstract class ViewBase : RectTransformBehaviour
     }
 
     //複数回
-    protected virtual void OnEnable()
-    {
-        //animator ??= GetComponent<Animator>();
-        //animator.SetTrigger("open");
-    }
-
-    protected virtual void OnDisable()
-    {
-        //animator.SetTrigger("close");
-    }
+    protected virtual void OnEnable() { }
+   
+    protected virtual void OnDisable() { }
 
 }
 

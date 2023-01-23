@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 /// <summary>
 /// 共通スライダークラス
@@ -17,7 +18,16 @@ public class CommonUISlider : Slider
     private void Start()
     {
         //押された時に現在値を最小値か最大値にする
-        //maxButton.onClick.AddListener(() => { value = maxValue; maxButton.interactable = false; });
-        //minButton.onClick.AddListener(() => { value = minValue; minButton.interactable = false; });
+        maxButton.onClick.AddListener(() => { value = maxValue; maxButton.interactable = false; });
+        minButton.onClick.AddListener(() => { value = minValue; minButton.interactable = false; });
+    }
+}
+
+[CustomEditor(typeof(CommonUISlider))]
+public class CustomCommonSliderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
     }
 }

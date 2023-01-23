@@ -10,6 +10,8 @@ TagManager:
   - PlayerEffect
   - DigAction
   - PlayerEffectRoot
+  - FishArea
+  - FishAction
   layers:
   - Default
   - TransparentFX

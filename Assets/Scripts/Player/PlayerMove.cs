@@ -62,7 +62,10 @@ public partial class Player
     private void MoveUpdate()
     {
         if (!isMove)
+        {
+            inputManager.TouchPhase = TouchPhase.Canceled;
             return;
+        }
 
         //タッチ状態で移動を制御
         switch (inputManager.TouchPhase)
@@ -81,7 +84,9 @@ public partial class Player
 
             case TouchPhase.Ended://指が離れる
                 tapPos = inputManager.TouchingLastPos;
-                transform.position = new Vector2(tapPos.x, tapPos.y);
+                var x = Mathf.Clamp(tapPos.x, -4.5f, 4.5f);
+                var y = Mathf.Clamp(tapPos.y, -3.0f, 4.0f);
+                transform.position = new Vector2(x, y);
                 ChangeState(stateIdle);
                 inputManager.TouchPhase = TouchPhase.Canceled;
                 break;
@@ -132,8 +137,8 @@ public partial class Player
                                inputManager.TouchingPos,
                                moveSpeed * Time.deltaTime);
 
-        var x = Mathf.Clamp(pos.x, -5, 5);
-        var y = Mathf.Clamp(pos.y, -9, 8);
+        var x = Mathf.Clamp(pos.x, -4.5f, 4.5f);
+        var y = Mathf.Clamp(pos.y, -3.0f, 4.0f);
 
         transform.position = new Vector2(x, y);
     }

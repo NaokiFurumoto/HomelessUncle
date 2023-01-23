@@ -64,4 +64,6 @@ public class ItemIcon : ItemIconBase
         txt_holdIndex.text = holdIndex.ToString();
     }
 
+    //ボタンを押すとアイテム詳細画面が出る。そこで売却可能
+
 }
