@@ -13,7 +13,7 @@ public　abstract class ViewBase : RectTransformBehaviour
     protected VIEWTYPE type;
 
     [SerializeField]
-    private Button btn_Close;
+    protected Button btn_Close;
 
     //アニメーターによる開閉
     protected Animator animator;

@@ -12,6 +12,7 @@ public enum VIEWTYPE
     ITEMVIEW,
     SHOPVIEW,
     MONEYCHANGEVIEW,
+    USEITEMTEXT,
 }
 
 public class ViewController : SingletonMonoBehaviour<ViewController>
@@ -40,7 +41,7 @@ public class ViewController : SingletonMonoBehaviour<ViewController>
     /// <returns></returns>
     public ViewBase GetView(VIEWTYPE type)
     {
-        return viewList.Select(view => view.ViewType == type) as ViewBase;
+        return viewList.FirstOrDefault(view => view.ViewType == type) as ViewBase;
     }
 
     /// <summary>

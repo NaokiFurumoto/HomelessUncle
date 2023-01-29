@@ -86,7 +86,7 @@ public class PlayerItemView : ViewBase, IUpdateList
         {
             var itemIcon = icon as ItemIcon;
             if (!itemIcon) return;
-            itemIcon.Setup(itemIconsData[icon.Index]);
+            itemIcon.Setup(itemIconsData[icon.Index], OnClickItemDetail);
         };
 
         scroll.Create(player.HaveItemsCount,null);
@@ -98,5 +98,17 @@ public class PlayerItemView : ViewBase, IUpdateList
     public void UpdateList() 
     {
         SetItemDataList(SetScrollItemIcon);
+    }
+
+    //アイコンボタンを押したときのコールバック
+    public void OnClickItemDetail(ItemIcon iconData)
+    {
+        if (iconData == null) return;
+
+        //アイテム詳細ダイアログを表示
+        var dialogObj = DialogController.Instance.ShowDialog(DIALOGTYPE.ITEMDETAIL);
+        ItemDetailSellDialog dialog = dialogObj?.GetComponent<ItemDetailSellDialog>();
+
+        dialog?.SetStatus(iconData);
     }
 }

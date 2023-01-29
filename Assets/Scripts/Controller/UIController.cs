@@ -139,4 +139,5 @@ public enum NameType
     LIFE,
     ITEM,
     MONEY,
+    ALLOW_PARK,
 }

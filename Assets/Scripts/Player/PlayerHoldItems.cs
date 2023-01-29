@@ -64,6 +64,28 @@ public partial class Player : MonoBehaviour
         //ここでセーブしたい
     }
 
+    public void ReWritePlayerHoldItem(ItemIcon itemIcon)
+    {
+        var name = itemIcon.Data.ItemName;
+        var holdIndex = itemIcon.HoldIndex;
+
+        //キーが存在している   
+        if (playerHoldItems.ContainsKey(name))
+        {
+            if(holdIndex <= 0)
+            {
+                playerHoldItems.Remove(name);
+            }else
+            {
+                playerHoldItems[name] = holdIndex;
+            }
+            return;
+        }
+
+        playerHoldItems.Add(name, holdIndex);
+        //ここでセーブしたい
+    }
+
     /// <summary>
     /// アイテム売却
     /// </summary>

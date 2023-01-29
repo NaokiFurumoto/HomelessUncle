@@ -61,6 +61,11 @@ public class ItemData : ScriptableObject
     [SerializeField][Header("売ることが出来る")]
     private bool isSell;
 
+    /// <summary> 使う事が出来る </summary>
+    [SerializeField]
+    [Header("使うことが出来る")]
+    private bool isUse;
+
     /// <summary> 買値 </summary>
     [SerializeField][Header("買値")]
     private int price;
@@ -86,10 +91,12 @@ public class ItemData : ScriptableObject
     public int MaxHaveIndex => maxHaveIndex;
     public bool IsSell => isSell;
     public bool IsBuy => isBuy;
+    public bool IsUse => isUse;
     public int Price => price;
     public int SellPrice => sellPrice;
     public bool IsCollection => isCollection;
     public bool IsAbility => itemAbility.IsHaveAbility;
+    public ItemAbility Ability => itemAbility;
 
 
     /// <summary> 初期化 </summary>
@@ -101,15 +108,27 @@ public class ItemData : ScriptableObject
     }
 
     /// <summary>
+    /// レアリティを文字列で取得する
+    /// </summary>
+    /// <returns></returns>
+    public string GetRareText()
+    {
+        return rarity.ToString();
+    }
+
+    /// <summary>
     /// アイテムの効果
     /// </summary>
     [Serializable]
-    sealed class ItemAbility
+    public class ItemAbility
     {
-        /// <summary> 効果をもっているか </summary>
+        /// <summary> アビリティをもっているか </summary>
         [SerializeField]
         private bool isHaveAbility;
 
+        /// <summary> 所持して効果を発揮 </summary>
+        [SerializeField]
+        private bool isHoldEffective;
         /*
          体力減算値
         臭み減算値
@@ -120,9 +139,17 @@ public class ItemData : ScriptableObject
         [Header("発掘_レア率アップ")]
         private int digRareRateUp;
 
+        /// <summary> 情報 </summary>
+        [SerializeField]
+        [Header("アビリティの説明")]
+        [TextArea(1, 6)]
+        private string abilityInfo;
+
         public bool IsHaveAbility => isHaveAbility;
+        public bool IsHoldEffective => isHoldEffective;
 
         public int DigRareRateUp => digRareRateUp;
+        public string AbilityInfo => abilityInfo;
         /// <summary>
         /// ステータスのクリア
         /// </summary>

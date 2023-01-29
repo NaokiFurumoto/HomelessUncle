@@ -187,12 +187,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 2191083726053168192}
+  rareImage: {fileID: 0}
   button: {fileID: 2191083726234503172}
   txt_itemName: {fileID: 2191083726001143002}
   txt_holdIndex: {fileID: 2191083725244538672}
   bgData: {fileID: 11400000, guid: e9681ece3612d0645ae1a62788996369, type: 2}
   data: {fileID: 0}
   bgImage: {fileID: 2191083726352183107}
+  rareSheet: {fileID: 11400000, guid: 906e989d66058e24a89a87884e58dfd7, type: 2}
+  bgSheet: {fileID: 11400000, guid: aebd04e3f508c3d4d94672867186c9d7, type: 2}
 --- !u!114 &2191083725496344773
 MonoBehaviour:
   m_ObjectHideFlags: 0
