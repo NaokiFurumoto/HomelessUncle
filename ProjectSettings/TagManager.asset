@@ -55,8 +55,14 @@ TagManager:
   - name: Shadow
     uniqueID: 3715431517
     locked: 0
+  - name: EquipBack
+    uniqueID: 3466013827
+    locked: 0
   - name: Player
     uniqueID: 1631939655
+    locked: 0
+  - name: EquipFront
+    uniqueID: 3621935109
     locked: 0
   - name: Effect
     uniqueID: 2156649141
