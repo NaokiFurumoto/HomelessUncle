@@ -10,13 +10,7 @@ public partial class Player
     // <summary> 状態ステート</summary>
     private static readonly StateIdle stateIdle = new StateIdle();
     private static readonly StateWalking stateWalking = new StateWalking();
-    private static readonly StateEat stateEat = new StateEat();
-    private static readonly StateSleep stateSleep = new StateSleep();
-    private static readonly StateToilet stateToilet = new StateToilet();
-    private static readonly StateDig stateDig = new StateDig();
     private static readonly StateFishing stateFishing = new StateFishing();
-    private static readonly StateDead stateDead = new StateDead();
-    //気絶：気絶を過ぎたら死亡
 
     /// <summary> 現在のステート </summary>
     private PlayerStateBase currentState;
@@ -30,13 +24,7 @@ public partial class Player
 
     public StateIdle Idle => stateIdle;
     public StateWalking Walking => stateWalking;
-    public StateEat Eat => stateEat;
-    public StateSleep Sleep => stateSleep;
-    public StateToilet Toilet => stateToilet;
-    public StateDig Dig => stateDig;
     public StateFishing Fishing => stateFishing;
-    public StateDead Dead => stateDead;
-    public bool IsDead => currentState is StateDead;
     #endregion
 
 
@@ -68,10 +56,5 @@ public partial class Player
         nextState.OnEnter(this, currentState);
         currentState = nextState;
     }
-
-    //死亡
-    private void Death()
-    {
-        ChangeState(stateDead);
-    }
+    
 }

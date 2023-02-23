@@ -59,8 +59,6 @@ public class MoneyChangeView : ViewBase
         //決定ボタンが押されたら
         if (isDecide)
         {
-            moneyCtrl.SetMinusMoney(SliderValue);
-            moneyCtrl.UpdateMoneyChangeView();
             isDecide = false;
             animator.SetTrigger("close");
         }
@@ -120,7 +118,6 @@ public class MoneyChangeView : ViewBase
     {
         isDecide = true;
         player.PlayerStatus.HaveMoney = (long)HaveMoney - Minusmoney;
-        player.PlayerStatus.Loan -= SliderValue;
 
         animator?.SetTrigger("close");
     }

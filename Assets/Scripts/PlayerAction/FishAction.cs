@@ -186,8 +186,8 @@ public class FishAction : GameAction
         var parent = PlayerEffectRoot.Instance.GetEffectRoot(PlayerEffectRoot.ROOT_TYPE.RIGHT);
         GameObject instace = Instantiate(itemObj, parent.position, Quaternion.Euler(0, 0, -90), parent);
 
-        var status = instace?.GetComponent<FishItem>();
-        status?.SetImage(data);
+        //var status = instace?.GetComponent<FishItem>();
+        //status?.SetImage(data);
     }
 
 }

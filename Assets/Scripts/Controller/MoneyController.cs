@@ -14,16 +14,16 @@ public class MoneyController : UIParts
     /// <summary> 所持金 </summary>
     [SerializeField] private TextMeshProUGUI txt_HaveMoney;
 
-    /// <summary> 借金 </summary>
-    [SerializeField] private TextMeshProUGUI txt_LoanMoney;
+    ///// <summary> 借金 </summary>
+    //[SerializeField] private TextMeshProUGUI txt_LoanMoney;
 
-    /// <summary> 減算額 </summary>
-    [SerializeField] private TextMeshProUGUI txt_MinusMoney;
+    ///// <summary> 減算額 </summary>
+    //[SerializeField] private TextMeshProUGUI txt_MinusMoney;
 
-    /// <summary> マイナスオブジェクト </summary>
-    [SerializeField] private GameObject minusObj;
+    ///// <summary> マイナスオブジェクト </summary>
+    //[SerializeField] private GameObject minusObj;
 
-    /// <summary> マイナスオブジェクト </summary>
+    ///// <summary> マイナスオブジェクト </summary>
     [SerializeField] private Button btn_Change;
 
     /// <summary> プレイヤー </summary>
@@ -70,23 +70,22 @@ public class MoneyController : UIParts
     public void UpdateMoney(Player.Status status)
     {
         SetHaveMoney(status.HaveMoney);
-        SetLoanMoney(status.Loan);
     }
 
     /// <summary>
     /// 借金返済時の更新処理
     /// </summary>
-    public void UpdateMoneyChangeView()
-    {
-        //借金が更新されるとアニメーション実行
-        SetHaveMoney(player.PlayerStatus.HaveMoney);
-        SetLoanMoney(player.PlayerStatus.Loan);
+    //public void UpdateMoneyChangeView()
+    //{
+    //    //借金が更新されるとアニメーション実行
+    //    SetHaveMoney(player.PlayerStatus.HaveMoney);
+    //    SetLoanMoney(player.PlayerStatus.Loan);
 
-        if(minusValue > 0)
-        {
-            minusObj.SetActive(true);
-        }
-    }
+    //    if(minusValue > 0)
+    //    {
+    //        minusObj.SetActive(true);
+    //    }
+    //}
 
     /// <summary>
     /// 所持金設定
@@ -97,25 +96,7 @@ public class MoneyController : UIParts
         txt_HaveMoney.text = value.ToString();
     }
 
-    /// <summary>
-    /// 借金設定
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetLoanMoney(long value)
-    {
-        txt_LoanMoney.text = value.ToString();
-    }
-
-    /// <summary>
-    /// 減算値設定
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetMinusMoney(long value)
-    {
-        minusValue = value;
-        txt_MinusMoney.text = "-" + value.ToString();
-    }
-
+   
     //ボタンコールバック
     private void OnClickChangeMoney()
     {

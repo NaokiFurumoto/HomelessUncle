@@ -10,19 +10,7 @@ public partial class UIController
 {
     private ViewController viewCtrl;
 
-    /// <summary>
-    /// 掘るアクション
-    /// </summary>
-    private void OnClickDigBtn()
-    {
-        //プレイヤーのステートがDig状態ならば連打できない
-        if (player.CurrentState == player.Idle)
-        {
-            player.transform.localScale = Vector3.one;
-            player.ChangeState(player.Dig);
-            //プレイヤーの体力を減算
-        }
-    }
+   
 
     /// <summary>
     /// 釣りアクション
@@ -57,9 +45,6 @@ public partial class UIController
     {
         switch (type)
         {
-            case NameType.DIG:
-                btn_Dig.SetInteractable(judge);
-                break;
             case NameType.FISH:
                 btn_Fish.SetInteractable(judge);
                 break;

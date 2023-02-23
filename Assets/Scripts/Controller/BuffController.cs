@@ -19,11 +19,9 @@ public partial class BuffController : SingletonMonoBehaviour<BuffController>
                = new Dictionary<BUFF_TYPE, Delegate>();
 
     private Player player;
-    private DigAction digAction;
     private FishAction fishAction;
 
     public Dictionary<BUFF_TYPE, Delegate> BuffActionDic => buffActionDic;
-    //DigAction
     //FishAction
     //Player
 

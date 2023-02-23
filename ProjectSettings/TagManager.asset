@@ -12,6 +12,7 @@ TagManager:
   - PlayerEffectRoot
   - FishArea
   - FishAction
+  - Equip
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sea
+    uniqueID: 4168713013
     locked: 0
   - name: BG
     uniqueID: 1420381991

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+/// <summary>
+/// 共通のアイテムデータ。拡張元
+/// </summary>
 [Serializable]
 [CreateAssetMenu(fileName = "ItemData", menuName = "Create_ItemData")]
 public class ItemData : ScriptableObject
@@ -11,15 +14,17 @@ public class ItemData : ScriptableObject
     /// <summary> アイテムの種類 </summary>
     public enum ITEM_TYPE
     {
-        SHOPITEM,   //ショップ
+        SAO,        //竿
         FISH,       //魚
-        DIG         //掘る
+        ESA,        //エサ
+        UKI,        //ウキ
+        SHOP,       //ショップ
     }
 
     /// <summary> レアリティ </summary>
     public enum ITEM_RARITY
     {
-        N = 0, R = 1, SR = 2, SSR = 3, UR = 4
+        N = 0, R = 1, SR = 2, SSR = 3, UR = 4, NUSHI = 5
     }
 
     /// <summary> アイテムの種類 </summary>
@@ -66,6 +71,11 @@ public class ItemData : ScriptableObject
     [Header("使うことが出来る")]
     private bool isUse;
 
+    /// <summary> 使う事が出来る </summary>
+    [SerializeField]
+    [Header("装備する事が出来る")]
+    private bool isEquip;
+
     /// <summary> 買値 </summary>
     [SerializeField][Header("買値")]
     private int price;
@@ -74,13 +84,20 @@ public class ItemData : ScriptableObject
     [SerializeField][Header("売値")]
     private int sellPrice;
 
-    /// <summary> コレクションアイテムかどうか </summary>
-    [SerializeField][Header("コレクションアイテムかどうか")]
-    private bool isCollection;
+    /// <summary> スキルがあるかどうか </summary>
+    [SerializeField]
+    [Header("効果")]
+    private bool isSkill;
 
-    /// <summary> 効果 </summary>
-    [SerializeField][Header("効果")]
-    private ItemAbility itemAbility;
+    /// <summary> 情報 </summary>
+    [SerializeField]
+    [Header("スキル説明")]
+    [TextArea(1, 6)]
+    private string skillInfo;
+
+    ///// <summary> 効果 </summary>
+    //[SerializeField][Header("効果")]
+    //private ItemAbility itemAbility;
 
     public ITEM_TYPE ItemType => itemType;
     public Sprite IconImage => iconImage;
@@ -92,19 +109,18 @@ public class ItemData : ScriptableObject
     public bool IsSell => isSell;
     public bool IsBuy => isBuy;
     public bool IsUse => isUse;
+    public bool IsEquip => isEquip;
     public int Price => price;
     public int SellPrice => sellPrice;
-    public bool IsCollection => isCollection;
-    public bool IsAbility => itemAbility.IsHaveAbility;
-    public ItemAbility Ability => itemAbility;
-
+    public bool IsSkill => isSkill;
+    public string SkillInfo => skillInfo;
 
     /// <summary> 初期化 </summary>
-    private void Awake()
+    protected virtual void Awake()
     {
         if (!isBuy) price = 0;
-        if (!isSell || isCollection) sellPrice = 0;
-        if (!IsAbility) itemAbility.StatusClear();
+        if (!isSell) sellPrice = 0;
+        if (!isSkill) skillInfo = "-";
     }
 
     /// <summary>
@@ -114,50 +130,6 @@ public class ItemData : ScriptableObject
     public string GetRareText()
     {
         return rarity.ToString();
-    }
-
-    /// <summary>
-    /// アイテムの効果
-    /// </summary>
-    [Serializable]
-    public class ItemAbility
-    {
-        /// <summary> アビリティをもっているか </summary>
-        [SerializeField]
-        private bool isHaveAbility;
-
-        /// <summary> 所持して効果を発揮 </summary>
-        [SerializeField]
-        private bool isHoldEffective;
-        /*
-         体力減算値
-        臭み減算値
-        効果時間
-         
-         */
-        [SerializeField]
-        [Header("発掘_レア率アップ")]
-        private int digRareRateUp;
-
-        /// <summary> 情報 </summary>
-        [SerializeField]
-        [Header("アビリティの説明")]
-        [TextArea(1, 6)]
-        private string abilityInfo;
-
-        public bool IsHaveAbility => isHaveAbility;
-        public bool IsHoldEffective => isHoldEffective;
-
-        public int DigRareRateUp => digRareRateUp;
-        public string AbilityInfo => abilityInfo;
-        /// <summary>
-        /// ステータスのクリア
-        /// </summary>
-        public void StatusClear()
-        {
-
-        }
-
     }
 }
 

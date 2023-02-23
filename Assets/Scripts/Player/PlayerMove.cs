@@ -22,6 +22,10 @@ public partial class Player
     [SerializeField]
     private Vector2 tapPos;
 
+    /// <summary> センサー位置 </summary>
+    [SerializeField]
+    private Transform sensorTrfm;
+
     /// <summary> 向くべき方向 </summary>
     private Vector2 direction;
 
@@ -31,16 +35,17 @@ public partial class Player
     /// <summary> プレイヤーが移動可能かどうかの判定 </summary>
     private bool isMove;
 
+    /// <summary> Rigidbody2D </summary>
+    private Rigidbody2D rigid2D;
     #region プロパティ
     public Vector2 Direction => direction;
     public Animator PlayerAnim => playerAnim;
-   public bool IsMove { get { return isMove; } set { isMove = value; } }
+    public bool IsMove { get { return isMove; } set { isMove = value; } }
     #endregion
 
     private void MoveAwake()
     {
         direction = -Vector2.up;
-        moveSpeed = 4.0f;
         //isMove = true;//とりあえず動ける
     }
 
@@ -49,10 +54,10 @@ public partial class Player
     {
         inputManager = InputManager.Instance;
         playerAnim ??= GameObject.FindGameObjectWithTag("PlayerAnimator")
-                                  .GetComponent<Animator>();
-
-        //gameController ??= GameObject.FindGameObjectWithTag("GameController")
-        //                               .GetComponent<GameController>();
+                                 .GetComponent<Animator>();
+        rigid2D = this.gameObject.GetComponent<Rigidbody2D>();
+        sensorTrfm ??= GameObject.FindGameObjectWithTag("PlayerSensor")
+                                 .GetComponent<Transform>();
     }
 
     /// <summary>
@@ -71,32 +76,30 @@ public partial class Player
         switch (inputManager.TouchPhase)
         {
             case TouchPhase.Began://画面に指が触れた
+                CancelInvoke("SetStateIdle");
                 ChangeState(stateWalking);
                 tapPos = inputManager.TouchBeginPos;
-                PlayerTurning();
+                PlayerChangeAnim();
                 CharacterMovement();
                 break;
 
             case TouchPhase.Moved://画面上で指が動いてるとき
-                PlayerTurning();
+                PlayerChangeAnim();
                 CharacterMovement();
                 break;
 
             case TouchPhase.Ended://指が離れる
-                tapPos = inputManager.TouchingLastPos;
-                var x = Mathf.Clamp(tapPos.x, -4.5f, 4.5f);
-                var y = Mathf.Clamp(tapPos.y, -3.0f, 4.0f);
-                transform.position = new Vector2(x, y);
-                ChangeState(stateIdle);
+                rigid2D.velocity = Vector2.zero;
                 inputManager.TouchPhase = TouchPhase.Canceled;
+                Invoke("SetStateIdle", 3.0f);
                 break;
         }
     }
 
     /// <summary>
-    /// タップした場所に方向転換
+    /// アニメーションの変更
     /// </summary>
-    private void PlayerTurning()
+    private void PlayerChangeAnim()
     {
         tapPos = inputManager.TouchingPos;
         direction = new Vector2(tapPos.x - transform.position.x,
@@ -116,14 +119,46 @@ public partial class Player
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
 
-        tempScale = transform.localScale;
-        tempScale.x = x > 0 ? Mathf.Abs(tempScale.x) : -Mathf.Abs(tempScale.x);
-        transform.localScale = tempScale;
-
+        //向きの変更
+        ChangeDirection(x);
+        
         //アニメーションのために初期化させる
         x = Mathf.Abs(x);
         playerAnim.SetFloat("FaceX", x);
         playerAnim.SetFloat("FaceY", y);
+    }
+
+    /// <summary>
+    /// プレイヤーの向きの変更
+    /// </summary>
+    private void ChangeDirection(float x)
+    {
+        AnimatorClipInfo[] currentClipInfo = playerAnim.GetCurrentAnimatorClipInfo(0);
+        string currentAnimName = currentClipInfo[0].clip.name;
+
+        int changex;
+        //横移動はxの値を変更
+        if (currentAnimName == "PlayerSide")
+        {
+            tempScale = transform.localScale;
+            tempScale.x = x > 0 ? Mathf.Abs(tempScale.x) : -Mathf.Abs(tempScale.x);
+            transform.localScale = tempScale;
+            changex = (int)tempScale.x;
+            SetSensorPos(1.5f, 0.5f,true);
+        }
+        else if (currentAnimName == "PlayerBack")
+        {
+            transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+            changex = -1;
+            SetSensorPos(0f, 2.5f,true);
+        }
+        else//正面
+        {
+            transform.localScale = Vector3.one;
+            changex = 1;
+            SetSensorPos(0.0f,0.5f,false);
+        }
+        equip.ChangeSortingLayer(changex);
     }
 
     /// <summary>
@@ -133,13 +168,37 @@ public partial class Player
     /// <param name="y"></param>
     private void CharacterMovement()
     {
-        var pos = Vector2.Lerp(transform.position,
-                               inputManager.TouchingPos,
-                               moveSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, inputManager.TouchingPos) < 0.1f)
+        {
+            // 目標位置に到達したら移動を停止する
+            rigid2D.velocity = Vector2.zero;
+        }
+        else
+        {
+            Vector2 direction = inputManager.TouchingPos - (Vector2)transform.position;
+            rigid2D.velocity = direction.normalized * moveSpeed;
+        }
+    }
 
-        var x = Mathf.Clamp(pos.x, -4.5f, 4.5f);
-        var y = Mathf.Clamp(pos.y, -3.0f, 4.0f);
+    /// <summary>
+    /// センサーの位置設定
+    /// </summary>
+    /// <param name="_x"></param>
+    /// <param name="_y"></param>
+    private void SetSensorPos(float _x, float _y, bool idActive)
+    {
+        //if(sensorTrfm.gameObject.active)
+        var pos = sensorTrfm.position;
+        pos.x = _x;
+        pos.y = _y;
+        sensorTrfm.transform.localPosition = pos;
+    }
 
-        transform.position = new Vector2(x, y);
+    /// <summary>
+    /// 待機アニメーションにする
+    /// </summary>
+    private void SetStateIdle()
+    {
+        ChangeState(stateIdle);
     }
 }

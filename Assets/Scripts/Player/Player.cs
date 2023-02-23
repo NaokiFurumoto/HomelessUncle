@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 /// <summary>
 /// プレイヤー本体
 /// </summary>
 public partial class Player : MonoBehaviour
 {
+    [SerializeField]
+    protected PlayerEquip equip;
+
     /// <summary> プレイヤーの初期化完了フラグ <summary>
     private bool isInitialized;
 
+    public PlayerEquip Equip => equip;
     public bool IsInitialized => isInitialized;
+
 
     void Awake()
     {
@@ -25,7 +31,7 @@ public partial class Player : MonoBehaviour
     /// <summary>
     /// コルーチン化する
     /// </summary>
-    private IEnumerator Start()
+    async void Start()
     {
         //ゲームコントローラーがシステムロードまち
         //そのあとプレイヤー
@@ -34,7 +40,8 @@ public partial class Player : MonoBehaviour
 
         //whileでload完了待ち？？
         //yield return null;
-
+        equip ??= GameObject.FindGameObjectWithTag("Equip")
+                            .GetComponent<PlayerEquip>();
         //ステートに関する初期化
         StateStart();
         //移動に関する初期化
@@ -42,7 +49,7 @@ public partial class Player : MonoBehaviour
         //ステータス初期化
         playerStatus.SetInitializeStatus();
         //ステータス反映
-        yield return playerStatus.SetLoadedStatus();
+        await playerStatus.SetLoadedStatus();
         isInitialized = true;
     }
 

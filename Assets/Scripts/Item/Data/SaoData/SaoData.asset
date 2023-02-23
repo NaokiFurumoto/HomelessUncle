@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74028f7f18a6ce6429651ff4bec1d906, type: 3}
+  m_Name: SaoData
+  m_EditorClassIdentifier: 
+  itemType: 0
+  iconImage: {fileID: 0}
+  itemSprite: {fileID: 0}
+  itemName: "\u7AF9\u7AFF"
+  rarity: 0
+  itemInfo: "\u5C71\u304B\u3089\u53D6\u3063\u3066\u304D\u305F\u7AF9\u3067\u4F5C\u3063\u305F\u7AFF\u3002\u8010\u4E45\u529B\u3001\u98DB\u8DDD\u96E2\u3068\u3082\u306B\u6700\u5F31"
+  maxHaveIndex: 1
+  isBuy: 0
+  isSell: 0
+  isUse: 0
+  isEquip: 1
+  price: 0
+  sellPrice: 0
+  isSkill: 0
+  skillInfo: 
+  mator: 0

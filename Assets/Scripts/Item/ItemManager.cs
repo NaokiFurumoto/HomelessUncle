@@ -23,9 +23,9 @@ public class ItemManager : MonoBehaviour
     {
         Instance ??= this;
         allItemDataLists = itemDataBase.AllItemTableLists;
-        shopItemDataLists = allItemDataLists.FindAll(item => item.ItemType == ItemData.ITEM_TYPE.SHOPITEM);
+        shopItemDataLists = allItemDataLists.FindAll(item => item.IsBuy);//買うことができる
         fishItemDataLists = allItemDataLists.FindAll(item => item.ItemType == ItemData.ITEM_TYPE.FISH);
-        digItemDataLists = allItemDataLists.FindAll(item => item.ItemType == ItemData.ITEM_TYPE.DIG);
+        //digItemDataLists = allItemDataLists.FindAll(item => item.ItemType == ItemData.ITEM_TYPE.DIG);
     }
 
     /// <summary>

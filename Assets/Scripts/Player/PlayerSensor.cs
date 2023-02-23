@@ -28,8 +28,6 @@ public class PlayerSensor : MonoBehaviour
     {
         if (collision.CompareTag("FishArea"))
         {
-            //UIの掘るボタンを無効に
-            uiCtrl.SetBtnInteractable(NameType.DIG, false);
             //条件が整えば
             uiCtrl.SetBtnInteractable(NameType.FISH, true);
         }
@@ -50,8 +48,6 @@ public class PlayerSensor : MonoBehaviour
     {
         if (collision.CompareTag("FishArea"))
         {
-            //UIの掘るボタンを有効に
-            uiCtrl?.SetBtnInteractable(NameType.DIG, true);
             //条件が整えば
             uiCtrl.SetBtnInteractable(NameType.FISH, false);
         }

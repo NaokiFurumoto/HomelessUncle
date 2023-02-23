@@ -45,7 +45,7 @@ public class ItemDetailSellDialog : DialogBase
     [SerializeField] private TextMeshProUGUI txt_ItemDetail;
 
     /// <summary>アビリティ詳細</summary>
-    [SerializeField] private TextMeshProUGUI txt_AbilityDetail;
+    [SerializeField] private TextMeshProUGUI txt_SkillDetail;
 
     /// <summary>アビリティ所持：切替用</summary>
     [SerializeField] private GameObject abilityOk;
@@ -87,8 +87,8 @@ public class ItemDetailSellDialog : DialogBase
         txt_HaveAmount.text = itemIcon.HoldIndex.ToString();
         txt_MaxAmount.text = itemData.MaxHaveIndex.ToString();
         txt_ItemDetail.text = itemData.ItemInfo;
-        txt_AbilityDetail.text = itemData.Ability.AbilityInfo.ToString();
-        ChangeAbilityObject(itemData.IsAbility);
+        txt_SkillDetail.text = itemData.SkillInfo.ToString();
+        ChangeAbilityObject(itemData.IsSkill);
         btn_Sell.gameObject.SetActive(itemData.IsSell);
         btn_Use.gameObject.SetActive(itemData.IsUse);
 
