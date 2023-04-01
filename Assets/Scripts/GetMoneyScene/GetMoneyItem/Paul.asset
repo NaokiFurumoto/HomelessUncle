@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df28ec743f3867418b6f6b7aae531e8, type: 3}
+  m_Name: Paul
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: -622298275, guid: 79bf3da48c8d5d949808378a850bbbf0, type: 3}
+  itemName: "\u30D1\u30FC\u30EB"
+  rarity: 4
+  sellPrice: 1200

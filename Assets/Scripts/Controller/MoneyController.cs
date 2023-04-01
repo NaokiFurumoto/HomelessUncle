@@ -14,15 +14,6 @@ public class MoneyController : UIParts
     /// <summary> 所持金 </summary>
     [SerializeField] private TextMeshProUGUI txt_HaveMoney;
 
-    ///// <summary> 借金 </summary>
-    //[SerializeField] private TextMeshProUGUI txt_LoanMoney;
-
-    ///// <summary> 減算額 </summary>
-    //[SerializeField] private TextMeshProUGUI txt_MinusMoney;
-
-    ///// <summary> マイナスオブジェクト </summary>
-    //[SerializeField] private GameObject minusObj;
-
     ///// <summary> マイナスオブジェクト </summary>
     [SerializeField] private Button btn_Change;
 
@@ -31,7 +22,6 @@ public class MoneyController : UIParts
 
     private ViewController viewCtrl;
 
-    private long minusValue;
 
     /// <summary> お金交換ボタンコールバック </summary>
     private UnityAction changeMoneyCallBack;
@@ -59,7 +49,6 @@ public class MoneyController : UIParts
     /// <param name="status"></param>
     private void InitializeMoney(Player.Status status)
     {
-        minusValue = 0;
         UpdateMoney(status);
     }
 
@@ -73,21 +62,6 @@ public class MoneyController : UIParts
     }
 
     /// <summary>
-    /// 借金返済時の更新処理
-    /// </summary>
-    //public void UpdateMoneyChangeView()
-    //{
-    //    //借金が更新されるとアニメーション実行
-    //    SetHaveMoney(player.PlayerStatus.HaveMoney);
-    //    SetLoanMoney(player.PlayerStatus.Loan);
-
-    //    if(minusValue > 0)
-    //    {
-    //        minusObj.SetActive(true);
-    //    }
-    //}
-
-    /// <summary>
     /// 所持金設定
     /// </summary>
     /// <param name="value"></param>
@@ -95,7 +69,6 @@ public class MoneyController : UIParts
     {
         txt_HaveMoney.text = value.ToString();
     }
-
    
     //ボタンコールバック
     private void OnClickChangeMoney()

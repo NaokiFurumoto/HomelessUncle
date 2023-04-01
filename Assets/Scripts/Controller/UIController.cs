@@ -16,10 +16,8 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     private Player player;
 
     /// <summary> UI </summary>
-   // private ButtonController btn_Dig;
     private ButtonController btn_Fish;
     private ButtonController btn_Item;
-    //private GaugeController gaugeLife;
     private MoneyController moneyCtrl;
 
     [SerializeField]
@@ -62,7 +60,6 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
         moneyCtrl.UpdateMoney(status);
     }
     
-
     /// <summary>
     /// UIを返す処理
     /// </summary>
@@ -119,4 +116,5 @@ public enum NameType
     ITEM,
     MONEY,
     ALLOW_PARK,
+    DROP,
 }

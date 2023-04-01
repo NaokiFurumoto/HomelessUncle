@@ -10,8 +10,6 @@ public partial class UIController
 {
     private ViewController viewCtrl;
 
-   
-
     /// <summary>
     /// 釣りアクション
     /// </summary>

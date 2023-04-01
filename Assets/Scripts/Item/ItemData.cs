@@ -95,10 +95,6 @@ public class ItemData : ScriptableObject
     [TextArea(1, 6)]
     private string skillInfo;
 
-    ///// <summary> 効果 </summary>
-    //[SerializeField][Header("効果")]
-    //private ItemAbility itemAbility;
-
     public ITEM_TYPE ItemType => itemType;
     public Sprite IconImage => iconImage;
     public Sprite ItemSprite => itemSprite;

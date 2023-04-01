@@ -12,6 +12,7 @@ public partial class Player : MonoBehaviour
     private static Dictionary<string,int> playerHoldItems = new Dictionary<string,int>();
     //取得
     public Dictionary<string, int> PlayerHoldItems => playerHoldItems;
+    //アイテム合計所持数
     public int HaveItemsCount => playerHoldItems.Count();
 
     /// <summary>
@@ -64,6 +65,10 @@ public partial class Player : MonoBehaviour
         //ここでセーブしたい
     }
 
+    /// <summary>
+    /// 所持品更新
+    /// </summary>
+    /// <param name="itemIcon"></param>
     public void ReWritePlayerHoldItem(ItemIcon itemIcon)
     {
         var name = itemIcon.Data.ItemName;

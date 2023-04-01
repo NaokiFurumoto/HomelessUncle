@@ -40,6 +40,16 @@ public class GaugeController : UIParts
     }
 
     /// <summary>
+    /// 値の設定
+    /// </summary>
+    /// <param name="value"></param>
+    public virtual void SetValie(float value)
+    {
+        currentValue = value;
+        SetValueSlider();
+    }
+
+    /// <summary>
     /// 減算
     /// </summary>
     /// <param name="value"></param>

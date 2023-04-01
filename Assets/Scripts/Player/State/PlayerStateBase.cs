@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// プレイヤーの状態
 /// ステート基底クラス
 /// </summary>
 public partial class Player 
