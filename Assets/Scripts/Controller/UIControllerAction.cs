@@ -26,6 +26,15 @@ public partial class UIController
     }
 
     /// <summary>
+    /// ショップボタンを押したとき
+    /// </summary>
+    private void OnClickShopBtn()
+    {
+        if (viewCtrl == null) return;
+        viewCtrl.ActiveView(VIEWTYPE.SHOPVIEW, true);
+    }
+
+    /// <summary>
     /// アイテムボタンを押したとき
     /// </summary>
     private void OnClickItemBtn()

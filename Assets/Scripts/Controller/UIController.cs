@@ -18,6 +18,7 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
     /// <summary> UI </summary>
     private ButtonController btn_Fish;
     private ButtonController btn_Item;
+    private ButtonController btn_Shop;
     private MoneyController moneyCtrl;
 
     [SerializeField]
@@ -42,10 +43,11 @@ public partial class UIController : SingletonMonoBehaviour<UIController>
         btn_Fish = GetUIParts(UIType.BTN, NameType.FISH) as ButtonController;
         btn_Fish?.SetBtnEvent(OnClickFishBtn);
 
+        btn_Shop = GetUIParts(UIType.BTN, NameType.SHOP) as ButtonController;
+        btn_Shop?.SetBtnEvent(OnClickShopBtn);
+
         btn_Item = GetUIParts(UIType.BTN, NameType.ITEM) as ButtonController;
         btn_Item?.SetBtnEvent(OnClickItemBtn);
-
-        moneyCtrl = GetUIParts(UIType.OTHER, NameType.MONEY) as MoneyController;
     }
 
     /// <summary>
@@ -114,7 +116,6 @@ public enum NameType
     NONE,
     FISH,
     ITEM,
-    MONEY,
-    ALLOW_PARK,
-    DROP,
+    GET_MONEY,
+    SHOP,
 }

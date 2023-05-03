@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace GetMoney
 {
+    /// <summary>
+    /// ドロップアイテムの管理
+    /// </summary>
     public class DropItemManager : SingletonMonoBehaviour<DropItemManager>
     {
         [SerializeField]
@@ -27,11 +30,16 @@ namespace GetMoney
 
         private void Awake()
         {
-            normalDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.N).ToList();
-            rareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.R).ToList();
-            sRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.SR).ToList();
-            ssRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.SSR).ToList();
-            uRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.UR).ToList();
+            allDropItemLists = dropItemDataBase?.AllDropDataList;
+            if(allDropItemLists.Count != 0)
+            {
+                normalDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.N).ToList();
+                rareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.R).ToList();
+                sRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.SR).ToList();
+                ssRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.SSR).ToList();
+                uRareDropItemLists = allDropItemLists.Where(item => item.Rarity == DropItem.DROPITEM_RARITY.UR).ToList();
+            }
+            
         }
 
         //インデックスからリストを取得する

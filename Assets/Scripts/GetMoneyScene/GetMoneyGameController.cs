@@ -41,18 +41,13 @@ namespace GetMoney
             itemGenerator?.GenerateStart(generateParam);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 
     //構造体：生成パラメーター
     public struct GenerateParam
     {
-        public float Interval;
-        public int RareLevel;
-        public float MaxIndex;
+        public float Interval;//生成間隔
+        public int RareLevel;//レアレベル
+        public float MaxIndex;//最大生成数
     }
 }

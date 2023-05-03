@@ -12,52 +12,52 @@ public class ItemIcon : ItemIconBase
 {
     /// <summary> イメージ </summary>
     [SerializeField]
-    private Image itemImage;
+    protected Image itemImage;
 
     /// <summary> レアイメージ </summary>
     [SerializeField]
-    private Image rareImage;
+    protected Image rareImage;
 
     /// <summary> ボタン </summary>
     [SerializeField]
-    private ButtonEventSystem button;
+    protected ButtonEventSystem button;
 
     /// <summary> TextMeshUI </summary>
     [SerializeField]
-    private TextMeshProUGUI txt_itemName;
+    protected TextMeshProUGUI txt_itemName;
 
     /// <summary> TextMeshUI </summary>
     [SerializeField]
-    private TextMeshProUGUI txt_holdIndex;
+    protected TextMeshProUGUI txt_holdIndex;
 
     /// <summary> TextMeshUI </summary>
     [SerializeField]
-    private ItemBGData bgData;
+    protected ItemBGData bgData;
 
     /// <summary> データ </summary>
     [SerializeField]
-    private ItemData data;
+    protected ItemData data;
 
     /// <summary> 名前 </summary>
-    private string itemName;
+    protected string itemName;
 
     /// <summary> 所持数 </summary>
-    private int holdIndex;
+    protected int holdIndex;
 
     // <summary> クリックした際のコールバック </summary>
-    public Action<ItemIconData> ClickCallback;
+    protected Action<ItemIconData> ClickCallback;
 
     /// <summary> 背景イメージ </summary>
     [SerializeField]
-    private Image bgImage;
+    protected Image bgImage;
 
     /// <summary> レアシート </summary>
     [SerializeField]
-    private UISpriteSheet rareSheet;
+    protected UISpriteSheet rareSheet;
 
     /// <summary> 背景レアシート </summary>
     [SerializeField]
-    private UISpriteSheet bgSheet;
+    protected UISpriteSheet bgSheet;
 
 
     //プロパティ
@@ -69,22 +69,23 @@ public class ItemIcon : ItemIconBase
     }
     public Image ItemImage => itemImage;
     public ItemData Data => data;
-   
+
     /// <summary>
     /// アイコンにデータを表示する場合の設定
     /// </summary>
     /// <param name="iconData"></param>
     /// <param name="callback"></param>
-    public void Setup(ItemIconData iconData, Action<ItemIcon> callback = null)
+    /// <param name="option"> なにか必要なもの</param>
+    public virtual void Setup(ItemIconData iconData, Action<ItemIcon> callback = null)
     {
         itemImage.sprite = iconData.ItemImage;
         itemName = iconData.ItemName;
         holdIndex = iconData.HoldIndex;
         this.data = iconData.Data;
-        bgImage.sprite = bgSheet.GetSprite(this.data.Rarity.ToString());
-        rareImage.sprite = rareSheet.GetSprite(this.data.Rarity.ToString());
+        bgImage.sprite = bgSheet?.GetSprite(this.data.Rarity.ToString());
+        rareImage.sprite = rareSheet?.GetSprite(this.data.Rarity.ToString());
 
-        txt_itemName.text = itemName.ToString();
+        txt_itemName.text = itemName?.ToString();
         txt_holdIndex.text = holdIndex.ToString();
 
         if(callback != null)
@@ -94,7 +95,7 @@ public class ItemIcon : ItemIconBase
     }
 
     /// <summary>
-    /// アイコンにデータを表示しない場合の設定
+    /// アイテムとアイテム背景設定
     /// </summary>
     /// <param name="iconData"></param>
     public void SetupView(ItemData itemData)

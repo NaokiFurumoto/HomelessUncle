@@ -13,6 +13,7 @@ TagManager:
   - FishArea
   - FishAction
   - Equip
+  - DropItemGenerator
   layers:
   - Default
   - TransparentFX

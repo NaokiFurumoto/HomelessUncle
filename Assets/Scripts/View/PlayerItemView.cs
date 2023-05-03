@@ -14,7 +14,7 @@ public class PlayerItemView : ViewBase, IUpdateList
     /// <summary> Player <summary>
     [SerializeField] private Player player;
 
-    /// <summary> 表示数 <summary>
+    /// <summary> 所持アイテム数 <summary>
     [SerializeField] private int index;
 
     //<summary スクロール機能 <summary

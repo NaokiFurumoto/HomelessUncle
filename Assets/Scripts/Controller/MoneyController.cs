@@ -34,8 +34,8 @@ public class MoneyController : UIParts
 
         viewCtrl = ViewController.Instance;
 
-        changeMoneyCallBack = OnClickChangeMoney;
-        btn_Change.onClick.AddListener(OnClickChangeMoney);
+        //changeMoneyCallBack = OnClickChangeMoney;
+        //btn_Change.onClick.AddListener(OnClickChangeMoney);
 
         //プレイヤーの初期化完了待ち
         while (!player.IsInitialized) { yield return null; }
@@ -68,12 +68,5 @@ public class MoneyController : UIParts
     public void SetHaveMoney(long value)
     {
         txt_HaveMoney.text = value.ToString();
-    }
-   
-    //ボタンコールバック
-    private void OnClickChangeMoney()
-    {
-        if (viewCtrl == null) return;
-        viewCtrl.ActiveView(VIEWTYPE.MONEYCHANGEVIEW, true);
     }
 }

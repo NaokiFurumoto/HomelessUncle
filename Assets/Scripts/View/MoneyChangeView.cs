@@ -20,7 +20,6 @@ public class MoneyChangeView : ViewBase
     [SerializeField] private TextMeshProUGUI txt_After;
 
     private Player player;
-    private MoneyController moneyCtrl;
     private bool isDecide;
 
     private long HaveMoney => player.PlayerStatus.HaveMoney;
@@ -36,7 +35,6 @@ public class MoneyChangeView : ViewBase
         btn_Decide.onClick.AddListener(OnClickDecide);
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        moneyCtrl = UIController.Instance.GetUIParts(UIType.OTHER, NameType.MONEY) as MoneyController;
 
         while (!player.IsInitialized) yield return null;
 

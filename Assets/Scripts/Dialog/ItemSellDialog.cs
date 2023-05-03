@@ -52,7 +52,6 @@ public class ItemSellDialog : DialogBase
         }
 
         playerItemView = ViewController.Instance.GetView(VIEWTYPE.ITEMVIEW) as PlayerItemView;
-        moneyCtrl = UIController.Instance.GetUIParts(UIType.OTHER, NameType.MONEY) as MoneyController;
         isInitialize = true;
 
         SetItemInfo(iconInfo);

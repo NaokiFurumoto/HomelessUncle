@@ -28,7 +28,7 @@ namespace GetMoney
         //ドロップアイテム配置親
         [SerializeField] private Transform dropRoot;
 
-        //ドロップアイテム
+        //ドロップアイテムのprefab
         [SerializeField] private GameObject dropItemObj;
 
         //生成状態
@@ -48,10 +48,10 @@ namespace GetMoney
         private float timer;
 
         //生成親
-        [SerializeField] private Transform itemsParent;
+        //[SerializeField] private Transform itemsParent;
 
         /// <summary>  表示アイテム <summary> 
-        private List<DropItem> AllDropItems = new List<DropItem>();
+        private List<DropItem> allDropItemsClass = new List<DropItem>();
 
         /// </summary> スクリーンサイズ <summary>
         private Vector3 rightTopScreen;
@@ -70,7 +70,7 @@ namespace GetMoney
         //取得用配置アイテム数
         public int DropedItemCount { get { return allDropItems.Count; } }
         public DropItemState CurrentState { get { return currentState; } set { currentState = value; } }
-
+        public List<GameObject> AllDropItemObjects { get { return allDropItems; } set { allDropItems = value; } }
 
         public void GenerateStart(GenerateParam param)
         {
@@ -95,7 +95,7 @@ namespace GetMoney
         private void SetParam(GenerateParam param)
         {
             //あとで変更
-            spawnInterval = param.Interval = 5.0f;
+            spawnInterval = param.Interval = 2.0f;
             rareLevel = param.RareLevel = 1;
             maxIndex = param.MaxIndex = 20.0f;
         }
@@ -112,16 +112,16 @@ namespace GetMoney
             }
 
             timer += Time.deltaTime;
-            float value = Mathf.Clamp(timer, 0.0f, this.maxIndex);
+            float value = Mathf.Clamp(timer, 0.0f, this.spawnInterval);
             this.gaugeController.SetValie(value);
 
+            //間違ってる
             if (timer >= spawnInterval)
             {
-                this.dropItemObj = GetItem();
-                this.dropItemObj.transform.SetParent(itemsParent);
+                GameObject item = GetItem();
+                item.transform.SetParent(dropRoot);
 
                 allDropItems.Add(this.dropItemObj);
-                this.dropItemObj = null;
                 timer = 0.0f;
             }
         }
@@ -174,15 +174,7 @@ namespace GetMoney
 
                 //情報を取得
                 DropItem dropItem = selectedRereList.OrderBy(x => UnityEngine.Random.value).First();
-
-                var pos = this.GetDropItemPos();
-                var item = Instantiate(this.dropItemObj, pos, Quaternion.identity);
-
-                var dropItemParam = item.GetComponent<DropItem>();
-                dropItemParam.ItemSprite = dropItem.ItemSprite;
-                dropItemParam.SellPrice = dropItem.SellPrice;
-
-                return item;
+                return this.MakeItem(dropItem);
             }
             catch (Exception ex)
             {
@@ -197,22 +189,28 @@ namespace GetMoney
         /// </summary>
         private Vector3 GetDropItemPos()
         {
-            float x, y;
-            bool isCheck;
-
-            do
-            {
-                x = UnityEngine.Random.Range(leftBottomScreen.x + 1.0f, rightTopScreen.x - 1.0f);
-                y = UnityEngine.Random.Range(leftBottomScreen.y + 1.0f, rightTopScreen.y - 2.0f);
-
-                isCheck = (leftBottomScreen.x - 1.0f <= x)
-                        && (rightTopScreen.x + 1.0f >= x)
-                        && (leftBottomScreen.y - 2.0f <= y)
-                        && (rightTopScreen.y + 2.0f >= y);
-
-            } while (isCheck);
-
+            float x = UnityEngine.Random.Range(leftBottomScreen.x + 1.0f, rightTopScreen.x - 1.0f);
+            float y = UnityEngine.Random.Range(leftBottomScreen.y + 1.0f, rightTopScreen.y - 2.0f);
             return new Vector3(x, y, 0);
+        }
+
+        /// <summary>
+        /// アイテムの作成
+        /// </summary>
+        /// <param name="dropItem">レアリストから取得したアイテム</param>
+        /// <returns></returns>
+        private GameObject MakeItem(DropItem dropItem)
+        {
+            var pos = this.GetDropItemPos();
+            var rotateZ = UnityEngine.Random.Range(-80.0f, 80.0f);
+            Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, rotateZ);
+
+            GameObject item = Instantiate(this.dropItemObj, pos, rotation);
+
+            var dropItemParam = item.GetComponent<DropItemObject>();
+            dropItemParam?.SetData(dropItem, rotateZ);
+
+            return item;
         }
 
         /// <summary>
@@ -220,7 +218,7 @@ namespace GetMoney
         /// </summary>
         public bool IsCheckOver()
         {
-            return itemsParent?.childCount >= maxIndex ? true : false;
+            return dropRoot?.childCount >= maxIndex ? true : false;
         }
 
         /// <summary>
@@ -233,7 +231,15 @@ namespace GetMoney
             foreach (Transform item in dropRoot) GameObject.Destroy(item.gameObject);
         }
 
-        //指定オブジェクトの削除
+        /// <summary>
+        /// 指定オブジェクトの削除
+        /// </summary>
+        /// <param name="_obj"></param>
+        public void DeleteSelectList(GameObject _obj)
+        {
+            this.AllDropItemObjects = this.AllDropItemObjects.Where(obj => obj != null && obj != _obj).ToList();
+        }
+
 
     }//end class
 }
